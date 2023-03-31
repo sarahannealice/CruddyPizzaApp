@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">CruddyPizzaApp</string>
+    <string name="english">eng</string>
+    <string name="chinese">中文</string>
+    <string name="pi">2πr</string>
+    <string name="pizza">比萨 由</string>
+    <string name="sarah">sarah</string>
+    <string name="start">开始 订单</string>
+    <string name="search">搜索 订单</string>
+    <string name="customer">客户 信息</string>
+    <string name="name">名字</string>
+    <string name="phone">电话 号码</string>
+    <string name="size">选择 大 小</string>
+    <string name="sm">小</string>
+    <string name="med">中</string>
+    <string name="l">大</string>
+    <string name="xl">超大</string>
+    <string name="toppings">配料</string>
+    <string name="three">最多 选择 3 个</string>
+    <string name="normal">标准</string>
+    <string name="dbl">双倍</string>
+    <string name="triple">三倍</string>
+    <string name="pepper">青椒</string>
+    <string name="mushroom">蘑菇</string>
+    <string name="pepperoni">意大利 辣 香肠</string>
+    <string name="sausage">香肠</string>
+    <string name="ham">火腿</string>
+    <string name="pineapple">菠萝</string>
+    <string name="submit">提交 订单</string>
+    <string name="history">订单 历史</string>
+    <string name="orderNum">订单</string>
+    <string name="view">查看 订单</string>
+    <string name="edit">编辑 订单</string>
+    <string name="newOrder">新 订单</string>
+</resources>
