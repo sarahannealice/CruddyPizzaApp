@@ -4,81 +4,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".TitlePage">
 
     <TableLayout
+        android:id="@+id/titlePage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C9ADA7">
+        android:background="#C9ADA7"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:stretchColumns="*">
 
         <TableRow
             android:id="@+id/row0"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="end"
+            android:paddingTop="5dp">
 
             <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnChn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/english"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chinese"
-                android:textAllCaps="false" />
+                android:layout_gravity="end"
+                android:background="#00FFFFFF"
+                android:fontFamily="@font/montserrat"
+                android:maxWidth="120dp"
+                android:singleLine="true"
+                android:text="@string/language"
+                android:textAllCaps="false"
+                android:textColor="#22223B"
+                android:textSize="14sp"
+                app:iconPadding="4dp" />
         </TableRow>
 
         <TableRow
             android:id="@+id/row1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight=".20">
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:id="@+id/piTV"
+                android:layout_width="10dp"
+                android:layout_height="202dp"
+                android:layout_gravity="bottom"
+                android:height="150dp"
+                android:background="@drawable/circle_textview"
+                android:fontFamily="@font/chewy"
+                android:gravity="center"
+                android:text="@string/pi"
+                android:textAlignment="center"
+                android:textColor="@color/dark_purple"
+                android:textSize="80sp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/pizzaTV"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="111dp"
+                android:layout_gravity="bottom"
+                android:height="150dp"
+                android:fontFamily="@font/chewy"
+                android:gravity="start"
+                android:text="@string/pizza"
+                android:textAlignment="textStart"
+                android:textColor="@color/dark_purple"
+                android:textSize="80sp" />
+
         </TableRow>
 
         <TableRow
             android:id="@+id/row2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight=".1">
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                android:id="@+id/sarahTV"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_column="1"
+                android:fontFamily="@font/alegreya_sans_sc_bold"
+                android:text="@string/sarah"
+                android:textAlignment="center"
+                android:textColor="@color/blush_purple"
+                android:textSize="30sp" />
         </TableRow>
 
         <TableRow
             android:id="@+id/row3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:gravity="center_vertical"
+            android:paddingBottom="100dp">
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnStart"
+                android:layout_width="185dp"
                 android:layout_height="wrap_content"
-                android:text="Button"
-                android:textAllCaps="false" />
+                android:height="60dp"
+                android:backgroundTint="@color/dark_purple"
+                android:fontFamily="@font/noto_sans"
+                android:insetLeft="10dp"
+                android:insetRight="10dp"
+                android:text="@string/start"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:cornerRadius="25dp" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button"
-                android:textAllCaps="false" />
+                android:height="60dp"
+                android:backgroundTint="@color/dark_purple"
+                android:fontFamily="@font/noto_sans"
+                android:insetLeft="10dp"
+                android:insetRight="10dp"
+                android:text="@string/search"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:cornerRadius="30dp" />
         </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

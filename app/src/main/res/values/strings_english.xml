@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">CruddyPizzaApp</string>
+    <string name="slash">/</string>
     <string name="english">eng</string>
     <string name="chinese">中文</string>
-    <string name="pi">2πr</string>
-    <string name="pizza">pizza by</string>
-    <string name="sarah">sarah</string>
+    <string name="language">eng/中文</string>
+    <string name="pi">2𝝅r</string>
+    <string name="pizza">pizza</string>
+    <string name="sarah">by sarah</string>
     <string name="start">start order</string>
     <string name="search">search order</string>
     <string name="customer">customer info</string>
