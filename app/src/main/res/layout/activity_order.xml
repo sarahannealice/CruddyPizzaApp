@@ -380,7 +380,7 @@
                         android:contentDescription="@string/normal"
                         android:scaleType="fitCenter"
                         tools:ignore="TouchTargetSizeCheck"
-                        tools:src="@drawable/normal_deselected" />
+                        tools:src="@drawable/normal_selected" />
 
                     <ImageButton
                         android:id="@+id/btnDouble1"
@@ -434,7 +434,7 @@
                         android:backgroundTint="@color/blush"
                         android:contentDescription="@string/less"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/normal_deselected"
+                        app:srcCompat="@drawable/normal_selected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
@@ -536,7 +536,7 @@
                         android:contentDescription="@string/less"
                         android:scaleType="fitCenter"
                         tools:ignore="TouchTargetSizeCheck"
-                        tools:src="@drawable/normal_deselected" />
+                        tools:src="@drawable/normal_selected" />
 
                     <ImageButton
                         android:id="@+id/btnDouble3"
@@ -590,7 +590,7 @@
                         android:backgroundTint="@color/blush"
                         android:contentDescription="@string/less"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/normal_deselected"
+                        app:srcCompat="@drawable/normal_selected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
@@ -692,7 +692,7 @@
                         android:contentDescription="@string/less"
                         android:scaleType="fitCenter"
                         tools:ignore="TouchTargetSizeCheck"
-                        tools:src="@drawable/normal_deselected" />
+                        tools:src="@drawable/normal_selected" />
 
                     <ImageButton
                         android:id="@+id/btnDouble5"
@@ -746,7 +746,7 @@
                         android:backgroundTint="@color/blush"
                         android:contentDescription="@string/less"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/normal_deselected"
+                        app:srcCompat="@drawable/normal_selected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
