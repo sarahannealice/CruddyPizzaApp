@@ -31,9 +31,13 @@
     <string name="pineapple">pineapple</string>
     <string name="submit">submit order</string>
     <string name="history">order history</string>
-    <string name="orderNum">order</string>
+    <string name="orderNum">order#</string>
     <string name="view">view order</string>
     <string name="edit">edit order</string>
     <string name="newOrder">new order</string>
     <string name="blank"/>
+
+    <string name="exampleOrder">eg.\norder#1002\nJane Doe\n555–3784</string>
+    <string name="exampleOrderNum">order#1002</string>
+    <string name="exampleDetails">eg.\nJane Doe\n555–3784\nsize: small\ntoppings:\n\t\tgreen pepper - normal\n\t\tsausage - double</string>
 </resources>

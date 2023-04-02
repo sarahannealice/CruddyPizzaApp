@@ -42,7 +42,7 @@
             android:layout_weight=".05">
 
             <TextView
-                android:id="@+id/historyTV"
+                android:id="@+id/orderNumTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -76,17 +76,17 @@
                 android:padding="10dp"
                 android:visibility="visible">
 
-                <Button
-                    android:id="@+id/btnOrder"
+                <TextView
+                    android:id="@+id/orderTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/border_deselected"
+                    android:clickable="true"
                     android:fontFamily="@font/montserrat"
-                    android:gravity="start"
-                    android:text="@string/orderNum"
-                    android:textAllCaps="false"
-                    android:textColor="@color/dark_purple"
-                    android:visibility="visible" />
+                    android:onClick="onClick"
+                    android:padding="10dp"
+                    android:text="@string/exampleOrder"
+                    android:textColor="@color/blush_purple" />
 
             </LinearLayout>
         </TableRow>

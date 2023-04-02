@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_column="1"
-                android:layout_gravity="center_horizontal"
+                android:layout_weight="100"
                 android:background="#00FFFFFF"
                 android:fontFamily="@font/montserrat"
                 android:maxWidth="120dp"
@@ -87,7 +87,7 @@
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/nameText"
+                    android:id="@+id/textName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -128,7 +128,7 @@
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/phoneText"
+                    android:id="@+id/textPhone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="50"
@@ -174,13 +174,12 @@
             android:paddingEnd="10dp"
             android:paddingBottom="5dp">
 
-            <LinearLayout
-                android:id="@+id/vertical5"
-                android:layout_width="0dp"
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="100"
-                android:orientation="horizontal"
-                android:paddingTop="10dp">
+                android:layout_weight="25"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioSmall"
@@ -222,7 +221,7 @@
                     android:text="@string/xl"
                     android:textColor="@color/dark_purple"
                     tools:ignore="TouchTargetSizeCheck" />
-            </LinearLayout>
+            </RadioGroup>
 
         </TableRow>
 
@@ -371,7 +370,7 @@
                         android:layout_weight="16" />
 
                     <ImageButton
-                        android:id="@+id/btnNormal1"
+                        android:id="@+id/normalPepper"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -383,7 +382,7 @@
                         tools:src="@drawable/normal_selected" />
 
                     <ImageButton
-                        android:id="@+id/btnDouble1"
+                        android:id="@+id/doublePepper"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -395,7 +394,7 @@
                         tools:ignore="TouchTargetSizeCheck" />
 
                     <ImageButton
-                        android:id="@+id/btnTriple1"
+                        android:id="@+id/triplePepper"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -426,7 +425,7 @@
                         android:layout_weight="16" />
 
                     <ImageButton
-                        android:id="@+id/btnNormal2"
+                        android:id="@+id/normalMushroom"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -438,7 +437,7 @@
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
-                        android:id="@+id/btnDouble2"
+                        android:id="@+id/doubleMushroom"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -450,7 +449,7 @@
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
-                        android:id="@+id/btnTriple2"
+                        android:id="@+id/tripleMushroom"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -527,7 +526,7 @@
                         android:layout_weight="16" />
 
                     <ImageButton
-                        android:id="@+id/btnNormal3"
+                        android:id="@+id/normalPepperoni"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -539,7 +538,7 @@
                         tools:src="@drawable/normal_selected" />
 
                     <ImageButton
-                        android:id="@+id/btnDouble3"
+                        android:id="@+id/doublePepperoni"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -551,7 +550,7 @@
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
-                        android:id="@+id/btnTriple3"
+                        android:id="@+id/triplePepperoni"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -582,7 +581,7 @@
                         android:layout_weight="16" />
 
                     <ImageButton
-                        android:id="@+id/btnNormal4"
+                        android:id="@+id/normalSausage"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -594,7 +593,7 @@
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
-                        android:id="@+id/btnDouble4"
+                        android:id="@+id/doubleSausage"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -606,7 +605,7 @@
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
-                        android:id="@+id/btnTriple4"
+                        android:id="@+id/tripleSausage"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -683,7 +682,7 @@
                         android:layout_weight="16" />
 
                     <ImageButton
-                        android:id="@+id/btnNormal5"
+                        android:id="@+id/normalHam"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -695,7 +694,7 @@
                         tools:src="@drawable/normal_selected" />
 
                     <ImageButton
-                        android:id="@+id/btnDouble5"
+                        android:id="@+id/doubleHam"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -707,7 +706,7 @@
                         tools:ignore="TouchTargetSizeCheck" />
 
                     <ImageButton
-                        android:id="@+id/btnTriple5"
+                        android:id="@+id/tripleHam"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -738,7 +737,7 @@
                         android:layout_weight="16" />
 
                     <ImageButton
-                        android:id="@+id/btnNormal6"
+                        android:id="@+id/normalPineapple"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -750,7 +749,7 @@
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
-                        android:id="@+id/btnDouble6"
+                        android:id="@+id/doublePineapple"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
@@ -762,7 +761,7 @@
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
-                        android:id="@+id/btnTriple6"
+                        android:id="@+id/triplePineapple"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="16"
