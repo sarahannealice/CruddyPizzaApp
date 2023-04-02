@@ -6,10 +6,10 @@
 
     <corners android:radius="250dp" />
 
-    <!-- This is the border color -->
+    <!-- border color -->
     <stroke android:width="2dp" android:color="@color/blush_purple" />
 
-    <!--- This is the background color -->
+    <!--- background color -->
     <solid android:color="@color/blush_purple" />
 
 </shape>
