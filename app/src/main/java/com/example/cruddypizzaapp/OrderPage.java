@@ -21,6 +21,8 @@ public class OrderPage extends AppCompatActivity {
     ImageButton normalPepper, doublePepper, triplePepper, normalMushroom, doubleMushroom, tripleMushroom,
             normalPepperoni, doublePepperoni, triplePepperoni, normalSausage, doubleSausage, tripleSausage,
             normalHam, doubleHam, tripleHam, normalPineapple, doublePineapple, triplePineapple;
+    LinearLayout vertical10_1, btnPepper, btnMushroom, vertical12_1, btnPepperoni, btnSausage,
+    vertical14_1, btnHam, btnPineapple;
 
     //variables
 
@@ -29,6 +31,17 @@ public class OrderPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+
+        //initializing layouts
+        vertical10_1 = findViewById(R.id.vertical10_1);
+        btnPepper = findViewById(R.id.btnPepper);
+        btnMushroom = findViewById(R.id.btnMushroom);
+        vertical12_1 = findViewById(R.id.vertical12_1);
+        btnPepperoni = findViewById(R.id.btnPepperoni);
+        btnSausage = findViewById(R.id.btnSausage);
+        vertical14_1 = findViewById(R.id.vertical14_1);
+        btnHam = findViewById(R.id.btnHam);
+        btnPineapple = findViewById(R.id.btnPineapple);
 
         //initializing buttons
         btnLanguage = findViewById(R.id.btnLanguage);
@@ -83,6 +96,14 @@ public class OrderPage extends AppCompatActivity {
         radioLarge.setOnClickListener(radioButtonClicked);
         radioXlarge.setOnClickListener(radioButtonClicked);
 
+        //set checkbox event to same listener
+        checkPepper.setOnClickListener(checkBoxClicked);
+        checkMushroom.setOnClickListener(checkBoxClicked);
+        checkPepperoni.setOnClickListener(checkBoxClicked);
+        checkSausage.setOnClickListener(checkBoxClicked);
+        checkHam.setOnClickListener(checkBoxClicked);
+        checkPineapple.setOnClickListener(checkBoxClicked);
+
     }//end onCreate
 
     //onClick for radio buttons
@@ -97,7 +118,7 @@ public class OrderPage extends AppCompatActivity {
                 x.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
             }
 
-            //create colorstatelist for radio buttons
+            //create colorstatelist for radio buttons colours -- https://stackoverflow.com/a/29551017
             ColorStateList enabledColour = new ColorStateList(
                     new int[][]{
                             new int[]{android.R.attr.state_enabled}//enabled
@@ -148,4 +169,97 @@ public class OrderPage extends AppCompatActivity {
             }
         }
     };//end onClick for radio buttons
-}
+
+    public View.OnClickListener checkBoxClicked = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            switch (view.getId()) {
+                case R.id.checkPepper:
+                    //to check if checked -- https://stackoverflow.com/a/18336219
+                    if (checkPepper.isChecked()) {
+                        checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                        vertical10_1.setVisibility(View.VISIBLE);
+                        btnPepper.setVisibility(View.VISIBLE);
+                        btnMushroom.setVisibility(View.INVISIBLE);
+                    } else {
+                        checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        vertical10_1.setVisibility(View.GONE);
+                        btnPepper.setVisibility(View.GONE);
+                        btnMushroom.setVisibility(View.GONE);
+                    }
+                    break;
+                case R.id.checkMushroom:
+                    //to check if checked -- https://stackoverflow.com/a/18336219
+                    if (checkMushroom.isChecked()) {
+                        checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                        vertical10_1.setVisibility(View.VISIBLE);
+                        btnPepper.setVisibility(View.INVISIBLE);
+                        btnMushroom.setVisibility(View.VISIBLE);
+                    } else {
+                        checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        vertical10_1.setVisibility(View.GONE);
+                        btnPepper.setVisibility(View.GONE);
+                        btnMushroom.setVisibility(View.GONE);
+                    }
+                    break;
+                case R.id.checkPepperoni:
+                    //to check if checked -- https://stackoverflow.com/a/18336219
+                    if (checkPepperoni.isChecked()) {
+                        checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                        vertical12_1.setVisibility(View.VISIBLE);
+                        btnPepperoni.setVisibility(View.VISIBLE);
+                        btnSausage.setVisibility(View.INVISIBLE);
+                    } else {
+                        checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        vertical12_1.setVisibility(View.GONE);
+                        btnPepperoni.setVisibility(View.GONE);
+                        btnSausage.setVisibility(View.GONE);
+                    }
+                    break;
+                case R.id.checkSausage:
+                    //to check if checked -- https://stackoverflow.com/a/18336219
+                    if (checkSausage.isChecked()) {
+                        checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                        vertical12_1.setVisibility(View.VISIBLE);
+                        btnPepperoni.setVisibility(View.INVISIBLE);
+                        btnSausage.setVisibility(View.VISIBLE);
+                    } else {
+                        checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        vertical12_1.setVisibility(View.GONE);
+                        btnPepperoni.setVisibility(View.GONE);
+                        btnSausage.setVisibility(View.GONE);
+                    }
+                    break;
+                case R.id.checkHam:
+                    //to check if checked -- https://stackoverflow.com/a/18336219
+                    if (checkHam.isChecked()) {
+                        checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                        vertical14_1.setVisibility(View.VISIBLE);
+                        btnHam.setVisibility(View.VISIBLE);
+                        btnPineapple.setVisibility(View.INVISIBLE);
+                    } else {
+                        checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        vertical14_1.setVisibility(View.GONE);
+                        btnHam.setVisibility(View.GONE);
+                        btnPineapple.setVisibility(View.GONE);
+                    }
+                    break;
+                case R.id.checkPineapple:
+                    //to check if checked -- https://stackoverflow.com/a/18336219
+                    if (checkPineapple.isChecked()) {
+                        checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                        vertical14_1.setVisibility(View.VISIBLE);
+                        btnHam.setVisibility(View.INVISIBLE);
+                        btnPineapple.setVisibility(View.VISIBLE);
+                    } else {
+                        checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        vertical14_1.setVisibility(View.GONE);
+                        btnHam.setVisibility(View.GONE);
+                        btnPineapple.setVisibility(View.GONE);
+                    }
+                    break;
+            }
+        }
+    };//end onClick for checkboxes
+}//end order page class

@@ -24,14 +24,14 @@
                 android:id="@+id/btnLanguage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_weight="100"
+                android:layout_gravity="end"
                 android:background="#00FFFFFF"
                 android:fontFamily="@font/montserrat"
+                android:insetRight="20dp"
                 android:maxWidth="120dp"
                 android:singleLine="true"
                 android:text="@string/language"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="#22223B"
                 android:textSize="14sp" />
@@ -187,6 +187,7 @@
                     android:layout_height="30dp"
                     android:layout_weight="25"
                     android:buttonTint="@color/blush_purple"
+                    android:fontFamily="@font/montserrat"
                     android:text="@string/sm"
                     android:textColor="@color/dark_purple"
                     android:textSize="14sp"
@@ -198,6 +199,7 @@
                     android:layout_height="30dp"
                     android:layout_weight="25"
                     android:buttonTint="@color/blush_purple"
+                    android:fontFamily="@font/montserrat"
                     android:text="@string/med"
                     android:textColor="@color/dark_purple"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -208,6 +210,7 @@
                     android:layout_height="30dp"
                     android:layout_weight="25"
                     android:buttonTint="@color/blush_purple"
+                    android:fontFamily="@font/montserrat"
                     android:text="@string/l"
                     android:textColor="@color/dark_purple"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -220,7 +223,8 @@
                     android:buttonTint="@color/blush_purple"
                     android:text="@string/xl"
                     android:textColor="@color/dark_purple"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck"
+                    android:fontFamily="@font/montserrat" />
             </RadioGroup>
 
         </TableRow>
@@ -253,46 +257,15 @@
             android:layout_height="match_parent"
             android:paddingTop="5dp">
 
-            <LinearLayout
-                android:id="@+id/vertical7"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <ImageView
+                android:id="@+id/exampleView"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
                 android:layout_weight="100"
-                android:orientation="horizontal">
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="300" />
-
-                <ImageView
-                    android:id="@+id/normalIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:contentDescription="@string/normal"
-                    app:srcCompat="@drawable/normal_example"
-                    tools:ignore="ImageContrastCheck" />
-
-                <ImageView
-                    android:id="@+id/doubleIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:contentDescription="@string/dbl"
-                    app:srcCompat="@drawable/double_example" />
-
-                <ImageView
-                    android:id="@+id/tripleIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:contentDescription="@string/triple"
-                    app:srcCompat="@drawable/triple_example"
-                    tools:ignore="ImageContrastCheck" />
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="300" />
-            </LinearLayout>
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:visibility="visible"
+                app:srcCompat="@drawable/example" />
 
         </TableRow>
 
@@ -376,10 +349,10 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/normal"
+                        android:contentDescription="@string/less"
                         android:scaleType="fitCenter"
-                        tools:ignore="TouchTargetSizeCheck"
-                        tools:src="@drawable/normal_selected" />
+                        app:srcCompat="@drawable/normal_selected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
                         android:id="@+id/doublePepper"
@@ -422,7 +395,7 @@
                     <Space
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="16" />
+                        android:layout_weight="10" />
 
                     <ImageButton
                         android:id="@+id/normalMushroom"
@@ -534,8 +507,8 @@
                         android:backgroundTint="@color/blush"
                         android:contentDescription="@string/less"
                         android:scaleType="fitCenter"
-                        tools:ignore="TouchTargetSizeCheck"
-                        tools:src="@drawable/normal_selected" />
+                        app:srcCompat="@drawable/normal_selected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
                         android:id="@+id/doublePepperoni"
@@ -564,7 +537,7 @@
                     <Space
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="16" />
+                        android:layout_weight="10" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -578,7 +551,7 @@
                     <Space
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="16" />
+                        android:layout_weight="10" />
 
                     <ImageButton
                         android:id="@+id/normalSausage"
@@ -690,8 +663,8 @@
                         android:backgroundTint="@color/blush"
                         android:contentDescription="@string/less"
                         android:scaleType="fitCenter"
-                        tools:ignore="TouchTargetSizeCheck"
-                        tools:src="@drawable/normal_selected" />
+                        app:srcCompat="@drawable/normal_selected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
                     <ImageButton
                         android:id="@+id/doubleHam"
@@ -720,7 +693,7 @@
                     <Space
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="16" />
+                        android:layout_weight="10" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -734,7 +707,7 @@
                     <Space
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="16" />
+                        android:layout_weight="10" />
 
                     <ImageButton
                         android:id="@+id/normalPineapple"
