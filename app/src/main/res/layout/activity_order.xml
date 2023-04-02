@@ -1,6 +1,817 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_span="3">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/blush"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:stretchColumns="100">
+
+        <TableRow
+            android:id="@+id/row0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="5dp">
+
+            <Button
+                android:id="@+id/btnLanguageMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_gravity="center_horizontal"
+                android:background="#00FFFFFF"
+                android:fontFamily="@font/montserrat"
+                android:maxWidth="120dp"
+                android:singleLine="true"
+                android:text="@string/language"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#22223B"
+                android:textSize="14sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".1"
+            android:background="@drawable/rounded_textview">
+
+            <TextView
+                android:id="@+id/customerTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_span="4"
+                android:layout_weight="100"
+                android:fontFamily="@font/montserrat"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@string/customer"
+                android:textColor="@color/dark_purple"
+                android:textSize="18sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/vertical2"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="100"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:id="@+id/nameTV"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="100"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/name"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/dark_purple"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/nameText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:text="@string/blank"
+                    android:textColor="@color/dark_purple"
+                    android:textSize="14sp"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/vertical3"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="100"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:id="@+id/phoneTV"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="100"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/phone"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/dark_purple"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/phoneText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:ems="10"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:text="@string/blank"
+                    android:textColor="@color/dark_purple"
+                    android:textSize="14sp"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".1"
+            android:background="@drawable/rounded_textview">
+
+            <TextView
+                android:id="@+id/sizeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_span="4"
+                android:layout_weight=".2"
+                android:fontFamily="@font/montserrat"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@string/size"
+                android:textColor="@color/dark_purple"
+                android:textSize="18sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".1"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp">
+
+            <LinearLayout
+                android:id="@+id/vertical5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+
+                <RadioButton
+                    android:id="@+id/radioSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="25"
+                    android:buttonTint="@color/blush_purple"
+                    android:text="@string/sm"
+                    android:textColor="@color/dark_purple"
+                    android:textSize="14sp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/radioMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="25"
+                    android:buttonTint="@color/blush_purple"
+                    android:text="@string/med"
+                    android:textColor="@color/dark_purple"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/radioLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="25"
+                    android:buttonTint="@color/blush_purple"
+                    android:text="@string/l"
+                    android:textColor="@color/dark_purple"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/radioXlarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_weight="25"
+                    android:buttonTint="@color/blush_purple"
+                    android:text="@string/xl"
+                    android:textColor="@color/dark_purple"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".1"
+            android:background="@drawable/rounded_textview">
+
+            <TextView
+                android:id="@+id/toppingsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_span="4"
+                android:layout_weight="100"
+                android:fontFamily="@font/montserrat"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@string/toppings"
+                android:textColor="@color/dark_purple"
+                android:textSize="18sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="5dp">
+
+            <LinearLayout
+                android:id="@+id/vertical7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="300" />
+
+                <ImageView
+                    android:id="@+id/normalIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/normal"
+                    app:srcCompat="@drawable/normal_example"
+                    tools:ignore="ImageContrastCheck" />
+
+                <ImageView
+                    android:id="@+id/doubleIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/dbl"
+                    app:srcCompat="@drawable/double_example" />
+
+                <ImageView
+                    android:id="@+id/tripleIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:contentDescription="@string/triple"
+                    app:srcCompat="@drawable/triple_example"
+                    tools:ignore="ImageContrastCheck" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="300" />
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/descriptionTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="4"
+                android:layout_weight="100"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/description"
+                android:textAlignment="center"
+                android:textColor="@color/cream"
+                tools:ignore="TextContrastCheck" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <CheckBox
+                android:id="@+id/checkPepper"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="100"
+                android:buttonTint="@color/blush_purple"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/pepper"
+                android:textColor="@color/dark_purple" />
+
+            <CheckBox
+                android:id="@+id/checkMushroom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="100"
+                android:buttonTint="@color/blush_purple"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/mushroom"
+                android:textColor="@color/dark_purple" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/vertical10_1"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_weight="100"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/btnPepper"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="50"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+
+                    <ImageButton
+                        android:id="@+id/btnNormal1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/normal"
+                        android:scaleType="fitCenter"
+                        tools:ignore="TouchTargetSizeCheck"
+                        tools:src="@drawable/normal_deselected" />
+
+                    <ImageButton
+                        android:id="@+id/btnDouble1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/dbl"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/double_deselected"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <ImageButton
+                        android:id="@+id/btnTriple1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/triple"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/triple_deselected"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnMushroom"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="50"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+
+                    <ImageButton
+                        android:id="@+id/btnNormal2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/normal_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <ImageButton
+                        android:id="@+id/btnDouble2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/double_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <ImageButton
+                        android:id="@+id/btnTriple2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/triple_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <CheckBox
+                android:id="@+id/checkPepperoni"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="100"
+                android:buttonTint="@color/blush_purple"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/pepperoni"
+                android:textColor="@color/dark_purple" />
+
+            <CheckBox
+                android:id="@+id/checkSausage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="100"
+                android:buttonTint="@color/blush_purple"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/sausage"
+                android:textColor="@color/dark_purple" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row12"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/vertical12_1"
+                android:layout_width="0dp"
+                android:layout_height="43dp"
+                android:layout_weight="100"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/btnPepperoni"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="50"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+
+                    <ImageButton
+                        android:id="@+id/btnNormal3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        tools:ignore="TouchTargetSizeCheck"
+                        tools:src="@drawable/normal_deselected" />
+
+                    <ImageButton
+                        android:id="@+id/btnDouble3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/double_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <ImageButton
+                        android:id="@+id/btnTriple3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/triple_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnSausage"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="50"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+
+                    <ImageButton
+                        android:id="@+id/btnNormal4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/normal_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <ImageButton
+                        android:id="@+id/btnDouble4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/double_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <ImageButton
+                        android:id="@+id/btnTriple4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/triple_deselected"
+                        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row13"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <CheckBox
+                android:id="@+id/checkHam"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="100"
+                android:buttonTint="@color/blush_purple"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/ham"
+                android:textColor="@color/dark_purple" />
+
+            <CheckBox
+                android:id="@+id/checkPineapple"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="100"
+                android:buttonTint="@color/blush_purple"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/pineapple"
+                android:textColor="@color/dark_purple" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row14"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/vertical14_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="100"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/btnHam"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="50"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+
+                    <ImageButton
+                        android:id="@+id/btnNormal5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        tools:ignore="TouchTargetSizeCheck"
+                        tools:src="@drawable/normal_deselected" />
+
+                    <ImageButton
+                        android:id="@+id/btnDouble5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/double_deselected"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <ImageButton
+                        android:id="@+id/btnTriple5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/triple_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnPineapple"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="50"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+
+                    <ImageButton
+                        android:id="@+id/btnNormal6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/normal_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <ImageButton
+                        android:id="@+id/btnDouble6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/double_deselected"
+                        tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+                    <ImageButton
+                        android:id="@+id/btnTriple6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16"
+                        android:adjustViewBounds="true"
+                        android:backgroundTint="@color/blush"
+                        android:contentDescription="@string/less"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/triple_deselected"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="16" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row15"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".5"
+            android:paddingTop="20dp">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:backgroundTint="@color/dark_purple"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/submit"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:cornerRadius="25dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="50" />
+        </TableRow>
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

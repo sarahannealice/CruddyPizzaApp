@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CruddyPizzaApp</string>
     <string name="slash">/</string>
@@ -10,15 +11,15 @@
     <string name="start">start order</string>
     <string name="search">search order</string>
     <string name="customer">customer info</string>
-    <string name="name">name</string>
-    <string name="phone">phone</string>
+    <string name="name">name:</string>
+    <string name="phone">phone:</string>
     <string name="size">choose a size</string>
     <string name="sm">small</string>
     <string name="med">medium</string>
     <string name="l">large</string>
     <string name="xl">x-large</string>
-    <string name="toppings">toppings</string>
-    <string name="three">choose up to 3</string>
+    <string name="toppings">toppings - choose up to 3</string>
+    <string name="description">normal-double-triple</string>
     <string name="normal">normal</string>
     <string name="dbl">double</string>
     <string name="triple">triple</string>
@@ -34,4 +35,5 @@
     <string name="view">view order</string>
     <string name="edit">edit order</string>
     <string name="newOrder">new order</string>
+    <string name="blank"/>
 </resources>
