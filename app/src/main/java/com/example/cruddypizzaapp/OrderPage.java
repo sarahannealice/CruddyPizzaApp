@@ -176,12 +176,16 @@ public class OrderPage extends AppCompatActivity {
 
             switch (view.getId()) {
                 case R.id.checkPepper:
-                    //to check if checked -- https://stackoverflow.com/a/18336219
                     if (checkPepper.isChecked()) {
                         checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
                         vertical10_1.setVisibility(View.VISIBLE);
                         btnPepper.setVisibility(View.VISIBLE);
-                        btnMushroom.setVisibility(View.INVISIBLE);
+                        if (!checkMushroom.isChecked()) {
+                            btnMushroom.setVisibility(View.INVISIBLE);
+                        }
+                    } else if (!checkPepper.isChecked() && checkMushroom.isChecked()) {
+                        checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        btnPepper.setVisibility(View.INVISIBLE);
                     } else {
                         checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
                         vertical10_1.setVisibility(View.GONE);
@@ -190,12 +194,16 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.checkMushroom:
-                    //to check if checked -- https://stackoverflow.com/a/18336219
                     if (checkMushroom.isChecked()) {
                         checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
                         vertical10_1.setVisibility(View.VISIBLE);
-                        btnPepper.setVisibility(View.INVISIBLE);
                         btnMushroom.setVisibility(View.VISIBLE);
+                        if (!checkPepper.isChecked()) {
+                            btnPepper.setVisibility(View.INVISIBLE);
+                        }
+                    } else if (!checkMushroom.isChecked() && checkPepper.isChecked()) {
+                        checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        btnMushroom.setVisibility(View.INVISIBLE);
                     } else {
                         checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
                         vertical10_1.setVisibility(View.GONE);
@@ -204,12 +212,16 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.checkPepperoni:
-                    //to check if checked -- https://stackoverflow.com/a/18336219
                     if (checkPepperoni.isChecked()) {
                         checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
                         vertical12_1.setVisibility(View.VISIBLE);
                         btnPepperoni.setVisibility(View.VISIBLE);
-                        btnSausage.setVisibility(View.INVISIBLE);
+                        if (!checkSausage.isChecked()) {
+                            btnSausage.setVisibility(View.INVISIBLE);
+                        }
+                    } else if (!checkPepperoni.isChecked() && checkSausage.isChecked()) {
+                        checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        btnPepperoni.setVisibility(View.INVISIBLE);
                     } else {
                         checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
                         vertical12_1.setVisibility(View.GONE);
@@ -218,12 +230,16 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.checkSausage:
-                    //to check if checked -- https://stackoverflow.com/a/18336219
                     if (checkSausage.isChecked()) {
                         checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
                         vertical12_1.setVisibility(View.VISIBLE);
-                        btnPepperoni.setVisibility(View.INVISIBLE);
                         btnSausage.setVisibility(View.VISIBLE);
+                        if (!checkPepperoni.isChecked()) {
+                            btnPepperoni.setVisibility(View.INVISIBLE);
+                        }
+                    } else if (!checkSausage.isChecked() && checkPepperoni.isChecked()) {
+                        checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        btnSausage.setVisibility(View.INVISIBLE);
                     } else {
                         checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
                         vertical12_1.setVisibility(View.GONE);
@@ -232,12 +248,16 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.checkHam:
-                    //to check if checked -- https://stackoverflow.com/a/18336219
                     if (checkHam.isChecked()) {
                         checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
                         vertical14_1.setVisibility(View.VISIBLE);
                         btnHam.setVisibility(View.VISIBLE);
-                        btnPineapple.setVisibility(View.INVISIBLE);
+                        if (!checkPineapple.isChecked()) {
+                            btnPineapple.setVisibility(View.INVISIBLE);
+                        }
+                    } else if (!checkHam.isChecked() && checkPineapple.isChecked()) {
+                        checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        btnHam.setVisibility(View.INVISIBLE);
                     } else {
                         checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
                         vertical14_1.setVisibility(View.GONE);
@@ -246,12 +266,16 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.checkPineapple:
-                    //to check if checked -- https://stackoverflow.com/a/18336219
                     if (checkPineapple.isChecked()) {
                         checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
                         vertical14_1.setVisibility(View.VISIBLE);
-                        btnHam.setVisibility(View.INVISIBLE);
                         btnPineapple.setVisibility(View.VISIBLE);
+                        if (!checkHam.isChecked()) {
+                            btnHam.setVisibility(View.INVISIBLE);
+                        }
+                    } else if (!checkPineapple.isChecked() && checkHam.isChecked()) {
+                        checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                        btnPineapple.setVisibility(View.INVISIBLE);
                     } else {
                         checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
                         vertical14_1.setVisibility(View.GONE);
