@@ -27,9 +27,6 @@ public class TitlePage extends AppCompatActivity {
         loadLocale();
         setContentView(R.layout.activity_title);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(getResources().getString(R.string.app_name));
-
         //initializing buttons
         btnLanguage = findViewById(R.id.btnLanguage);
         btnStart = findViewById(R.id.btnStart);
