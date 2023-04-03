@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="less">less</string>
+    <string name="app_name">CruddyPizzaApp</string>
+    <string name="slash" translatable="false">/</string>
+    <string name="english">eng</string>
+    <string name="chinese">中文</string>
+    <string name="language">eng/中文</string>
+    <string name="pi">2𝝅r</string>
+    <string name="pizza">pizza</string>
+    <string name="sarah">by sarah</string>
+    <string name="start">start order</string>
+    <string name="search">search order</string>
+    <string name="customer">customer info</string>
+    <string name="name">name:</string>
+    <string name="phone">phone:</string>
+    <string name="size">choose a size</string>
+    <string name="sm">small</string>
+    <string name="med">medium</string>
+    <string name="l">large</string>
+    <string name="xl">x-large</string>
+    <string name="toppings">toppings - choose up to 3</string>
+    <string name="description">normal-double-triple</string>
+    <string name="normal">normal</string>
+    <string name="dbl">double</string>
+    <string name="triple">triple</string>
+    <string name="pepper">green pepper</string>
+    <string name="mushroom">mushrooms</string>
+    <string name="pepperoni">pepperoni</string>
+    <string name="sausage">sausage</string>
+    <string name="ham">diced ham</string>
+    <string name="pineapple">pineapple</string>
+    <string name="submit">submit order</string>
+    <string name="history">order history</string>
+    <string name="orderNum">order#</string>
+    <string name="view">view order</string>
+    <string name="edit">edit order</string>
+    <string name="newOrder">new order</string>
+    <string name="blank"/>
+
+    <string name="exampleOrder">eg.\norder#1002\nJane Doe\n555–3784</string>
+    <string name="exampleOrderNum">order#1002</string>
+    <string name="exampleDetails">eg.\nJane Doe\n555–3784\nsize: small\ntoppings:\n\t\tgreen pepper - normal\n\t\tsausage - double</string>
 </resources>

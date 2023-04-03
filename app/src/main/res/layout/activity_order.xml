@@ -31,7 +31,7 @@
                 android:maxWidth="120dp"
                 android:singleLine="true"
                 android:text="@string/language"
-                android:textAlignment="textStart"
+                android:textAlignment="textEnd"
                 android:textAllCaps="false"
                 android:textColor="#22223B"
                 android:textSize="14sp" />
@@ -352,7 +352,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/normal"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/normal_selected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -407,7 +407,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/normal"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/normal_selected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -419,7 +419,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/dbl"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/double_deselected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -431,7 +431,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/triple"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/triple_deselected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -508,7 +508,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/normal"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/normal_selected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -520,7 +520,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/dbl"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/double_deselected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -532,7 +532,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/triple"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/triple_deselected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -563,7 +563,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/normal"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/normal_selected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -575,7 +575,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/dbl"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/double_deselected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -587,7 +587,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/triple"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/triple_deselected"
                         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
@@ -664,7 +664,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/normal"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/normal_selected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -676,7 +676,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/dbl"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/double_deselected"
                         tools:ignore="TouchTargetSizeCheck" />
@@ -688,7 +688,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/triple"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/triple_deselected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -719,7 +719,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/normal"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/normal_selected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -731,7 +731,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/dbl"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/double_deselected"
                         tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
@@ -743,7 +743,7 @@
                         android:layout_weight="16"
                         android:adjustViewBounds="true"
                         android:backgroundTint="@color/blush"
-                        android:contentDescription="@string/less"
+                        android:contentDescription="@string/triple"
                         android:scaleType="fitCenter"
                         app:srcCompat="@drawable/triple_deselected"
                         tools:ignore="TouchTargetSizeCheck" />

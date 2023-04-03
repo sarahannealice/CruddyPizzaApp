@@ -3,13 +3,18 @@ package com.example.cruddypizzaapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
+
+import java.util.Locale;
 
 public class OrderPage extends AppCompatActivity {
     //views
@@ -25,11 +30,15 @@ public class OrderPage extends AppCompatActivity {
     vertical14_1, btnHam, btnPineapple;
 
     //variables
+    int checkboxNum;//counter to prevent selecting more than 3 toppings
 
+
+    //onCreate
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLocale();
         setContentView(R.layout.activity_order);
 
         //initializing layouts
@@ -87,7 +96,7 @@ public class OrderPage extends AppCompatActivity {
         triplePineapple = findViewById(R.id.triplePineapple);
 
         //set button event
-//        btnLanguage.setOnClickListener(btnLanguageClicked);
+        btnLanguage.setOnClickListener(changeLanguage);
 //        btnSubmit.setOnClickListener(btnSubmitClicked);
 
         //set radio button event to same listener
@@ -105,6 +114,25 @@ public class OrderPage extends AppCompatActivity {
         checkPineapple.setOnClickListener(checkBoxClicked);
 
     }//end onCreate
+
+
+    //--------------------------onClickListeners--------------------------//
+    //onClick for language
+    View.OnClickListener changeLanguage = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (Locale.getDefault().getLanguage().equals("eng")) {
+                setLocale("zh");
+                recreate();
+            } else {
+                setLocale("eng");
+                recreate();
+            }
+        }
+    };//end language onClick
+
+    //onClick for submit
+
 
     //onClick for radio buttons
     public View.OnClickListener radioButtonClicked = new View.OnClickListener() {
@@ -170,120 +198,207 @@ public class OrderPage extends AppCompatActivity {
         }
     };//end onClick for radio buttons
 
+    //onclick for checkboxes
     public View.OnClickListener checkBoxClicked = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
             switch (view.getId()) {
                 case R.id.checkPepper:
-                    if (checkPepper.isChecked()) {
-                        checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                        vertical10_1.setVisibility(View.VISIBLE);
-                        btnPepper.setVisibility(View.VISIBLE);
-                        if (!checkMushroom.isChecked()) {
-                            btnMushroom.setVisibility(View.INVISIBLE);
-                        }
-                    } else if (!checkPepper.isChecked() && checkMushroom.isChecked()) {
-                        checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        btnPepper.setVisibility(View.INVISIBLE);
-                    } else {
-                        checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        vertical10_1.setVisibility(View.GONE);
-                        btnPepper.setVisibility(View.GONE);
-                        btnMushroom.setVisibility(View.GONE);
-                    }
+                    displayCheckboxes("pepper");
                     break;
                 case R.id.checkMushroom:
-                    if (checkMushroom.isChecked()) {
-                        checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                        vertical10_1.setVisibility(View.VISIBLE);
-                        btnMushroom.setVisibility(View.VISIBLE);
-                        if (!checkPepper.isChecked()) {
-                            btnPepper.setVisibility(View.INVISIBLE);
-                        }
-                    } else if (!checkMushroom.isChecked() && checkPepper.isChecked()) {
-                        checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        btnMushroom.setVisibility(View.INVISIBLE);
-                    } else {
-                        checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        vertical10_1.setVisibility(View.GONE);
-                        btnPepper.setVisibility(View.GONE);
-                        btnMushroom.setVisibility(View.GONE);
-                    }
+                    displayCheckboxes("mushroom");
                     break;
                 case R.id.checkPepperoni:
-                    if (checkPepperoni.isChecked()) {
-                        checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                        vertical12_1.setVisibility(View.VISIBLE);
-                        btnPepperoni.setVisibility(View.VISIBLE);
-                        if (!checkSausage.isChecked()) {
-                            btnSausage.setVisibility(View.INVISIBLE);
-                        }
-                    } else if (!checkPepperoni.isChecked() && checkSausage.isChecked()) {
-                        checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        btnPepperoni.setVisibility(View.INVISIBLE);
-                    } else {
-                        checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        vertical12_1.setVisibility(View.GONE);
-                        btnPepperoni.setVisibility(View.GONE);
-                        btnSausage.setVisibility(View.GONE);
-                    }
+                    displayCheckboxes("pepperoni");
                     break;
                 case R.id.checkSausage:
-                    if (checkSausage.isChecked()) {
-                        checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                        vertical12_1.setVisibility(View.VISIBLE);
-                        btnSausage.setVisibility(View.VISIBLE);
-                        if (!checkPepperoni.isChecked()) {
-                            btnPepperoni.setVisibility(View.INVISIBLE);
-                        }
-                    } else if (!checkSausage.isChecked() && checkPepperoni.isChecked()) {
-                        checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        btnSausage.setVisibility(View.INVISIBLE);
-                    } else {
-                        checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        vertical12_1.setVisibility(View.GONE);
-                        btnPepperoni.setVisibility(View.GONE);
-                        btnSausage.setVisibility(View.GONE);
-                    }
+                    displayCheckboxes("sausage");
                     break;
                 case R.id.checkHam:
-                    if (checkHam.isChecked()) {
-                        checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                        vertical14_1.setVisibility(View.VISIBLE);
-                        btnHam.setVisibility(View.VISIBLE);
-                        if (!checkPineapple.isChecked()) {
-                            btnPineapple.setVisibility(View.INVISIBLE);
-                        }
-                    } else if (!checkHam.isChecked() && checkPineapple.isChecked()) {
-                        checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        btnHam.setVisibility(View.INVISIBLE);
-                    } else {
-                        checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        vertical14_1.setVisibility(View.GONE);
-                        btnHam.setVisibility(View.GONE);
-                        btnPineapple.setVisibility(View.GONE);
-                    }
+                    displayCheckboxes("ham");
                     break;
                 case R.id.checkPineapple:
-                    if (checkPineapple.isChecked()) {
-                        checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                        vertical14_1.setVisibility(View.VISIBLE);
-                        btnPineapple.setVisibility(View.VISIBLE);
-                        if (!checkHam.isChecked()) {
-                            btnHam.setVisibility(View.INVISIBLE);
-                        }
-                    } else if (!checkPineapple.isChecked() && checkHam.isChecked()) {
-                        checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        btnPineapple.setVisibility(View.INVISIBLE);
-                    } else {
-                        checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                        vertical14_1.setVisibility(View.GONE);
-                        btnHam.setVisibility(View.GONE);
-                        btnPineapple.setVisibility(View.GONE);
-                    }
+                    displayCheckboxes("pineapple");
                     break;
             }
         }
     };//end onClick for checkboxes
+
+
+    //--------------------------display method--------------------------//
+    //checkbox display method
+    public void displayCheckboxes(String topping) {
+        switch (topping) {
+            case "pepper":
+                if (checkboxNum == 3 && checkPepper.isChecked()) {
+                    checkPepper.setChecked(false);
+                    Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
+                }else if (checkPepper.isChecked() && checkboxNum < 3) {
+                    checkboxNum += 1;
+
+                    checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                    vertical10_1.setVisibility(View.VISIBLE);
+                    btnPepper.setVisibility(View.VISIBLE);
+                    if (!checkMushroom.isChecked()) {
+                        btnMushroom.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkPepper.isChecked() && checkMushroom.isChecked()) {
+                    checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    btnPepper.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else {
+                    checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    vertical10_1.setVisibility(View.GONE);
+                    btnPepper.setVisibility(View.GONE);
+                    btnMushroom.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+            case "mushroom":
+                if (checkboxNum == 3 && checkMushroom.isChecked()) {
+                    checkMushroom.setChecked(false);
+                    Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
+                } else if (checkMushroom.isChecked() && checkboxNum < 3) {
+                    checkboxNum += 1;
+
+                    checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                    vertical10_1.setVisibility(View.VISIBLE);
+                    btnMushroom.setVisibility(View.VISIBLE);
+                    if (!checkPepper.isChecked()) {
+                        btnPepper.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkMushroom.isChecked() && checkPepper.isChecked()) {
+                    checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    btnMushroom.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else {
+                    checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    vertical10_1.setVisibility(View.GONE);
+                    btnPepper.setVisibility(View.GONE);
+                    btnMushroom.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+            case "pepperoni":
+                if (checkboxNum == 3 && checkPepperoni.isChecked()) {
+                    checkPepperoni.setChecked(false);
+                    Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
+                } else if (checkPepperoni.isChecked() && checkboxNum < 3) {
+                    checkboxNum += 1;
+
+                    checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                    vertical12_1.setVisibility(View.VISIBLE);
+                    btnPepperoni.setVisibility(View.VISIBLE);
+                    if (!checkSausage.isChecked()) {
+                        btnSausage.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkPepperoni.isChecked() && checkSausage.isChecked()) {
+                    checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    btnPepperoni.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else {
+                    checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    vertical12_1.setVisibility(View.GONE);
+                    btnPepperoni.setVisibility(View.GONE);
+                    btnSausage.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+            case "sausage":
+                if (checkboxNum == 3 && checkSausage.isChecked()) {
+                    checkSausage.setChecked(false);
+                    Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
+                } else if (checkSausage.isChecked() && checkboxNum < 3) {
+                    checkboxNum += 1;
+
+                    checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                    vertical12_1.setVisibility(View.VISIBLE);
+                    btnSausage.setVisibility(View.VISIBLE);
+                    if (!checkPepperoni.isChecked()) {
+                        btnPepperoni.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkSausage.isChecked() && checkPepperoni.isChecked()) {
+                    checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    btnSausage.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else {
+                    checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    vertical12_1.setVisibility(View.GONE);
+                    btnPepperoni.setVisibility(View.GONE);
+                    btnSausage.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+            case "ham":
+                if (checkboxNum == 3 && checkHam.isChecked()) {
+                    checkHam.setChecked(false);
+                    Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
+                } else if (checkHam.isChecked() && checkboxNum < 3) {
+                    checkboxNum += 1;
+
+                    checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                    vertical14_1.setVisibility(View.VISIBLE);
+                    btnHam.setVisibility(View.VISIBLE);
+                    if (!checkPineapple.isChecked()) {
+                        btnPineapple.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkHam.isChecked() && checkPineapple.isChecked()) {
+                    checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    btnHam.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else {
+                    checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    vertical14_1.setVisibility(View.GONE);
+                    btnHam.setVisibility(View.GONE);
+                    btnPineapple.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+            case "pineapple":
+                if (checkboxNum == 3 && checkPepper.isChecked()) {
+                    checkPineapple.setChecked(false);
+                    Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
+                } else if (checkPineapple.isChecked() && checkboxNum < 3) {
+                    checkboxNum += 1;
+
+                    checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
+                    vertical14_1.setVisibility(View.VISIBLE);
+                    btnPineapple.setVisibility(View.VISIBLE);
+                    if (!checkHam.isChecked()) {
+                        btnHam.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkPineapple.isChecked() && checkHam.isChecked()) {
+                    checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    btnPineapple.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else {
+                    checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
+                    vertical14_1.setVisibility(View.GONE);
+                    btnHam.setVisibility(View.GONE);
+                    btnPineapple.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+        }
+    }//end checkbox display method
+
+    //sets locale language
+    void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("my_lang", lang);
+        editor.apply();
+    }
+    //loads previously used language
+    public void loadLocale() {
+        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("my_lang", "");
+        setLocale(language);
+    }
 }//end order page class
