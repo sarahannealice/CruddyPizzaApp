@@ -28,6 +28,8 @@ public class AppFunctions {
     static boolean bool;
     static boolean boolZh;
 
+    static int checkboxNum;//counter to prevent selecting more than 3 toppings
+
     //-------SUBMIT VALIDATIONS-------//
     //validate name
     public static boolean validateName(String input) {
@@ -79,7 +81,7 @@ public class AppFunctions {
     //-------TOPPING VALIDATIONS-------//
     //check if topping can be selected
     public static boolean validateTopping(int checkNum, int sameTopTotal) {
-        if (checkNum >= LIMIT) {
+        if (checkNum == LIMIT) {
             bool = false;
         } else if (checkNum == 2 && sameTopTotal == 0) {
             bool = true;
@@ -95,16 +97,16 @@ public class AppFunctions {
 
 
     //check if topping can be increased
-    public static boolean validateExtraTopping(int checkNum, int sameTopNum, int sameTopTotal) {
-        if ((checkNum + sameTopTotal) >= LIMIT) {
+    public static boolean validateExtraTopping (int sameTopNum, int sameTopTotal) {
+        if ((checkboxNum + sameTopTotal) >= LIMIT) {
             bool = false;
-        } else if (checkNum == LIMIT) {
+        } else if (checkboxNum == LIMIT) {
             bool = false;
-        } else if (checkNum == 2 && sameTopNum == 1 && valid) {
+        } else if (checkboxNum == 2 && sameTopNum == 1 && valid) {
             bool = true;
 //        } else if (checkNum == 2 && sameTopNum == 1 && !valid) {
 //            bool = true;
-        } else if (checkNum == 1 && (sameTopNum == 1 || sameTopNum == 2) && sameTopTotal == 0) {
+        } else if (checkboxNum == 1 && (sameTopNum == 1 || sameTopNum == 2) && sameTopTotal == 0) {
             bool = true;
         } else {
             bool = false;

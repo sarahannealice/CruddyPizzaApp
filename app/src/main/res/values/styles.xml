@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--https://stackoverflow.com/a/36635925-->
+    <style name="checkBoxStyle">
+        <item name="colorAccent">@color/grey_purple</item>
+        <item name="colorSecondary">@color/blush_purple</item>
+        <!--blush purple showing up as grey-->
+    </style>
+</resources>

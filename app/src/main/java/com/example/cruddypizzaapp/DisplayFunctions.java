@@ -1,13 +1,176 @@
 package com.example.cruddypizzaapp;
 
+import static com.example.cruddypizzaapp.AppFunctions.checkboxNum;
 import static com.example.cruddypizzaapp.OrderPage.*;
 
 import android.content.res.ColorStateList;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DisplayFunctions extends AppCompatActivity {
+
+    //*****EXTREMEMLY LARGE METHOD*****//
+    //checkbox display method
+    public static boolean displayCheckboxes(String topping, int sameTopTotal) {
+        boolean bool = true;
+        switch (topping) {
+            //GREEN PEPPER//
+            case "pepper":
+                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkPepper.isChecked()) {
+                    checkPepper.setChecked(false);
+                    bool = false;
+                //pepper is selected
+                } else if (checkPepper.isChecked()) {
+                    btnPepper.setVisibility(View.VISIBLE);
+                    System.out.println(checkboxNum + " before +1\n");
+                    checkboxNum += 1;
+                    System.out.println(checkboxNum + " after +1\n");
+                    //when mushroom is deselected
+                    if (!checkMushroom.isChecked()) {
+                        vertical10_1.setVisibility(View.VISIBLE);
+                        btnMushroom.setVisibility(View.INVISIBLE);
+                    }
+                //pepper is deselected when mushroom is selected
+                } else if (!checkPepper.isChecked() && checkMushroom.isChecked()) {
+                    resetMiniButtons("pepper");
+                    btnPepper.setVisibility(View.INVISIBLE);
+                    System.out.println(checkboxNum + "\n");
+                    checkboxNum -= 1;
+                    System.out.println(checkboxNum + "\n");
+                //pepper is deselected when mushroom is deselected
+                }else if (!checkPepper.isChecked()) {
+                    resetMiniButtons("pepper");
+                    vertical10_1.setVisibility(View.GONE);
+                    System.out.println(checkboxNum + " before -1\n");
+                    checkboxNum -= 1;
+                    System.out.println(checkboxNum + " after -1\n");
+                }
+                break;
+
+            //MUSHROOM//
+            case "mushroom":
+                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkMushroom.isChecked()) {
+                    checkMushroom.setChecked(false);
+                    bool =  false;
+                //mushroom is selected
+                } else if (checkMushroom.isChecked()) {
+                    btnMushroom.setVisibility(View.VISIBLE);
+                    checkboxNum += 1;
+                    //when pepper is deselected
+                    if (!checkPepper.isChecked()) {
+                        vertical10_1.setVisibility(View.VISIBLE);
+                        btnPepper.setVisibility(View.INVISIBLE);
+                    }
+                //mushroom is deselected when pepper is selected
+                } else if (!checkMushroom.isChecked() && checkPepper.isChecked()) {
+                    resetMiniButtons("mush");
+                    btnMushroom.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                //mushroom is deselected when pepper is deselected
+                } else if (!checkMushroom.isChecked()) {
+                    resetMiniButtons("mush");
+                    vertical10_1.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+
+            //PEPPERONI//
+            case "pepperoni":
+                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkPepperoni.isChecked()) {
+                    checkPepperoni.setChecked(false);
+                    bool = false;
+                } else if (checkPepperoni.isChecked()) {
+                    btnPepperoni.setVisibility(View.VISIBLE);
+                    checkboxNum += 1;
+                    if (!checkSausage.isChecked()) {
+                        vertical12_1.setVisibility(View.VISIBLE);
+                        btnSausage.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkPepperoni.isChecked() && checkSausage.isChecked()) {
+                    resetMiniButtons("roni");
+                    btnPepperoni.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else if (!checkPepperoni.isChecked()) {
+                    resetMiniButtons("roni");
+                    vertical12_1.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+
+            //SAUSAGE//
+            case "sausage":
+                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkSausage.isChecked()) {
+                    checkSausage.setChecked(false);
+                    bool = false;
+                } else if (checkSausage.isChecked()) {
+                    btnSausage.setVisibility(View.VISIBLE);
+                    checkboxNum += 1;
+                    if (!checkPepperoni.isChecked()) {
+                        vertical12_1.setVisibility(View.VISIBLE);
+                        btnPepperoni.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkSausage.isChecked() && checkPepperoni.isChecked()) {
+                    resetMiniButtons("saus");
+                    btnSausage.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else if (!checkSausage.isChecked()) {
+                    resetMiniButtons("saus");
+                    vertical12_1.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+
+            //DICED HAM//
+            case "ham":
+                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkHam.isChecked()) {
+                    checkHam.setChecked(false);
+                    bool = false;
+                } else if (checkHam.isChecked()) {
+                    btnHam.setVisibility(View.VISIBLE);
+                    checkboxNum += 1;
+                    if (!checkPineapple.isChecked()) {
+                        vertical14_1.setVisibility(View.VISIBLE);
+                        btnPineapple.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkHam.isChecked() && checkPineapple.isChecked()) {
+                    resetMiniButtons("ham");
+                    btnHam.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else if (!checkHam.isChecked()) {
+                    resetMiniButtons("ham");
+                    vertical14_1.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+
+            //PINEAPPLE//
+            case "pineapple":
+                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkPineapple.isChecked()) {
+                    checkPineapple.setChecked(false);
+                    bool = false;
+                } else if (checkPineapple.isChecked()) {
+                    btnPineapple.setVisibility(View.VISIBLE);
+                    checkboxNum += 1;
+                    if (!checkHam.isChecked()) {
+                        vertical14_1.setVisibility(View.VISIBLE);
+                        btnHam.setVisibility(View.INVISIBLE);
+                    }
+                } else if (!checkPineapple.isChecked() && checkHam.isChecked()) {
+                    resetMiniButtons("pine");
+                    btnPineapple.setVisibility(View.INVISIBLE);
+                    checkboxNum -= 1;
+                } else if (!checkPineapple.isChecked()) {
+                    resetMiniButtons("pine");
+                    vertical14_1.setVisibility(View.GONE);
+                    checkboxNum -= 1;
+                }
+                break;
+        }//end switch statement
+        return bool;
+    }//end checkbox display method
+
 
     //display same topping buttons
     public static void displaySameToppings(String topAmount) {
