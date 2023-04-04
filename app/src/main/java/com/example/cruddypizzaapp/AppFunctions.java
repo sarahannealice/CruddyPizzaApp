@@ -52,7 +52,6 @@ public class AppFunctions {
 
     //radio button validation
     public static boolean validateRadios(int count, RadioGroup radiogroup) {
-
         for (int i = 0; i < count; i++) {
             RadioButton x = (RadioButton) radiogroup.getChildAt(i);
             if (x.isChecked()) {
@@ -71,6 +70,20 @@ public class AppFunctions {
         return pep.isChecked() || mush.isChecked() || roni.isChecked() || saus.isChecked() ||
                 ham.isChecked() || pine.isChecked();
     }
+
+    //check if topping can be increased
+    public static boolean validateExtraTopping(int checkNum, int sameTopNum, int sameTopTotal) {
+        if ((checkNum + sameTopTotal) >= 3) {
+            bool = false;
+        } else if (checkNum == 2 && sameTopNum == 0 && sameTopTotal < 3) {
+            bool = true;
+        } else if (checkNum == 1 && (sameTopNum == 1 || sameTopNum == 2) && sameTopTotal < 3) {
+            bool = true;
+        } else {
+            bool = false;
+        }
+        return bool;
+    }//end additional same topping validation
 
 }//end AppFunctions class
 
