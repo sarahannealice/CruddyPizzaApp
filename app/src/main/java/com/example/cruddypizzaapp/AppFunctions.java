@@ -28,6 +28,7 @@ public class AppFunctions {
     static boolean bool;
     static boolean boolZh;
 
+    //-------SUBMIT VALIDATIONS-------//
     //validate name
     public static boolean validateName(String input) {
         matcher = namePattern.matcher(input);
@@ -72,12 +73,13 @@ public class AppFunctions {
         return pep.isChecked() || mush.isChecked() || roni.isChecked() || saus.isChecked() ||
                 ham.isChecked() || pine.isChecked();
     }
+    //-------END SUBMIT VALIDATIONS-------//
 
+
+    //-------TOPPING VALIDATIONS-------//
     //check if topping can be selected
     public static boolean validateTopping(int checkNum, int sameTopTotal) {
-        if ((checkNum + sameTopTotal) >= LIMIT) {
-            bool = false;
-        } else if (checkNum == LIMIT) {
+        if (checkNum >= LIMIT) {
             bool = false;
         } else if (checkNum == 2 && sameTopTotal == 0) {
             bool = true;
@@ -109,6 +111,7 @@ public class AppFunctions {
         }
         return bool;
     }//end additional same topping validation
+    //-------END TOPPING VALIDATIONS-------//
 
 }//end AppFunctions class
 
