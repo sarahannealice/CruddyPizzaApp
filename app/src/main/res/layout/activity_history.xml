@@ -86,7 +86,8 @@
                     android:onClick="onClick"
                     android:padding="10dp"
                     android:text="@string/exampleOrder"
-                    android:textColor="@color/blush_purple" />
+                    android:textColor="@color/blush_purple"
+                    android:visibility="visible" />
 
             </LinearLayout>
         </TableRow>

@@ -35,8 +35,8 @@
     <string name="newOrder">新订单</string>
     <string name="blank"/>
 
-    <string name="exampleOrder">订单#1002\nJane Doe\n555–3784</string>
+    <string name="exampleOrder">eg.\n订单#1002\nJane Doe\n555–3784</string>
     <string name="exampleOrderNum">订单#1002</string>
-    <string name="exampleDetails">Jane Doe\n555–3784\n选择大小: 小\n配料:\n\t\t青椒 - 标准\n\t\t香肠 - 双倍</string>
+    <string name="exampleDetails">eg.\nJane Doe\n555–3784\n选择大小: 小\n配料:\n\t\t青椒 - 标准\n\t\t香肠 - 双倍</string>
     <string name="slash">/</string>
 </resources>

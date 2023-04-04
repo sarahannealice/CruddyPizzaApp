@@ -31,6 +31,7 @@ public class OrderPage extends AppCompatActivity {
 
     //variables
     int checkboxNum;//counter to prevent selecting more than 3 toppings
+    int radioCount;//counter for radio buttons in group
 
 
     //onCreate
@@ -97,7 +98,7 @@ public class OrderPage extends AppCompatActivity {
 
         //set button event
         btnLanguage.setOnClickListener(changeLanguage);
-//        btnSubmit.setOnClickListener(btnSubmitClicked);
+        btnSubmit.setOnClickListener(submitClicked);
 
         //set radio button event to same listener
         radioSmall.setOnClickListener(radioButtonClicked);
@@ -118,30 +119,24 @@ public class OrderPage extends AppCompatActivity {
 
     //--------------------------onClickListeners--------------------------//
     //onClick for language
-    View.OnClickListener changeLanguage = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (Locale.getDefault().getLanguage().equals("eng")) {
-                setLocale("zh");
-                recreate();
-            } else {
-                setLocale("eng");
-                recreate();
-            }
+    View.OnClickListener changeLanguage = v -> {
+        if (Locale.getDefault().getLanguage().equals("eng")) {
+            setLocale("zh");
+            recreate();
+        } else {
+            setLocale("eng");
+            recreate();
         }
     };//end language onClick
-
-    //onClick for submit
-
 
     //onClick for radio buttons
     public View.OnClickListener radioButtonClicked = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             //https://stackoverflow.com/a/37893080
-            int count = radiogroup.getChildCount();
+            radioCount = radiogroup.getChildCount();
 
-            for (int i = 0; i < count; i++) {
+            for (int i = 0; i < radioCount; i++) {
                 RadioButton x = (RadioButton) radiogroup.getChildAt(i);
                 x.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
             }
@@ -199,32 +194,50 @@ public class OrderPage extends AppCompatActivity {
     };//end onClick for radio buttons
 
     //onclick for checkboxes
-    public View.OnClickListener checkBoxClicked = new View.OnClickListener() {
+    public View.OnClickListener checkBoxClicked = view -> {
+
+        switch (view.getId()) {
+            case R.id.checkPepper:
+                displayCheckboxes("pepper");
+                break;
+            case R.id.checkMushroom:
+                displayCheckboxes("mushroom");
+                break;
+            case R.id.checkPepperoni:
+                displayCheckboxes("pepperoni");
+                break;
+            case R.id.checkSausage:
+                displayCheckboxes("sausage");
+                break;
+            case R.id.checkHam:
+                displayCheckboxes("ham");
+                break;
+            case R.id.checkPineapple:
+                displayCheckboxes("pineapple");
+                break;
+        }
+    };//end onClick for checkboxes
+
+    //onClick for submit
+    public View.OnClickListener submitClicked = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
-            switch (view.getId()) {
-                case R.id.checkPepper:
-                    displayCheckboxes("pepper");
-                    break;
-                case R.id.checkMushroom:
-                    displayCheckboxes("mushroom");
-                    break;
-                case R.id.checkPepperoni:
-                    displayCheckboxes("pepperoni");
-                    break;
-                case R.id.checkSausage:
-                    displayCheckboxes("sausage");
-                    break;
-                case R.id.checkHam:
-                    displayCheckboxes("ham");
-                    break;
-                case R.id.checkPineapple:
-                    displayCheckboxes("pineapple");
-                    break;
+            //validation of all fields
+            if (!AppFunctions.validateName(String.valueOf(textName.getText()))) {
+                Toast.makeText(OrderPage.this, "invalid name", Toast.LENGTH_SHORT).show();
+            } else if (!AppFunctions.validatePhone(String.valueOf(textPhone.getText()))) {
+                Toast.makeText(OrderPage.this, "invalid phone number", Toast.LENGTH_SHORT).show();
+            } else if (!AppFunctions.validateRadios(radiogroup.getChildCount(), radiogroup)) {
+                Toast.makeText(OrderPage.this, "select a size", Toast.LENGTH_SHORT).show();
+            } else if (!AppFunctions.validateCheckBoxes(checkPepper, checkMushroom, checkPepperoni,
+                    checkSausage,checkHam, checkPineapple)) {
+                Toast.makeText(OrderPage.this, "select at least 1 topping", Toast.LENGTH_SHORT).show();
             }
+            //get checkbox -- check that one's
+            //add to database method
         }
-    };//end onClick for checkboxes
+    };
 
 
     //--------------------------display method--------------------------//
@@ -381,7 +394,7 @@ public class OrderPage extends AppCompatActivity {
                     checkboxNum -= 1;
                 }
                 break;
-        }
+        }//end switch statement
     }//end checkbox display method
 
     //sets locale language
@@ -395,8 +408,9 @@ public class OrderPage extends AppCompatActivity {
         editor.putString("my_lang", lang);
         editor.apply();
     }
+
     //loads previously used language
-    public void loadLocale() {
+    private void loadLocale() {
         SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
         String language = prefs.getString("my_lang", "");
         setLocale(language);

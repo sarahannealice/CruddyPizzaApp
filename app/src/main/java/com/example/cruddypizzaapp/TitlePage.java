@@ -9,10 +9,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.os.Bundle;
+import android.os.*;
 import android.view.*;
 import android.widget.*;
+import android.database.*;
+import java.io.*;
 
+import java.io.File;
 import java.util.Locale;
 
 
@@ -27,6 +30,8 @@ public class TitlePage extends AppCompatActivity {
         loadLocale();
         setContentView(R.layout.activity_title);
 
+
+
         //initializing buttons
         btnLanguage = findViewById(R.id.btnLanguage);
         btnStart = findViewById(R.id.btnStart);
@@ -35,35 +40,34 @@ public class TitlePage extends AppCompatActivity {
         //set onClick Listeners
         btnLanguage.setOnClickListener(changeLanguage);
         btnStart.setOnClickListener(startOrder);
-
-        //btnSearch.setOnClickListener();
+        btnSearch.setOnClickListener(searchOrder);
 
     }//end onCreate
 
 
     //--------------------------onClickListeners--------------------------//
     //change language onClick
-    View.OnClickListener changeLanguage = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (Locale.getDefault().getLanguage().equals("eng")) {
-                setLocale("zh");
-                recreate();
-            } else {
-                setLocale("eng");
-                recreate();
-            }
+    View.OnClickListener changeLanguage = v -> { //anonymous new view.onclick listener can be replaced with lambda
+        if (Locale.getDefault().getLanguage().equals("eng")) {
+            setLocale("zh");
+            recreate();
+        } else {
+            setLocale("eng");
+            recreate();
         }
-    };//end language onClick
+    };
 
     //start order
     View.OnClickListener startOrder = view -> {
         Intent newOrderIntent = new Intent(TitlePage.this, OrderPage.class);
         startActivity(newOrderIntent);
-    };//end Onclick for start order
+    };
 
     //search order
-    //code goes here
+    View.OnClickListener searchOrder = v -> {
+        Intent historyIntent = new Intent(TitlePage.this, HistoryPage.class);
+        startActivity(historyIntent);
+    };
 
 
     //--------------------------methods--------------------------//
@@ -78,8 +82,9 @@ public class TitlePage extends AppCompatActivity {
         editor.putString("my_lang", lang);
         editor.apply();
     }
+
     //loads previously used language
-    public void loadLocale() {
+    private void loadLocale() {
         SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
         String language = prefs.getString("my_lang", "");
         setLocale(language);
