@@ -1,15 +1,14 @@
 package com.example.cruddypizzaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
@@ -30,7 +29,9 @@ public class OrderPage extends AppCompatActivity {
     vertical14_1, btnHam, btnPineapple;
 
     //variables
+    int LIMIT = 3;
     int checkboxNum;//counter to prevent selecting more than 3 toppings
+    int sameTopCount;//counter for additional of same topping
     int radioCount;//counter for radio buttons in group
 
 
@@ -113,6 +114,33 @@ public class OrderPage extends AppCompatActivity {
         checkSausage.setOnClickListener(checkBoxClicked);
         checkHam.setOnClickListener(checkBoxClicked);
         checkPineapple.setOnClickListener(checkBoxClicked);
+
+        //set additional of same topping listeners
+        normalPepper.setOnClickListener(normalTopping);
+        doublePepper.setOnClickListener(doubleTopping);
+        triplePepper.setOnClickListener(tripleTopping);
+        //--//
+        normalMushroom.setOnClickListener(normalTopping);
+        doubleMushroom.setOnClickListener(doubleTopping);
+        tripleMushroom.setOnClickListener(tripleTopping);
+        //--//
+        normalPepperoni.setOnClickListener(normalTopping);
+        doublePepperoni.setOnClickListener(doubleTopping);
+        triplePepperoni.setOnClickListener(tripleTopping);
+        //--//
+        normalSausage.setOnClickListener(normalTopping);
+        doubleSausage.setOnClickListener(doubleTopping);
+        tripleSausage.setOnClickListener(tripleTopping);
+        //--//
+        normalHam.setOnClickListener(normalTopping);
+        doubleHam.setOnClickListener(doubleTopping);
+        tripleHam.setOnClickListener(tripleTopping);
+        //--//
+        normalPineapple.setOnClickListener(normalTopping);
+        doublePineapple.setOnClickListener(doubleTopping);
+        triplePineapple.setOnClickListener(tripleTopping);
+
+
 
     }//end onCreate
 
@@ -218,6 +246,98 @@ public class OrderPage extends AppCompatActivity {
         }
     };//end onClick for checkboxes
 
+
+    //--ADDITIONAL SAME TOPPINGS--//
+    //onclick for normal amount topping
+    public View.OnClickListener normalTopping = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.normalPepper:
+//                    if (sameTopCount < LIMIT) {
+//                        sameTopCount = 1;
+                        displaySameToppings("normPep");
+                        break;
+//                    }
+                case R.id.normalMushroom:
+                    displaySameToppings("normMush");
+                    break;
+                case R.id.normalPepperoni:
+                    displaySameToppings("normRoni");
+                    break;
+                case R.id.normalSausage:
+                    displaySameToppings("normSaus");
+                    break;
+                case R.id.normalHam:
+                    displaySameToppings("normHam");
+                    break;
+                case R.id.normalPineapple:
+                    displaySameToppings("normPine");
+                    break;
+            }
+        }
+    };//end normal topping onclick
+
+    //onclick for double amount topping
+    public View.OnClickListener doubleTopping = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.doublePepper:
+//                    if (sameTopCount < LIMIT) {
+//                        sameTopCount = 2;
+                        displaySameToppings("dblPep");
+                        break;
+//                    }
+                case R.id.doubleMushroom:
+                    displaySameToppings("dblMush");
+                    break;
+                case R.id.doublePepperoni:
+                    displaySameToppings("dblRoni");
+                    break;
+                case R.id.doubleSausage:
+                    displaySameToppings("dblSaus");
+                    break;
+                case R.id.doubleHam:
+                    displaySameToppings("dblHam");
+                    break;
+                case R.id.doublePineapple:
+                    displaySameToppings("dblPine");
+                    break;
+            }
+        }
+    };//end double topping onclick
+
+    //onclick for triple amount topping
+    public View.OnClickListener tripleTopping = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.triplePepper:
+//                    if (sameTopCount < LIMIT) {
+//                        sameTopCount = 3;
+                        displaySameToppings("triPep");
+                        break;
+//                    }
+                case R.id.tripleMushroom:
+                    displaySameToppings("triMush");
+                    break;
+                case R.id.triplePepperoni:
+                    displaySameToppings("triRoni");
+                    break;
+                case R.id.tripleSausage:
+                    displaySameToppings("triSaus");
+                    break;
+                case R.id.tripleHam:
+                    displaySameToppings("triHam");
+                    break;
+                case R.id.triplePineapple:
+                    displaySameToppings("triPine");
+                    break;
+            }
+        }
+    };//end double topping onclick
+
     //onClick for submit
     public View.OnClickListener submitClicked = new View.OnClickListener() {
         @Override
@@ -245,10 +365,10 @@ public class OrderPage extends AppCompatActivity {
     public void displayCheckboxes(String topping) {
         switch (topping) {
             case "pepper":
-                if (checkboxNum == 3 && checkPepper.isChecked()) {
+                if (checkboxNum == LIMIT && checkPepper.isChecked()) {
                     checkPepper.setChecked(false);
                     Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
-                }else if (checkPepper.isChecked() && checkboxNum < 3) {
+                }else if (checkPepper.isChecked() && checkboxNum < LIMIT) {
                     checkboxNum += 1;
 
                     checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
@@ -270,10 +390,10 @@ public class OrderPage extends AppCompatActivity {
                 }
                 break;
             case "mushroom":
-                if (checkboxNum == 3 && checkMushroom.isChecked()) {
+                if (checkboxNum == LIMIT && checkMushroom.isChecked()) {
                     checkMushroom.setChecked(false);
                     Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
-                } else if (checkMushroom.isChecked() && checkboxNum < 3) {
+                } else if (checkMushroom.isChecked() && checkboxNum < LIMIT) {
                     checkboxNum += 1;
 
                     checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
@@ -295,10 +415,10 @@ public class OrderPage extends AppCompatActivity {
                 }
                 break;
             case "pepperoni":
-                if (checkboxNum == 3 && checkPepperoni.isChecked()) {
+                if (checkboxNum == LIMIT && checkPepperoni.isChecked()) {
                     checkPepperoni.setChecked(false);
                     Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
-                } else if (checkPepperoni.isChecked() && checkboxNum < 3) {
+                } else if (checkPepperoni.isChecked() && checkboxNum < LIMIT) {
                     checkboxNum += 1;
 
                     checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
@@ -320,10 +440,10 @@ public class OrderPage extends AppCompatActivity {
                 }
                 break;
             case "sausage":
-                if (checkboxNum == 3 && checkSausage.isChecked()) {
+                if (checkboxNum == LIMIT && checkSausage.isChecked()) {
                     checkSausage.setChecked(false);
                     Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
-                } else if (checkSausage.isChecked() && checkboxNum < 3) {
+                } else if (checkSausage.isChecked() && checkboxNum < LIMIT) {
                     checkboxNum += 1;
 
                     checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
@@ -345,10 +465,10 @@ public class OrderPage extends AppCompatActivity {
                 }
                 break;
             case "ham":
-                if (checkboxNum == 3 && checkHam.isChecked()) {
+                if (checkboxNum == LIMIT && checkHam.isChecked()) {
                     checkHam.setChecked(false);
                     Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
-                } else if (checkHam.isChecked() && checkboxNum < 3) {
+                } else if (checkHam.isChecked() && checkboxNum < LIMIT) {
                     checkboxNum += 1;
 
                     checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
@@ -370,10 +490,10 @@ public class OrderPage extends AppCompatActivity {
                 }
                 break;
             case "pineapple":
-                if (checkboxNum == 3 && checkPepper.isChecked()) {
+                if (checkboxNum == LIMIT && checkPepper.isChecked()) {
                     checkPineapple.setChecked(false);
                     Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
-                } else if (checkPineapple.isChecked() && checkboxNum < 3) {
+                } else if (checkPineapple.isChecked() && checkboxNum < LIMIT) {
                     checkboxNum += 1;
 
                     checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
@@ -396,6 +516,89 @@ public class OrderPage extends AppCompatActivity {
                 break;
         }//end switch statement
     }//end checkbox display method
+
+    //display same topping buttons
+    public void displaySameToppings(String topAmount) {
+        //GREEN PEPPER
+        if (topAmount.equals("normPep")) {
+            normalPepper.setImageResource(R.drawable.normal_selected);
+            doublePepper.setImageResource(R.drawable.double_deselected);
+            triplePepper.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("dblPep")) {
+            normalPepper.setImageResource(R.drawable.normal_deselected);
+            doublePepper.setImageResource(R.drawable.double_selected);
+            triplePepper.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("triPep")) {
+            normalPepper.setImageResource(R.drawable.normal_deselected);
+            doublePepper.setImageResource(R.drawable.double_deselected);
+            triplePepper.setImageResource(R.drawable.triple_selected);
+        }//MUSHROOM
+        else if (topAmount.equals("normMush")) {
+            normalMushroom.setImageResource(R.drawable.normal_selected);
+            doubleMushroom.setImageResource(R.drawable.double_deselected);
+            tripleMushroom.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("dblMush")) {
+            normalMushroom.setImageResource(R.drawable.normal_deselected);
+            doubleMushroom.setImageResource(R.drawable.double_selected);
+            tripleMushroom.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("triMush")) {
+            normalMushroom.setImageResource(R.drawable.normal_deselected);
+            doubleMushroom.setImageResource(R.drawable.double_deselected);
+            tripleMushroom.setImageResource(R.drawable.triple_selected);
+        }//PEPPERONI
+        else if (topAmount.equals("normRoni")) {
+            normalPepperoni.setImageResource(R.drawable.normal_selected);
+            doublePepperoni.setImageResource(R.drawable.double_deselected);
+            triplePepperoni.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("dblRoni")) {
+            normalPepperoni.setImageResource(R.drawable.normal_deselected);
+            doublePepperoni.setImageResource(R.drawable.double_selected);
+            triplePepperoni.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("triRoni")) {
+            normalPepperoni.setImageResource(R.drawable.normal_deselected);
+            doublePepperoni.setImageResource(R.drawable.double_deselected);
+            triplePepperoni.setImageResource(R.drawable.triple_selected);
+        }//SAUSAGE
+        else if (topAmount.equals("normSaus")) {
+            normalSausage.setImageResource(R.drawable.normal_selected);
+            doubleSausage.setImageResource(R.drawable.double_deselected);
+            tripleSausage.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("dblSaus")) {
+            normalSausage.setImageResource(R.drawable.normal_deselected);
+            doubleSausage.setImageResource(R.drawable.double_selected);
+            tripleSausage.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("triSaus")) {
+            normalSausage.setImageResource(R.drawable.normal_deselected);
+            doubleSausage.setImageResource(R.drawable.double_deselected);
+            tripleSausage.setImageResource(R.drawable.triple_selected);
+        }//DICE HAM
+        else if (topAmount.equals("normHam")) {
+            normalHam.setImageResource(R.drawable.normal_selected);
+            doubleHam.setImageResource(R.drawable.double_deselected);
+            tripleHam.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("dblHam")) {
+            normalHam.setImageResource(R.drawable.normal_deselected);
+            doubleHam.setImageResource(R.drawable.double_selected);
+            tripleHam.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("triHam")) {
+            normalHam.setImageResource(R.drawable.normal_deselected);
+            doubleHam.setImageResource(R.drawable.double_deselected);
+            tripleHam.setImageResource(R.drawable.triple_selected);
+        }//PINEAPPLE
+        else if (topAmount.equals("normPine")) {
+            normalPineapple.setImageResource(R.drawable.normal_selected);
+            doublePineapple.setImageResource(R.drawable.double_deselected);
+            triplePineapple.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("dblPine")) {
+            normalPineapple.setImageResource(R.drawable.normal_deselected);
+            doublePineapple.setImageResource(R.drawable.double_selected);
+            triplePineapple.setImageResource(R.drawable.triple_deselected);
+        } else if (topAmount.equals("triPine")) {
+            normalPineapple.setImageResource(R.drawable.normal_deselected);
+            doublePineapple.setImageResource(R.drawable.double_deselected);
+            triplePineapple.setImageResource(R.drawable.triple_selected);
+        }
+    }
 
     //sets locale language
     void setLocale(String lang) {
