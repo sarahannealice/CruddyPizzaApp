@@ -1,5 +1,7 @@
 package com.example.cruddypizzaapp;
 
+import static com.example.cruddypizzaapp.OrderPage.*;
+
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -71,13 +73,36 @@ public class AppFunctions {
                 ham.isChecked() || pine.isChecked();
     }
 
+    //check if topping can be selected
+    public static boolean validateTopping(int checkNum, int sameTopTotal) {
+        if ((checkNum + sameTopTotal) >= LIMIT) {
+            bool = false;
+        } else if (checkNum == LIMIT) {
+            bool = false;
+        } else if (checkNum == 2 && sameTopTotal == 0) {
+            bool = true;
+        } else if (checkNum == 1 && sameTopTotal <= 1) {
+            bool = true;
+        } else if (checkNum == 0) {
+            bool = true;
+        } else {
+            bool = false;
+        }
+        return bool;
+    }
+
+
     //check if topping can be increased
     public static boolean validateExtraTopping(int checkNum, int sameTopNum, int sameTopTotal) {
-        if ((checkNum + sameTopTotal) >= 3) {
+        if ((checkNum + sameTopTotal) >= LIMIT) {
             bool = false;
-        } else if (checkNum == 2 && sameTopNum == 0 && sameTopTotal < 3) {
+        } else if (checkNum == LIMIT) {
+            bool = false;
+        } else if (checkNum == 2 && sameTopNum == 1 && valid) {
             bool = true;
-        } else if (checkNum == 1 && (sameTopNum == 1 || sameTopNum == 2) && sameTopTotal < 3) {
+//        } else if (checkNum == 2 && sameTopNum == 1 && !valid) {
+//            bool = true;
+        } else if (checkNum == 1 && (sameTopNum == 1 || sameTopNum == 2) && sameTopTotal == 0) {
             bool = true;
         } else {
             bool = false;
