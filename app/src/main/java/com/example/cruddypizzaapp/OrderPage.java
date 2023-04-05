@@ -2,7 +2,6 @@ package com.example.cruddypizzaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -32,7 +31,6 @@ public class OrderPage extends AppCompatActivity {
     //variables
     static int LIMIT = 3;
     static boolean valid;//states if double/triple the same topping can be selected
-    int radioCount;//counter for radio buttons in group
 
     //for creating order objects
     static ArrayList<Order> orders = new ArrayList<>();
@@ -47,7 +45,6 @@ public class OrderPage extends AppCompatActivity {
 
 
     //onCreate
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,7 +167,7 @@ public class OrderPage extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             //https://stackoverflow.com/a/37893080
-            radioCount = radiogroup.getChildCount();
+            int radioCount = radiogroup.getChildCount();
 
             for (int i = 0; i < radioCount; i++) {
                 RadioButton x = (RadioButton) radiogroup.getChildAt(i);

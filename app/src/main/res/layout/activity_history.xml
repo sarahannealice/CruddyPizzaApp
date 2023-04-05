@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -47,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_span="2"
+                android:layout_weight=".1"
                 android:fontFamily="@font/montserrat"
                 android:paddingStart="25dp"
                 android:paddingEnd="10dp"
@@ -60,29 +62,26 @@
             android:id="@+id/row2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight=".5"
+            android:layout_weight="2"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:paddingBottom="10dp">
 
-            <LinearLayout
-                android:id="@+id/vertical2_1"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_span="2"
                 android:layout_weight="100"
-                android:background="@drawable/rounded_textview_cream"
-                android:orientation="vertical"
-                android:visibility="visible">
+                android:background="@drawable/rounded_textview_cream">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/card"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/blush"
+                    app:cardCornerRadius="5dp"
                     app:cardElevation="10dp"
                     app:cardMaxElevation="12dp"
-                    android:layout_margin="10dp"
-                    app:cardBackgroundColor="@color/blush_purple"
-                    app:cardCornerRadius="5dp"
                     app:cardPreventCornerOverlap="true"
                     app:cardUseCompatPadding="true">
 
@@ -96,26 +95,29 @@
                         android:onClick="onClick"
                         android:padding="10dp"
                         android:text="@string/exampleOrder"
-                        android:textColor="@color/blush_purple"
+                        android:textColor="@color/cream"
                         android:visibility="visible" />
 
                     <ImageView
                         android:id="@+id/garbageImg"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_gravity="bottom"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom|right"
                         android:layout_margin="10dp"
-                        app:srcCompat="@drawable/garbagebag_grey" />
+                        android:clickable="true"
+                        app:srcCompat="@drawable/garbagebag_grey"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
                 </androidx.cardview.widget.CardView>
 
-            </LinearLayout>
+            </RelativeLayout>
+
         </TableRow>
 
         <TableRow
             android:id="@+id/row3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight=".01">
+            android:layout_weight=".05">
 
             <Button
                 android:id="@+id/btnView"
@@ -148,7 +150,7 @@
             android:id="@+id/row4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight=".1">
+            android:layout_weight=".2">
 
             <Button
                 android:id="@+id/btnNew"
