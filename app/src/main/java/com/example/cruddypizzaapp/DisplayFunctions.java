@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class DisplayFunctions extends AppCompatActivity {
 
     //*****EXTREMELY LARGE METHOD*****//
@@ -24,9 +26,8 @@ public class DisplayFunctions extends AppCompatActivity {
                 //pepper is selected
                 } else if (checkPepper.isChecked()) {
                     btnPepper.setVisibility(View.VISIBLE);
-                    System.out.println(checkboxNum + " before +1\n");
+                    toppings.add(1);
                     checkboxNum += 1;
-                    System.out.println(checkboxNum + " after +1\n");
                     //when mushroom is deselected
                     if (!checkMushroom.isChecked()) {
                         vertical10_1.setVisibility(View.VISIBLE);
@@ -36,16 +37,14 @@ public class DisplayFunctions extends AppCompatActivity {
                 } else if (!checkPepper.isChecked() && checkMushroom.isChecked()) {
                     resetMiniButtons("pepper");
                     btnPepper.setVisibility(View.INVISIBLE);
-                    System.out.println(checkboxNum + "\n");
+                    toppings.removeAll(pepper);
                     checkboxNum -= 1;
-                    System.out.println(checkboxNum + "\n");
                 //pepper is deselected when mushroom is deselected
                 }else if (!checkPepper.isChecked()) {
                     resetMiniButtons("pepper");
                     vertical10_1.setVisibility(View.GONE);
-                    System.out.println(checkboxNum + " before -1\n");
+                    toppings.removeAll(pepper);
                     checkboxNum -= 1;
-                    System.out.println(checkboxNum + " after -1\n");
                 }
                 break;
 
@@ -57,7 +56,7 @@ public class DisplayFunctions extends AppCompatActivity {
                 //mushroom is selected
                 } else if (checkMushroom.isChecked()) {
                     btnMushroom.setVisibility(View.VISIBLE);
-                    System.out.println(AppFunctions.sameTopTotal + " sametoptotal\n");
+                    toppings.add(2);
                     checkboxNum += 1;
                     //when pepper is deselected
                     if (!checkPepper.isChecked()) {
@@ -68,11 +67,13 @@ public class DisplayFunctions extends AppCompatActivity {
                 } else if (!checkMushroom.isChecked() && checkPepper.isChecked()) {
                     resetMiniButtons("mush");
                     btnMushroom.setVisibility(View.INVISIBLE);
+                    toppings.removeAll(mush);
                     checkboxNum -= 1;
                 //mushroom is deselected when pepper is deselected
                 } else if (!checkMushroom.isChecked()) {
                     resetMiniButtons("mush");
                     vertical10_1.setVisibility(View.GONE);
+                    toppings.removeAll(mush);
                     checkboxNum -= 1;
                 }
                 break;
@@ -84,6 +85,7 @@ public class DisplayFunctions extends AppCompatActivity {
                     bool = false;
                 } else if (checkPepperoni.isChecked()) {
                     btnPepperoni.setVisibility(View.VISIBLE);
+                    toppings.add(3);
                     checkboxNum += 1;
                     if (!checkSausage.isChecked()) {
                         vertical12_1.setVisibility(View.VISIBLE);
@@ -92,10 +94,12 @@ public class DisplayFunctions extends AppCompatActivity {
                 } else if (!checkPepperoni.isChecked() && checkSausage.isChecked()) {
                     resetMiniButtons("roni");
                     btnPepperoni.setVisibility(View.INVISIBLE);
+                    toppings.removeAll(roni);
                     checkboxNum -= 1;
                 } else if (!checkPepperoni.isChecked()) {
                     resetMiniButtons("roni");
                     vertical12_1.setVisibility(View.GONE);
+                    toppings.removeAll(roni);
                     checkboxNum -= 1;
                 }
                 break;
@@ -107,6 +111,7 @@ public class DisplayFunctions extends AppCompatActivity {
                     bool = false;
                 } else if (checkSausage.isChecked()) {
                     btnSausage.setVisibility(View.VISIBLE);
+                    toppings.add(4);
                     checkboxNum += 1;
                     if (!checkPepperoni.isChecked()) {
                         vertical12_1.setVisibility(View.VISIBLE);
@@ -115,10 +120,12 @@ public class DisplayFunctions extends AppCompatActivity {
                 } else if (!checkSausage.isChecked() && checkPepperoni.isChecked()) {
                     resetMiniButtons("saus");
                     btnSausage.setVisibility(View.INVISIBLE);
+                    toppings.removeAll(saus);
                     checkboxNum -= 1;
                 } else if (!checkSausage.isChecked()) {
                     resetMiniButtons("saus");
                     vertical12_1.setVisibility(View.GONE);
+                    toppings.removeAll(saus);
                     checkboxNum -= 1;
                 }
                 break;
@@ -130,6 +137,7 @@ public class DisplayFunctions extends AppCompatActivity {
                     bool = false;
                 } else if (checkHam.isChecked()) {
                     btnHam.setVisibility(View.VISIBLE);
+                    toppings.add(5);
                     checkboxNum += 1;
                     if (!checkPineapple.isChecked()) {
                         vertical14_1.setVisibility(View.VISIBLE);
@@ -138,10 +146,12 @@ public class DisplayFunctions extends AppCompatActivity {
                 } else if (!checkHam.isChecked() && checkPineapple.isChecked()) {
                     resetMiniButtons("ham");
                     btnHam.setVisibility(View.INVISIBLE);
+                    toppings.removeAll(ham);
                     checkboxNum -= 1;
                 } else if (!checkHam.isChecked()) {
                     resetMiniButtons("ham");
                     vertical14_1.setVisibility(View.GONE);
+                    toppings.removeAll(ham);
                     checkboxNum -= 1;
                 }
                 break;
@@ -153,6 +163,7 @@ public class DisplayFunctions extends AppCompatActivity {
                     bool = false;
                 } else if (checkPineapple.isChecked()) {
                     btnPineapple.setVisibility(View.VISIBLE);
+                    toppings.add(6);
                     checkboxNum += 1;
                     if (!checkHam.isChecked()) {
                         vertical14_1.setVisibility(View.VISIBLE);
@@ -161,10 +172,12 @@ public class DisplayFunctions extends AppCompatActivity {
                 } else if (!checkPineapple.isChecked() && checkHam.isChecked()) {
                     resetMiniButtons("pine");
                     btnPineapple.setVisibility(View.INVISIBLE);
+                    toppings.removeAll(pine);
                     checkboxNum -= 1;
                 } else if (!checkPineapple.isChecked()) {
                     resetMiniButtons("pine");
                     vertical14_1.setVisibility(View.GONE);
+                    toppings.removeAll(pine);
                     checkboxNum -= 1;
                 }
                 break;

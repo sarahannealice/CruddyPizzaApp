@@ -13,6 +13,7 @@ import android.view.*;
 import android.widget.*;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class OrderPage extends AppCompatActivity {
@@ -32,6 +33,17 @@ public class OrderPage extends AppCompatActivity {
     static int LIMIT = 3;
     static boolean valid;//states if double/triple the same topping can be selected
     int radioCount;//counter for radio buttons in group
+
+    //for creating order objects
+    static ArrayList<Order> orders = new ArrayList<>();
+    static int size;
+    static ArrayList<Integer> pepper = new ArrayList<Integer>(){{add(1);}};
+    static ArrayList<Integer> mush = new ArrayList<Integer>(){{add(2);}};
+    static ArrayList<Integer> roni = new ArrayList<Integer>(){{add(3);}};
+    static ArrayList<Integer> saus = new ArrayList<Integer>(){{add(4);}};
+    static ArrayList<Integer> ham = new ArrayList<Integer>(){{add(5);}};
+    static ArrayList<Integer> pine = new ArrayList<Integer>(){{add(6);}};
+    static ArrayList<Integer> toppings = new ArrayList<>();
 
 
     //onCreate
@@ -138,7 +150,6 @@ public class OrderPage extends AppCompatActivity {
         normalPineapple.setOnClickListener(normalTopping);
         doublePineapple.setOnClickListener(doubleTopping);
         triplePineapple.setOnClickListener(tripleTopping);
-
     }//end onCreate
 
 
@@ -167,52 +178,33 @@ public class OrderPage extends AppCompatActivity {
             }
 
             //create colorstatelist for radio buttons/checkboxes -- https://stackoverflow.com/a/29551017
-            ColorStateList enabledColour = new ColorStateList(
+            ColorStateList colorStateList = new ColorStateList(
                     new int[][]{
-                            new int[]{android.R.attr.state_enabled}//enabled
-                    },
-                    new int[]{
-                            Color.rgb(74, 78, 105)//enabled
-                    }
-            );
-
-            ColorStateList disabledColour = new ColorStateList(
-                    new int[][]{
+                            new int[]{android.R.attr.state_enabled},//enabled
                             new int[]{-android.R.attr.state_enabled}, //disabled
                     },
                     new int[]{
+                            Color.rgb(74, 78, 105),//enabled
                             Color.rgb(154, 140, 152),//disabled
                     }
             );
 
             switch (view.getId()) {
                 case R.id.radioSmall:
-                    if (radioSmall.getButtonTintList().equals(enabledColour)) {
-                        radioSmall.setButtonTintList(disabledColour);
-                    } else {
-                        radioSmall.setButtonTintList(enabledColour);
-                    }
+                    radioSmall.setButtonTintList(colorStateList);
+                    size = 1;
                     break;
                 case R.id.radioMedium:
-                    if (radioMedium.getButtonTintList().equals(enabledColour)) {
-                        radioMedium.setButtonTintList(disabledColour);
-                    } else {
-                        radioMedium.setButtonTintList(enabledColour);
-                    }
+                    radioMedium.setButtonTintList(colorStateList);
+                    size = 2;
                     break;
                 case R.id.radioLarge:
-                    if (radioLarge.getButtonTintList().equals(enabledColour)) {
-                        radioLarge.setButtonTintList(disabledColour);
-                    } else {
-                        radioLarge.setButtonTintList(enabledColour);
-                    }
+                    radioLarge.setButtonTintList(colorStateList);
+                    size = 3;
                     break;
                 case R.id.radioXlarge:
-                    if (radioXlarge.getButtonTintList().equals(enabledColour)) {
-                        radioXlarge.setButtonTintList(disabledColour);
-                    } else {
-                        radioXlarge.setButtonTintList(enabledColour);
-                    }
+                    radioXlarge.setButtonTintList(colorStateList);
+                    size = 4;
                     break;
             }
         }
@@ -223,7 +215,7 @@ public class OrderPage extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.checkPepper:
                 valid = true;
-                //resets the numbers within validation
+                //resets the numbers for mini buttons within validation
                 AppFunctions.validateExtraTopping(0,1);
                 if (!DisplayFunctions.displayCheckboxes("pepper")) {
                     burntToast();
@@ -278,31 +270,44 @@ public class OrderPage extends AppCompatActivity {
                     AppFunctions.validateExtraTopping(0, 1);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normPep");
+                    //for submit button to create order object
+                    toppings.removeAll(pepper);
+                    toppings.add(1);
                     break;
                 case R.id.normalMushroom:
                     AppFunctions.validateExtraTopping(0, 2);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normMush");
+                    toppings.removeAll(mush);
+                    toppings.add(2);
                     break;
                 case R.id.normalPepperoni:
                     AppFunctions.validateExtraTopping(0, 3);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normRoni");
+                    toppings.removeAll(roni);
+                    toppings.add(3);
                     break;
                 case R.id.normalSausage:
                     AppFunctions.validateExtraTopping(0, 4);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normSaus");
+                    toppings.removeAll(saus);
+                    toppings.add(4);
                     break;
                 case R.id.normalHam:
                     AppFunctions.validateExtraTopping(0, 5);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normHam");
+                    toppings.removeAll(ham);
+                    toppings.add(5);
                     break;
                 case R.id.normalPineapple:
                     AppFunctions.validateExtraTopping(0, 6);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normPine");
+                    toppings.removeAll(pine);
+                    toppings.add(6);
                     break;
             }
         }
@@ -317,6 +322,9 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(1, 1)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblPep");
+                        toppings.removeAll(pepper);
+                        toppings.add(1);
+                        toppings.add(1);
                     } else {
                         burntToast();
                     }
@@ -325,6 +333,9 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(1, 2)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblMush");
+                        toppings.removeAll(mush);
+                        toppings.add(2);
+                        toppings.add(2);
                     } else {
                         burntToast();
                     }
@@ -333,6 +344,9 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(1, 3)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblRoni");
+                        toppings.removeAll(roni);
+                        toppings.add(3);
+                        toppings.add(3);
                     } else {
                         burntToast();
                     }
@@ -341,6 +355,9 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(1, 4)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblSaus");
+                        toppings.removeAll(saus);
+                        toppings.add(4);
+                        toppings.add(4);
                     } else {
                         burntToast();
                     }
@@ -349,6 +366,9 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(1, 5)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblHam");
+                        toppings.removeAll(ham);
+                        toppings.add(5);
+                        toppings.add(5);
                     } else {
                         burntToast();
                     }
@@ -357,6 +377,9 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(1, 6)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblPine");
+                        toppings.removeAll(pine);
+                        toppings.add(6);
+                        toppings.add(6);
                     } else {
                         burntToast();
                     }
@@ -371,12 +394,13 @@ public class OrderPage extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.triplePepper:
-                    System.out.println(AppFunctions.sameTopTotal + " sametoptotal before extra topping validation\n");
-                    System.out.println(AppFunctions.checkboxNum + " checkboxnum before validation\n");
                     if (AppFunctions.validateExtraTopping(2, 1)) {
-                        System.out.println(AppFunctions.sameTopTotal + " after sametoptotal += 2\n");
                         valid = false;
                         DisplayFunctions.displaySameToppings("triPep");
+                        toppings.removeAll(pepper);
+                        toppings.add(1);
+                        toppings.add(1);
+                        toppings.add(1);
                     } else {
                         burntToast();
                     }
@@ -385,6 +409,10 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(2, 2)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triMush");
+                        toppings.removeAll(mush);
+                        toppings.add(2);
+                        toppings.add(2);
+                        toppings.add(2);
                     } else {
                         burntToast();
                     }
@@ -393,6 +421,10 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(2, 3)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triRoni");
+                        toppings.removeAll(roni);
+                        toppings.add(3);
+                        toppings.add(3);
+                        toppings.add(3);
                     } else {
                         burntToast();
                     }
@@ -401,6 +433,10 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(2, 4)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triSaus");
+                        toppings.removeAll(saus);
+                        toppings.add(4);
+                        toppings.add(4);
+                        toppings.add(4);
                     } else {
                         burntToast();
                     }
@@ -409,6 +445,10 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(2, 5)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triHam");
+                        toppings.removeAll(ham);
+                        toppings.add(5);
+                        toppings.add(5);
+                        toppings.add(5);
                     } else {
                         burntToast();
                     }
@@ -417,6 +457,10 @@ public class OrderPage extends AppCompatActivity {
                     if (AppFunctions.validateExtraTopping(2, 6)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triPine");
+                        toppings.removeAll(pine);
+                        toppings.add(6);
+                        toppings.add(6);
+                        toppings.add(6);
                     } else {
                         burntToast();
                     }
@@ -431,6 +475,12 @@ public class OrderPage extends AppCompatActivity {
     public View.OnClickListener submitClicked = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            String name = textName.getText().toString();
+            String phone = textPhone.getText().toString();
+            //initializing toppings as 0 (no topping)
+            int top1 = 0;
+            int top2 = 0;
+            int top3 = 0;
 
             //validation of all fields
             if (!AppFunctions.validateName(String.valueOf(textName.getText()))) {
@@ -442,6 +492,32 @@ public class OrderPage extends AppCompatActivity {
             } else if (!AppFunctions.validateCheckBoxes(checkPepper, checkMushroom, checkPepperoni,
                     checkSausage,checkHam, checkPineapple)) {
                 Toast.makeText(OrderPage.this, "select at least 1 topping", Toast.LENGTH_SHORT).show();
+            } else {
+                //to find out how many toppings were selected
+                switch (toppings.size()) {
+                    case 1:
+                        top1 = toppings.get(0);
+                        break;
+                    case 2:
+                        top1 = toppings.get(0);
+                        top2 = toppings.get(1);
+                        break;
+                    case 3:
+                        top1 = toppings.get(0);
+                        top2 = toppings.get(1);
+                        top3 = toppings.get(2);
+                        break;
+                }
+                //print statements for debuggind
+                System.out.println("\nsize of arraylist: " + toppings.size());
+                System.out.println("\nname: " + textName.getText());
+                System.out.println("\nphone: " + textPhone.getText());
+                System.out.println("\nsize: " + size);
+                System.out.println("\ntop1: " + top1);
+                System.out.println("\ntop2: " + top2);
+                System.out.println("\ntop3: " + top3);
+                Order order = new Order(name, phone, size, top1, top2, top3);
+                orders.add(order);
             }
             //add to database method
         }

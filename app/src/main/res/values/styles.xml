@@ -6,4 +6,9 @@
         <item name="colorSecondary">@color/blush_purple</item>
         <!--blush purple showing up as grey-->
     </style>
+
+    <style name="radioButtonStyle">
+        <item name="colorControlNormal">@color/blush_purple</item>
+        <item name="colorControlActivated">@color/grey_purple</item>
+    </style>
 </resources>

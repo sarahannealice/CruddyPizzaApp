@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight=".1"
-            android:background="@drawable/rounded_textview">
+            android:background="@drawable/rounded_textview_blush">
 
             <TextView
                 android:id="@+id/customerTV"
@@ -152,7 +152,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight=".1"
-            android:background="@drawable/rounded_textview">
+            android:background="@drawable/rounded_textview_blush">
 
             <TextView
                 android:id="@+id/sizeTV"
@@ -196,6 +196,8 @@
                     android:text="@string/sm"
                     android:textColor="@color/dark_purple"
                     android:textSize="14sp"
+                    android:theme="@style/radioButtonStyle"
+                    app:useMaterialThemeColors="false"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <RadioButton
@@ -207,6 +209,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="@string/med"
                     android:textColor="@color/dark_purple"
+                    android:theme="@style/radioButtonStyle"
+                    app:useMaterialThemeColors="false"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <RadioButton
@@ -218,6 +222,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="@string/l"
                     android:textColor="@color/dark_purple"
+                    android:theme="@style/radioButtonStyle"
+                    app:useMaterialThemeColors="false"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <RadioButton
@@ -229,6 +235,8 @@
                     android:fontFamily="@font/montserrat"
                     android:text="@string/xl"
                     android:textColor="@color/dark_purple"
+                    android:theme="@style/radioButtonStyle"
+                    app:useMaterialThemeColors="false"
                     tools:ignore="TouchTargetSizeCheck" />
             </RadioGroup>
 
@@ -239,7 +247,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight=".1"
-            android:background="@drawable/rounded_textview">
+            android:background="@drawable/rounded_textview_blush">
 
             <TextView
                 android:id="@+id/toppingsTV"
