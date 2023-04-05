@@ -29,6 +29,14 @@ public class AppFunctions {
     static boolean boolZh;
 
     static int checkboxNum;//counter to prevent selecting more than 3 toppings
+    static int sameTopTotal;
+    //counter for additional of same topping
+    static int top1;//green pepper
+    static int top2;//mushroom
+    static int top3;//pepperoni
+    static int top4;//sausage
+    static int top5;//diced ham
+    static int top6;//pineapple
 
     //-------SUBMIT VALIDATIONS-------//
     //validate name
@@ -80,7 +88,8 @@ public class AppFunctions {
 
     //-------TOPPING VALIDATIONS-------//
     //check if topping can be selected
-    public static boolean validateTopping(int checkNum, int sameTopTotal) {
+    public static boolean validateTopping(int checkNum) {
+        System.out.println(sameTopTotal + " sametoptotal from validatetopping\n");
         if (checkNum == LIMIT) {
             bool = false;
         } else if (checkNum == 2 && sameTopTotal == 0) {
@@ -97,21 +106,54 @@ public class AppFunctions {
 
 
     //check if topping can be increased
-    public static boolean validateExtraTopping (int sameTopNum, int sameTopTotal) {
-        if ((checkboxNum + sameTopTotal) >= LIMIT) {
+    public static boolean validateExtraTopping (int topNum, int num) {
+        switch (num) {
+            case 1:
+                top1 = topNum;
+                break;
+            case 2:
+                top2 = topNum;
+                break;
+            case 3:
+                top3 = topNum;
+                break;
+            case 4:
+                top4 = topNum;
+                break;
+            case 5:
+                top5 = topNum;
+                break;
+            case 6:
+                top6 = topNum;
+                break;
+        }
+        //updates total after if statements
+        sameTopTotal = top1 + top2 + top3 + top4 + top5 + top6;
+
+        System.out.println(sameTopTotal + " sametoptotal in extra topping validation\n");
+        System.out.println(checkboxNum + " checkboxnum in validation\n");
+        System.out.println(valid + " valid in validation\n");
+        if (checkboxNum == LIMIT) {
+            System.out.println("stopped at checkbox limit\n");
             bool = false;
-        } else if (checkboxNum == LIMIT) {
+        } else if ((checkboxNum + sameTopTotal) > LIMIT) {
+            System.out.println("stopped at checkbox+sametoptotal > limit\n");
             bool = false;
-        } else if (checkboxNum == 2 && sameTopNum == 1 && valid) {
+        } else if (checkboxNum == 2 && topNum == 1 && valid) {
+            System.out.println("stopped at checkbox == 2\n");
             bool = true;
 //        } else if (checkNum == 2 && sameTopNum == 1 && !valid) {
 //            bool = true;
-        } else if (checkboxNum == 1 && (sameTopNum == 1 || sameTopNum == 2) && sameTopTotal == 0) {
+        } else if (checkboxNum == 1 && (topNum == 1 || topNum == 2) && sameTopTotal <= 2) {
+            System.out.println("stopped at checkbox == 1\n");
             bool = true;
         } else {
+            System.out.println("stopped at else\n");
             bool = false;
         }
+
         return bool;
+
     }//end additional same topping validation
     //-------END TOPPING VALIDATIONS-------//
 

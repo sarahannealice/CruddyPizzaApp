@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 
+import java.sql.SQLOutput;
 import java.util.Locale;
 
 public class OrderPage extends AppCompatActivity {
@@ -29,17 +30,8 @@ public class OrderPage extends AppCompatActivity {
 
     //variables
     static int LIMIT = 3;
-    static boolean valid;//states if double the same topping can be selected
+    static boolean valid;//states if double/triple the same topping can be selected
     int radioCount;//counter for radio buttons in group
-    //counters
-    //counter for additional of same topping
-    static int sameTop1;//green pepper
-    static int sameTop2;//mushroom
-    static int sameTop3;//pepperoni
-    static int sameTop4;//sausage
-    static int sameTop5;//diced ham
-    static int sameTop6;//pineapple
-    int sameTopTotal = sameTop1 + sameTop2 + sameTop3 + sameTop4 + sameTop5 + sameTop6;
 
 
     //onCreate
@@ -231,32 +223,45 @@ public class OrderPage extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.checkPepper:
-                if (!DisplayFunctions.displayCheckboxes("pepper", sameTopTotal)) {
+                valid = true;
+                //resets the numbers within validation
+                AppFunctions.validateExtraTopping(0,1);
+                if (!DisplayFunctions.displayCheckboxes("pepper")) {
                     burntToast();
                 }
                 break;
             case R.id.checkMushroom:
-                if (!DisplayFunctions.displayCheckboxes("mushroom", sameTopTotal)) {
+                valid = true;
+                AppFunctions.validateExtraTopping(0,2);
+                if (!DisplayFunctions.displayCheckboxes("mushroom")) {
                     burntToast();
                 }
                 break;
             case R.id.checkPepperoni:
-                if (!DisplayFunctions.displayCheckboxes("pepperoni", sameTopTotal)) {
+                valid = true;
+                AppFunctions.validateExtraTopping(0,3);
+                if (!DisplayFunctions.displayCheckboxes("pepperoni")) {
                     burntToast();
                 }
                 break;
             case R.id.checkSausage:
-                if (!DisplayFunctions.displayCheckboxes("sausage", sameTopTotal)) {
+                valid = true;
+                AppFunctions.validateExtraTopping(0,4);
+                if (!DisplayFunctions.displayCheckboxes("sausage")) {
                     burntToast();
                 }
                 break;
             case R.id.checkHam:
-                if (!DisplayFunctions.displayCheckboxes("ham", sameTopTotal)) {
+                valid = true;
+                AppFunctions.validateExtraTopping(0,5);
+                if (!DisplayFunctions.displayCheckboxes("ham")) {
                     burntToast();
                 }
                 break;
             case R.id.checkPineapple:
-                if (!DisplayFunctions.displayCheckboxes("pineapple", sameTopTotal)) {
+                valid = true;
+                AppFunctions.validateExtraTopping(0,6);
+                if (!DisplayFunctions.displayCheckboxes("pineapple")) {
                     burntToast();
                 }
                 break;
@@ -271,32 +276,32 @@ public class OrderPage extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.normalPepper:
-                    sameTop1 = 0;
+                    AppFunctions.validateExtraTopping(0, 1);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normPep");
                     break;
                 case R.id.normalMushroom:
-                    sameTop2 = 0;
+                    AppFunctions.validateExtraTopping(0, 2);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normMush");
                     break;
                 case R.id.normalPepperoni:
-                    sameTop3 = 0;
+                    AppFunctions.validateExtraTopping(0, 3);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normRoni");
                     break;
                 case R.id.normalSausage:
-                    sameTop4 = 0;
+                    AppFunctions.validateExtraTopping(0, 4);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normSaus");
                     break;
                 case R.id.normalHam:
-                    sameTop5 = 0;
+                    AppFunctions.validateExtraTopping(0, 5);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normHam");
                     break;
                 case R.id.normalPineapple:
-                    sameTop6 = 0;
+                    AppFunctions.validateExtraTopping(0, 6);
                     valid = true;
                     DisplayFunctions.displaySameToppings("normPine");
                     break;
@@ -310,8 +315,7 @@ public class OrderPage extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.doublePepper:
-                    if (AppFunctions.validateExtraTopping(1, sameTopTotal)) {
-                        sameTop1 = 1;
+                    if (AppFunctions.validateExtraTopping(1, 1)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblPep");
                     } else {
@@ -319,8 +323,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.doubleMushroom:
-                    if (AppFunctions.validateExtraTopping(1, sameTopTotal)) {
-                        sameTop1 = 1;
+                    if (AppFunctions.validateExtraTopping(1, 2)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblMush");
                     } else {
@@ -328,8 +331,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.doublePepperoni:
-                    if (AppFunctions.validateExtraTopping(1, sameTopTotal)) {
-                        sameTop1 = 1;
+                    if (AppFunctions.validateExtraTopping(1, 3)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblRoni");
                     } else {
@@ -337,8 +339,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.doubleSausage:
-                    if (AppFunctions.validateExtraTopping(1, sameTopTotal)) {
-                        sameTop1 = 1;
+                    if (AppFunctions.validateExtraTopping(1, 4)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblSaus");
                     } else {
@@ -346,8 +347,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.doubleHam:
-                    if (AppFunctions.validateExtraTopping(1, sameTopTotal)) {
-                        sameTop1 = 1;
+                    if (AppFunctions.validateExtraTopping(1, 5)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblHam");
                     } else {
@@ -355,8 +355,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.doublePineapple:
-                    if (AppFunctions.validateExtraTopping(1, sameTopTotal)) {
-                        sameTop1 = 1;
+                    if (AppFunctions.validateExtraTopping(1, 6)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("dblPine");
                     } else {
@@ -373,8 +372,10 @@ public class OrderPage extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.triplePepper:
-                    if (AppFunctions.validateExtraTopping(2, sameTopTotal)) {
-                        sameTop1 = 2;
+                    System.out.println(AppFunctions.sameTopTotal + " sametoptotal before extra topping validation\n");
+                    System.out.println(AppFunctions.checkboxNum + " checkboxnum before validation\n");
+                    if (AppFunctions.validateExtraTopping(2, 1)) {
+                        System.out.println(AppFunctions.sameTopTotal + " after sametoptotal += 2\n");
                         valid = false;
                         DisplayFunctions.displaySameToppings("triPep");
                     } else {
@@ -382,8 +383,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.tripleMushroom:
-                    if (AppFunctions.validateExtraTopping(2, sameTopTotal)) {
-                        sameTop1 = 2;
+                    if (AppFunctions.validateExtraTopping(2, 2)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triMush");
                     } else {
@@ -391,8 +391,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.triplePepperoni:
-                    if (AppFunctions.validateExtraTopping(2, sameTopTotal)) {
-                        sameTop1 = 2;
+                    if (AppFunctions.validateExtraTopping(2, 3)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triRoni");
                     } else {
@@ -400,8 +399,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.tripleSausage:
-                    if (AppFunctions.validateExtraTopping(2, sameTopTotal)) {
-                        sameTop1 = 2;
+                    if (AppFunctions.validateExtraTopping(2, 4)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triSaus");
                     } else {
@@ -409,8 +407,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.tripleHam:
-                    if (AppFunctions.validateExtraTopping(2, sameTopTotal)) {
-                        sameTop1 = 2;
+                    if (AppFunctions.validateExtraTopping(2, 5)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triHam");
                     } else {
@@ -418,8 +415,7 @@ public class OrderPage extends AppCompatActivity {
                     }
                     break;
                 case R.id.triplePineapple:
-                    if (AppFunctions.validateExtraTopping(2, sameTopTotal)) {
-                        sameTop1 = 2;
+                    if (AppFunctions.validateExtraTopping(2, 6)) {
                         valid = false;
                         DisplayFunctions.displaySameToppings("triPine");
                     } else {
@@ -475,57 +471,6 @@ public class OrderPage extends AppCompatActivity {
 
     //toast for more than 3 toppings
     public void burntToast() {
-
         Toast.makeText(getApplicationContext(), "you've already selected 3 toppings", Toast.LENGTH_SHORT).show();
-    }
-
-
-
-    //select topping checkbox
-    public void selectCheckbox(String topping) {
-        switch (topping) {
-            case "pepper":
-                checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                break;
-            case "mush":
-                checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                break;
-            case "roni":
-                checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                break;
-            case "saus":
-                checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                break;
-            case "ham":
-                checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                break;
-            case "pine":
-                checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.grey_purple)));
-                break;
-        }
-    }
-
-    //deselect topping checkbox
-    public void deselectCheckbox(String topping) {
-        switch (topping) {
-            case "pepper":
-                checkPepper.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                break;
-            case "mush":
-                checkMushroom.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                break;
-            case "roni":
-                checkPepperoni.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                break;
-            case "saus":
-                checkSausage.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                break;
-            case "ham":
-                checkHam.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                break;
-            case "pine":
-                checkPineapple.setButtonTintList(ColorStateList.valueOf(getResources().getColor(R.color.blush_purple)));
-                break;
-        }
-    }
+    }//end toast method
 }//end order page class

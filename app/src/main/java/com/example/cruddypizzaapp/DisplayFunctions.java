@@ -13,12 +13,12 @@ public class DisplayFunctions extends AppCompatActivity {
 
     //*****EXTREMEMLY LARGE METHOD*****//
     //checkbox display method
-    public static boolean displayCheckboxes(String topping, int sameTopTotal) {
+    public static boolean displayCheckboxes(String topping) {
         boolean bool = true;
         switch (topping) {
             //GREEN PEPPER//
             case "pepper":
-                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkPepper.isChecked()) {
+                if (!AppFunctions.validateTopping(checkboxNum) && checkPepper.isChecked()) {
                     checkPepper.setChecked(false);
                     bool = false;
                 //pepper is selected
@@ -51,12 +51,13 @@ public class DisplayFunctions extends AppCompatActivity {
 
             //MUSHROOM//
             case "mushroom":
-                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkMushroom.isChecked()) {
+                if (!AppFunctions.validateTopping(checkboxNum) && checkMushroom.isChecked()) {
                     checkMushroom.setChecked(false);
                     bool =  false;
                 //mushroom is selected
                 } else if (checkMushroom.isChecked()) {
                     btnMushroom.setVisibility(View.VISIBLE);
+                    System.out.println(AppFunctions.sameTopTotal + " sametoptotal\n");
                     checkboxNum += 1;
                     //when pepper is deselected
                     if (!checkPepper.isChecked()) {
@@ -78,7 +79,7 @@ public class DisplayFunctions extends AppCompatActivity {
 
             //PEPPERONI//
             case "pepperoni":
-                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkPepperoni.isChecked()) {
+                if (!AppFunctions.validateTopping(checkboxNum) && checkPepperoni.isChecked()) {
                     checkPepperoni.setChecked(false);
                     bool = false;
                 } else if (checkPepperoni.isChecked()) {
@@ -101,7 +102,7 @@ public class DisplayFunctions extends AppCompatActivity {
 
             //SAUSAGE//
             case "sausage":
-                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkSausage.isChecked()) {
+                if (!AppFunctions.validateTopping(checkboxNum) && checkSausage.isChecked()) {
                     checkSausage.setChecked(false);
                     bool = false;
                 } else if (checkSausage.isChecked()) {
@@ -124,7 +125,7 @@ public class DisplayFunctions extends AppCompatActivity {
 
             //DICED HAM//
             case "ham":
-                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkHam.isChecked()) {
+                if (!AppFunctions.validateTopping(checkboxNum) && checkHam.isChecked()) {
                     checkHam.setChecked(false);
                     bool = false;
                 } else if (checkHam.isChecked()) {
@@ -147,7 +148,7 @@ public class DisplayFunctions extends AppCompatActivity {
 
             //PINEAPPLE//
             case "pineapple":
-                if (!AppFunctions.validateTopping(checkboxNum, sameTopTotal) && checkPineapple.isChecked()) {
+                if (!AppFunctions.validateTopping(checkboxNum) && checkPineapple.isChecked()) {
                     checkPineapple.setChecked(false);
                     bool = false;
                 } else if (checkPineapple.isChecked()) {
