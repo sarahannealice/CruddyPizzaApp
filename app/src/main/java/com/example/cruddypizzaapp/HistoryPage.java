@@ -3,49 +3,38 @@ package com.example.cruddypizzaapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class HistoryPage extends AppCompatActivity {
     //views
     Button btnLanguage, btnView, btnEdit, btnNew;
     TextView orderTV;
-    LinearLayout vertical2_1;
+    ImageView garbage;
+
+    //recycler variables
+    RecyclerView recycler;
+    static ArrayList<Order> orderList = new ArrayList<>();
+    OrderAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale();
         setContentView(R.layout.activity_history);
-
-        //if statement to check if orders are on screen
-
-        //initializing views
-        vertical2_1 = findViewById(R.id.vertical2_1);
-        orderTV = findViewById(R.id.orderTV);
-
-        //adding/checking orders
-//        int count = vertical2_1.getChildCount();
-//
-//        for (int i = 0; i < count; i++) {
-//            TextView x = (TextView) vertical2_1.getChildAt(i);
-//            String id = getResources().getResourceEntryName(x.getId());
-//
-//            String name = Integer.toString(i);
-//
-//            TextView name = new TextView(this);
-//        }
 
 
         //initializing buttons
@@ -57,7 +46,17 @@ public class HistoryPage extends AppCompatActivity {
         //set onclick listeners
         btnLanguage.setOnClickListener(changeLanguage);
         btnView.setOnClickListener(viewOrderClicked);
-        orderTV.setOnClickListener(orderClicked);
+
+
+        //recycler setup
+        recycler = findViewById(R.id.orderInfo);
+
+        orderList.add(new Order("sam", "1112223333", 1, 1, 2, 3));
+
+        adapter = new OrderAdapter(orderList);
+        RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
+        recycler.setLayoutManager(manager);
+        recycler.setAdapter(adapter);
     }//end onCreate
 
 

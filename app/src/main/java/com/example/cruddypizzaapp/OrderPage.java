@@ -1,8 +1,12 @@
 package com.example.cruddypizzaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
@@ -33,8 +37,8 @@ public class OrderPage extends AppCompatActivity {
     static boolean valid;//states if double/triple the same topping can be selected
 
     //for creating order objects
-    static ArrayList<Order> orders = new ArrayList<>();
     static int size;
+    static String printSize;
     static ArrayList<Integer> pepper = new ArrayList<Integer>(){{add(1);}};
     static ArrayList<Integer> mush = new ArrayList<Integer>(){{add(2);}};
     static ArrayList<Integer> roni = new ArrayList<Integer>(){{add(3);}};
@@ -42,6 +46,7 @@ public class OrderPage extends AppCompatActivity {
     static ArrayList<Integer> ham = new ArrayList<Integer>(){{add(5);}};
     static ArrayList<Integer> pine = new ArrayList<Integer>(){{add(6);}};
     static ArrayList<Integer> toppings = new ArrayList<>();
+
 
 
     //onCreate
@@ -147,6 +152,7 @@ public class OrderPage extends AppCompatActivity {
         normalPineapple.setOnClickListener(normalTopping);
         doublePineapple.setOnClickListener(doubleTopping);
         triplePineapple.setOnClickListener(tripleTopping);
+
     }//end onCreate
 
 
@@ -189,18 +195,22 @@ public class OrderPage extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.radioSmall:
                     radioSmall.setButtonTintList(colorStateList);
+                    printSize = getResources().getString(R.string.sm);
                     size = 1;
                     break;
                 case R.id.radioMedium:
                     radioMedium.setButtonTintList(colorStateList);
+                    printSize = getResources().getString(R.string.med);
                     size = 2;
                     break;
                 case R.id.radioLarge:
                     radioLarge.setButtonTintList(colorStateList);
+                    printSize = getResources().getString(R.string.l);
                     size = 3;
                     break;
                 case R.id.radioXlarge:
                     radioXlarge.setButtonTintList(colorStateList);
+                    printSize = getResources().getString(R.string.xl);
                     size = 4;
                     break;
             }
@@ -474,6 +484,11 @@ public class OrderPage extends AppCompatActivity {
         public void onClick(View view) {
             String name = textName.getText().toString();
             String phone = textPhone.getText().toString();
+            //to print
+            String printSize = null;
+            String printTop1 = null;
+            String printTop2 = null;
+            String printTop3 = null;
             //initializing toppings as 0 (no topping)
             int top1 = 0;
             int top2 = 0;
@@ -514,7 +529,46 @@ public class OrderPage extends AppCompatActivity {
                 System.out.println("\ntop2: " + top2);
                 System.out.println("\ntop3: " + top3);
                 Order order = new Order(name, phone, size, top1, top2, top3);
-                orders.add(order);
+                HistoryPage.orderList.add(order);
+
+                if (top1 == top2 && top1 == top3) {
+                    switch (top1) {
+                        case 1:
+                            printTop1 = getResources().getString(R.string.pepper);
+                            printTop2 = getResources().getString(R.string.pepper);
+                            printTop3 = getResources().getString(R.string.pepper);
+                            break;
+                        case 2:
+                            printTop1 = getResources().getString(R.string.mushroom);
+                            printTop2 = getResources().getString(R.string.mushroom);
+                            printTop3 = getResources().getString(R.string.mushroom);
+                            break;
+                        case 3:
+                            printTop1 = getResources().getString(R.string.pepperoni);
+                            printTop2 = getResources().getString(R.string.pepperoni);
+                            printTop3 = getResources().getString(R.string.pepperoni);
+                            break;
+                        case 4:
+                            printTop1 = getResources().getString(R.string.sausage);
+                            printTop2 = getResources().getString(R.string.sausage);
+                            printTop3 = getResources().getString(R.string.sausage);
+                            break;
+                        case 5:
+                            printTop1 = getResources().getString(R.string.ham);
+                            printTop2 = getResources().getString(R.string.ham);
+                            printTop3 = getResources().getString(R.string.ham);
+                            break;
+                        case 6:
+                            printTop1 = getResources().getString(R.string.pineapple);
+                            printTop2 = getResources().getString(R.string.pineapple);
+                            printTop3 = getResources().getString(R.string.pineapple);
+                            break;
+                    }
+                }
+
+                //goes to history page
+                Intent orderHistoryIntent = new Intent(OrderPage.this, HistoryPage.class);
+                startActivity(orderHistoryIntent);
             }
             //add to database method
         }

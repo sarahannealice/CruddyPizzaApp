@@ -4,6 +4,9 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+
+        //https://www.geeksforgeeks.org/cardview-using-recyclerview-in-android-with-example/?ref=rp
+        maven { url "https://jitpack.io"}
     }
 }
 
