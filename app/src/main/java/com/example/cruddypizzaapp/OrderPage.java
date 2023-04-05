@@ -220,7 +220,6 @@ public class OrderPage extends AppCompatActivity {
 
     //onclick for checkboxes
     public View.OnClickListener checkBoxClicked = view -> {
-
         switch (view.getId()) {
             case R.id.checkPepper:
                 valid = true;

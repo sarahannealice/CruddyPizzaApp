@@ -15,7 +15,7 @@ public class AppFunctions {
     //regex for name input -- https://stackoverflow.com/a/66910482
     static String nameRegex = "^[A-Za-z]{2,15}(?:\\h+[A-Za-z]{2,20})?$";
     //needs work -- https://stackoverflow.com/a/33623344
-    static String nameRegexZh = "^(\\P{sc=Han}*\\p{sc=Han}){2,4}.*$";
+    static String nameRegexZh = "^([\\P{sc=Han}]*[\\p{sc=Han}]){2,4}.*$";
     static Pattern namePattern = Pattern.compile(nameRegex);
     static Pattern namePatternZh = Pattern.compile(nameRegexZh);
 
@@ -104,7 +104,6 @@ public class AppFunctions {
         return bool;
     }
 
-
     //check if topping can be increased
     public static boolean validateExtraTopping (int topNum, int num) {
         switch (num) {
@@ -127,7 +126,7 @@ public class AppFunctions {
                 top6 = topNum;
                 break;
         }
-        //updates total after if statements
+        //updates total
         sameTopTotal = top1 + top2 + top3 + top4 + top5 + top6;
 
         System.out.println(sameTopTotal + " sametoptotal in extra topping validation\n");
@@ -153,10 +152,6 @@ public class AppFunctions {
         }
 
         return bool;
-
     }//end additional same topping validation
     //-------END TOPPING VALIDATIONS-------//
-
 }//end AppFunctions class
-
-

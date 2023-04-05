@@ -70,7 +70,7 @@
             <LinearLayout
                 android:id="@+id/vertical2"
                 android:layout_width="0dp"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:layout_weight="100"
                 android:orientation="horizontal"
                 android:paddingStart="10dp"
@@ -113,7 +113,7 @@
             <LinearLayout
                 android:id="@+id/vertical3"
                 android:layout_width="0dp"
-                android:layout_height="35dp"
+                android:layout_height="40dp"
                 android:layout_weight="100"
                 android:orientation="horizontal"
                 android:paddingStart="10dp"

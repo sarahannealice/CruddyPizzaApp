@@ -144,5 +144,4 @@ public class HistoryPage extends AppCompatActivity {
     setLocale(language);
 
     };//end language onClick
-
 }

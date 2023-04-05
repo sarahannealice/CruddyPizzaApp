@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DisplayFunctions extends AppCompatActivity {
 
-    //*****EXTREMEMLY LARGE METHOD*****//
+    //*****EXTREMELY LARGE METHOD*****//
     //checkbox display method
     public static boolean displayCheckboxes(String topping) {
         boolean bool = true;
@@ -172,7 +172,7 @@ public class DisplayFunctions extends AppCompatActivity {
         return bool;
     }//end checkbox display method
 
-
+    //*****LARGE METHOD*****//
     //display same topping buttons
     public static void displaySameToppings(String topAmount) {
         //GREEN PEPPER
