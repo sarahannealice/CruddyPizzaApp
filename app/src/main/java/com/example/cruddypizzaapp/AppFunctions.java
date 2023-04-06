@@ -134,8 +134,6 @@ public class AppFunctions {
             bool = false;
         } else if (checkboxNum == 2 && topNum == 1 && valid) {
             bool = true;
-//        } else if (checkNum == 2 && sameTopNum == 1 && !valid) {
-//            bool = true;
         } else if (checkboxNum == 1 && (topNum == 1 || topNum == 2) && sameTopTotal <= 2) {
             bool = true;
         } else {
