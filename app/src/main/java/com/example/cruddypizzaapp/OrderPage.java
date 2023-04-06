@@ -531,9 +531,9 @@ public class OrderPage extends AppCompatActivity {
                 Order order = new Order(listSize+1, name, phone, size, top1, top2, top3);
 
                 //to check if new order or edited order
-                if (btnSubmit.getText().equals("submit order")) {
+                if (btnSubmit.getText().equals("submit order") || btnSubmit.getText().equals("提交订单")) {
                     HistoryPage.orderList.add(order);
-                } else if (btnSubmit.getText().equals("update order")) {
+                } else if (btnSubmit.getText().equals("update order") || btnSubmit.getText().equals("更新订单")) {
                     HistoryPage.orderList.set(orderNum, order);
                 }
 
