@@ -234,42 +234,42 @@ public class OrderPage extends AppCompatActivity {
                 valid = true;
                 //resets the numbers for mini buttons within validation
                 AppFunctions.validateExtraTopping(0,1);
-                if (!DisplayOrderFunctions.displayCheckboxes("pepper")) {
+                if (!DisplayToppings.displayCheckboxes("pepper")) {
                     burntToast();
                 }
                 break;
             case R.id.checkMushroom:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,2);
-                if (!DisplayOrderFunctions.displayCheckboxes("mushroom")) {
+                if (!DisplayToppings.displayCheckboxes("mushroom")) {
                     burntToast();
                 }
                 break;
             case R.id.checkPepperoni:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,3);
-                if (!DisplayOrderFunctions.displayCheckboxes("pepperoni")) {
+                if (!DisplayToppings.displayCheckboxes("pepperoni")) {
                     burntToast();
                 }
                 break;
             case R.id.checkSausage:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,4);
-                if (!DisplayOrderFunctions.displayCheckboxes("sausage")) {
+                if (!DisplayToppings.displayCheckboxes("sausage")) {
                     burntToast();
                 }
                 break;
             case R.id.checkHam:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,5);
-                if (!DisplayOrderFunctions.displayCheckboxes("ham")) {
+                if (!DisplayToppings.displayCheckboxes("ham")) {
                     burntToast();
                 }
                 break;
             case R.id.checkPineapple:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,6);
-                if (!DisplayOrderFunctions.displayCheckboxes("pineapple")) {
+                if (!DisplayToppings.displayCheckboxes("pineapple")) {
                     burntToast();
                 }
                 break;
@@ -286,7 +286,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.normalPepper:
                     AppFunctions.validateExtraTopping(0, 1);
                     valid = true;
-                    DisplayOrderFunctions.displaySameToppings("normPep");
+                    DisplayToppings.displaySameToppings("normPep");
                     //for submit button to create order object
                     toppings.removeAll(pepper);
                     toppings.add(1);
@@ -294,35 +294,35 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.normalMushroom:
                     AppFunctions.validateExtraTopping(0, 2);
                     valid = true;
-                    DisplayOrderFunctions.displaySameToppings("normMush");
+                    DisplayToppings.displaySameToppings("normMush");
                     toppings.removeAll(mush);
                     toppings.add(2);
                     break;
                 case R.id.normalPepperoni:
                     AppFunctions.validateExtraTopping(0, 3);
                     valid = true;
-                    DisplayOrderFunctions.displaySameToppings("normRoni");
+                    DisplayToppings.displaySameToppings("normRoni");
                     toppings.removeAll(roni);
                     toppings.add(3);
                     break;
                 case R.id.normalSausage:
                     AppFunctions.validateExtraTopping(0, 4);
                     valid = true;
-                    DisplayOrderFunctions.displaySameToppings("normSaus");
+                    DisplayToppings.displaySameToppings("normSaus");
                     toppings.removeAll(saus);
                     toppings.add(4);
                     break;
                 case R.id.normalHam:
                     AppFunctions.validateExtraTopping(0, 5);
                     valid = true;
-                    DisplayOrderFunctions.displaySameToppings("normHam");
+                    DisplayToppings.displaySameToppings("normHam");
                     toppings.removeAll(ham);
                     toppings.add(5);
                     break;
                 case R.id.normalPineapple:
                     AppFunctions.validateExtraTopping(0, 6);
                     valid = true;
-                    DisplayOrderFunctions.displaySameToppings("normPine");
+                    DisplayToppings.displaySameToppings("normPine");
                     toppings.removeAll(pine);
                     toppings.add(6);
                     break;
@@ -338,7 +338,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doublePepper:
                     if (AppFunctions.validateExtraTopping(1, 1)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("dblPep");
+                        DisplayToppings.displaySameToppings("dblPep");
                         toppings.removeAll(pepper);
                         toppings.add(1);
                         toppings.add(1);
@@ -349,7 +349,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doubleMushroom:
                     if (AppFunctions.validateExtraTopping(1, 2)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("dblMush");
+                        DisplayToppings.displaySameToppings("dblMush");
                         toppings.removeAll(mush);
                         toppings.add(2);
                         toppings.add(2);
@@ -360,7 +360,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doublePepperoni:
                     if (AppFunctions.validateExtraTopping(1, 3)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("dblRoni");
+                        DisplayToppings.displaySameToppings("dblRoni");
                         toppings.removeAll(roni);
                         toppings.add(3);
                         toppings.add(3);
@@ -371,7 +371,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doubleSausage:
                     if (AppFunctions.validateExtraTopping(1, 4)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("dblSaus");
+                        DisplayToppings.displaySameToppings("dblSaus");
                         toppings.removeAll(saus);
                         toppings.add(4);
                         toppings.add(4);
@@ -382,7 +382,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doubleHam:
                     if (AppFunctions.validateExtraTopping(1, 5)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("dblHam");
+                        DisplayToppings.displaySameToppings("dblHam");
                         toppings.removeAll(ham);
                         toppings.add(5);
                         toppings.add(5);
@@ -393,7 +393,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doublePineapple:
                     if (AppFunctions.validateExtraTopping(1, 6)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("dblPine");
+                        DisplayToppings.displaySameToppings("dblPine");
                         toppings.removeAll(pine);
                         toppings.add(6);
                         toppings.add(6);
@@ -413,7 +413,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.triplePepper:
                     if (AppFunctions.validateExtraTopping(2, 1)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("triPep");
+                        DisplayToppings.displaySameToppings("triPep");
                         toppings.removeAll(pepper);
                         toppings.add(1);
                         toppings.add(1);
@@ -425,7 +425,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.tripleMushroom:
                     if (AppFunctions.validateExtraTopping(2, 2)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("triMush");
+                        DisplayToppings.displaySameToppings("triMush");
                         toppings.removeAll(mush);
                         toppings.add(2);
                         toppings.add(2);
@@ -437,7 +437,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.triplePepperoni:
                     if (AppFunctions.validateExtraTopping(2, 3)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("triRoni");
+                        DisplayToppings.displaySameToppings("triRoni");
                         toppings.removeAll(roni);
                         toppings.add(3);
                         toppings.add(3);
@@ -449,7 +449,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.tripleSausage:
                     if (AppFunctions.validateExtraTopping(2, 4)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("triSaus");
+                        DisplayToppings.displaySameToppings("triSaus");
                         toppings.removeAll(saus);
                         toppings.add(4);
                         toppings.add(4);
@@ -461,7 +461,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.tripleHam:
                     if (AppFunctions.validateExtraTopping(2, 5)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("triHam");
+                        DisplayToppings.displaySameToppings("triHam");
                         toppings.removeAll(ham);
                         toppings.add(5);
                         toppings.add(5);
@@ -473,7 +473,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.triplePineapple:
                     if (AppFunctions.validateExtraTopping(2, 6)) {
                         valid = false;
-                        DisplayOrderFunctions.displaySameToppings("triPine");
+                        DisplayToppings.displaySameToppings("triPine");
                         toppings.removeAll(pine);
                         toppings.add(6);
                         toppings.add(6);

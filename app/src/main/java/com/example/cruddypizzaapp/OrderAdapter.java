@@ -45,7 +45,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
         int orderNum = orderList.indexOf(orderList.get(position)) + 1000;
         String quickLookup = "order#" + orderNum + "\n" + orderList.get(position).getName() + "\n" +
-                orderList.get(position).getPhone() + "\nsize: " + orderList.get(position).getSize();
+                orderList.get(position).getPhone();
         //create string for this text view in advance if this works
         holder.orderTV.setText(quickLookup);
 

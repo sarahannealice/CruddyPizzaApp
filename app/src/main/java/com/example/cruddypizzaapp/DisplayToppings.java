@@ -7,7 +7,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DisplayOrderFunctions extends AppCompatActivity {
+public class DisplayToppings extends AppCompatActivity {
 
     //*****EXTREMELY LARGE METHOD*****//
     //checkbox display method

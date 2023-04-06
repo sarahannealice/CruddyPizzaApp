@@ -58,9 +58,9 @@ public class EditViewDetails extends AppCompatActivity {
                 OrderPage.btnMushroom.setVisibility(View.INVISIBLE);
             }
             if (((one == 1 && two == 1) && three != 1) || ((two == 1 && three == 1) && one != 1)) {
-                DisplayOrderFunctions.displaySameToppings("dblPep");
+                DisplayToppings.displaySameToppings("dblPep");
             } else if (one == 1 && two == 1 && three == 1) {
-                DisplayOrderFunctions.displaySameToppings("triPep");
+                DisplayToppings.displaySameToppings("triPep");
             }
         }
 
@@ -73,9 +73,9 @@ public class EditViewDetails extends AppCompatActivity {
                 OrderPage.btnPepper.setVisibility(View.INVISIBLE);
             }
             if (((one == 2 && two == 2) && three != 2) || ((two == 2 && three == 2) && one != 2)) {
-                DisplayOrderFunctions.displaySameToppings("dblMush");
+                DisplayToppings.displaySameToppings("dblMush");
             } else if (one == 2 && two == 2 && three == 2) {
-                DisplayOrderFunctions.displaySameToppings("triMush");
+                DisplayToppings.displaySameToppings("triMush");
             }
         }
 
@@ -88,9 +88,9 @@ public class EditViewDetails extends AppCompatActivity {
                 OrderPage.btnSausage.setVisibility(View.INVISIBLE);
             }
             if (((one == 3 && two == 3) && three != 3) || ((two == 3 && three == 3) && one != 3)) {
-                DisplayOrderFunctions.displaySameToppings("dblRoni");
+                DisplayToppings.displaySameToppings("dblRoni");
             } else if (one == 3 && two == 3 && three == 3) {
-                DisplayOrderFunctions.displaySameToppings("triRoni");
+                DisplayToppings.displaySameToppings("triRoni");
             }
         }
 
@@ -103,9 +103,9 @@ public class EditViewDetails extends AppCompatActivity {
                 OrderPage.btnPepperoni.setVisibility(View.INVISIBLE);
             }
             if (((one == 4 && two == 4) && three != 4) || ((two == 4 && three == 4) && one != 4)) {
-                DisplayOrderFunctions.displaySameToppings("dblSaus");
+                DisplayToppings.displaySameToppings("dblSaus");
             } else if (one == 4 && two == 4 && three == 4) {
-                DisplayOrderFunctions.displaySameToppings("triSaus");
+                DisplayToppings.displaySameToppings("triSaus");
             }
         }
 
@@ -118,9 +118,9 @@ public class EditViewDetails extends AppCompatActivity {
                 OrderPage.btnPineapple.setVisibility(View.INVISIBLE);
             }
             if (((one == 5 && two == 5) && three != 5) || ((two == 5 && three == 5) && one != 5)) {
-                DisplayOrderFunctions.displaySameToppings("dblHam");
+                DisplayToppings.displaySameToppings("dblHam");
             } else if (one == 5 && two == 5 && three == 5) {
-                DisplayOrderFunctions.displaySameToppings("triHam");
+                DisplayToppings.displaySameToppings("triHam");
             }
         }
 
@@ -133,9 +133,9 @@ public class EditViewDetails extends AppCompatActivity {
                  OrderPage.btnHam.setVisibility(View.INVISIBLE);
              }
             if (((one == 6 && two == 6) && three != 6) || ((two == 6 && three == 6) && one != 6)) {
-                DisplayOrderFunctions.displaySameToppings("dblPine");
+                DisplayToppings.displaySameToppings("dblPine");
             } else if (one == 6 && two == 6 && three == 6) {
-                DisplayOrderFunctions.displaySameToppings("triPine");
+                DisplayToppings.displaySameToppings("triPine");
             }
         }
     }//end display checkbox and mini buttons for edit order
