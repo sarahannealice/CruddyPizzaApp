@@ -9,13 +9,13 @@ public class DisplayDetailsFunctions extends AppCompatActivity {
 
     //display order details for details page
     public static void DisplayOrderDetails(Order orderToDisplay) {
-        String orderNum = "order#" + Integer.toString((orderToDisplay.getOrderNum() + 1000));
+        String orderNum =Integer.toString((orderToDisplay.getOrderNum() + 1000));
         String details = orderToDisplay.getName() + "\n" + orderToDisplay.getPhone()
                 + "\nsize: " + orderToDisplay.getSize() + "\ntoppings:\n\t\t" + orderToDisplay.getTop1()
                 + "\n\t\t" + orderToDisplay.getTop2() + "\n\t\t" + orderToDisplay.getTop3();
 
         //set textviews on details page
-        DetailsPage.orderNumTV.setText(orderNum);
+        DetailsPage.orderNumTV.append(orderNum);
         DetailsPage.detailsTV.setText(details);
 
     }//end display order details
@@ -53,62 +53,90 @@ public class DisplayDetailsFunctions extends AppCompatActivity {
             OrderPage.checkPepper.setChecked(true);
             OrderPage.vertical10_1.setVisibility(View.VISIBLE);
             OrderPage.btnPepper.setVisibility(View.VISIBLE);
-            if ((two == 1 || three == 1) && (!(two == 1 && three == 1) || !(one == 1 && three == 1))) {
+            //checks if adjacent topping is visible or not
+            if (OrderPage.btnMushroom.getVisibility() == View.GONE) {
+                OrderPage.btnMushroom.setVisibility(View.INVISIBLE);
+            }
+            if (((one == 1 && two == 1) && three != 1) || ((two == 1 && three == 1) && one != 1)) {
                 DisplayOrderFunctions.displaySameToppings("dblPep");
-            } else {
+            } else if (one == 1 && two == 1 && three == 1) {
                 DisplayOrderFunctions.displaySameToppings("triPep");
             }
+        }
+
         //MUSHROOM//
-        } else if (one == 2 || two == 2 || three == 2) {
+        if (one == 2 || two == 2 || three == 2) {
             OrderPage.checkMushroom.setChecked(true);
             OrderPage.vertical10_1.setVisibility(View.VISIBLE);
             OrderPage.btnMushroom.setVisibility(View.VISIBLE);
-            if ((two == 2 || three == 2) && (!(two == 2 && three == 2) || !(one == 2 && three == 2))) {
+            if (OrderPage.btnPepper.getVisibility() == View.GONE) {
+                OrderPage.btnPepper.setVisibility(View.INVISIBLE);
+            }
+            if (((one == 2 && two == 2) && three != 2) || ((two == 2 && three == 2) && one != 2)) {
                 DisplayOrderFunctions.displaySameToppings("dblMush");
-            } else {
+            } else if (one == 2 && two == 2 && three == 2) {
                 DisplayOrderFunctions.displaySameToppings("triMush");
             }
+        }
+
         //PEPPERONI//
-        } else if (one == 3 || two == 3 || three == 3) {
+        if (one == 3 || two == 3 || three == 3) {
             OrderPage.checkPepperoni.setChecked(true);
             OrderPage.vertical12_1.setVisibility(View.VISIBLE);
             OrderPage.btnPepperoni.setVisibility(View.VISIBLE);
-            if ((two == 3 || three == 3) && (!(two == 3 && three == 3) || !(one == 3 && three == 3))) {
+            if (OrderPage.btnSausage.getVisibility() == View.GONE) {
+                OrderPage.btnSausage.setVisibility(View.INVISIBLE);
+            }
+            if (((one == 3 && two == 3) && three != 3) || ((two == 3 && three == 3) && one != 3)) {
                 DisplayOrderFunctions.displaySameToppings("dblRoni");
-            } else {
+            } else if (one == 3 && two == 3 && three == 3) {
                 DisplayOrderFunctions.displaySameToppings("triRoni");
             }
+        }
+
         //SAUSAGE//
-        } else if (one == 4 || two == 4 || three == 4) {
+        if (one == 4 || two == 4 || three == 4) {
             OrderPage.checkSausage.setChecked(true);
             OrderPage.vertical12_1.setVisibility(View.VISIBLE);
             OrderPage.btnSausage.setVisibility(View.VISIBLE);
-            if ((two == 4 || three == 4) && (!(two == 4 && three == 4) || !(one == 4 && three == 4))) {
+            if (OrderPage.btnPepperoni.getVisibility() == View.GONE) {
+                OrderPage.btnPepperoni.setVisibility(View.INVISIBLE);
+            }
+            if (((one == 4 && two == 4) && three != 4) || ((two == 4 && three == 4) && one != 4)) {
                 DisplayOrderFunctions.displaySameToppings("dblSaus");
-            } else {
+            } else if (one == 4 && two == 4 && three == 4) {
                 DisplayOrderFunctions.displaySameToppings("triSaus");
             }
+        }
 
         //DICED HAM//
-        } else if (one == 5 || two == 5 || three == 5) {
+        if (one == 5 || two == 5 || three == 5) {
             OrderPage.checkHam.setChecked(true);
             OrderPage.vertical14_1.setVisibility(View.VISIBLE);
             OrderPage.btnHam.setVisibility(View.VISIBLE);
-            if ((two == 5 || three == 5) && (!(two == 5 && three == 5) || !(one == 5 && three == 5))) {
+            if (OrderPage.btnPineapple.getVisibility() == View.GONE) {
+                OrderPage.btnPineapple.setVisibility(View.INVISIBLE);
+            }
+            if (((one == 5 && two == 5) && three != 5) || ((two == 5 && three == 5) && one != 5)) {
                 DisplayOrderFunctions.displaySameToppings("dblHam");
-            } else {
+            } else if (one == 5 && two == 5 && three == 5) {
                 DisplayOrderFunctions.displaySameToppings("triHam");
             }
+        }
+
         //PINEAPPLE//
-        } else if (one == 6 || two == 6 || three == 6) {
+         if (one == 6 || two == 6 || three == 6) {
             OrderPage.checkPineapple.setChecked(true);
             OrderPage.vertical14_1.setVisibility(View.VISIBLE);
             OrderPage.btnPineapple.setVisibility(View.VISIBLE);
-            if ((two == 6 || three == 6) && (!(two == 6 && three == 6) || !(one == 6 && three == 6))) {
+             if (OrderPage.btnHam.getVisibility() == View.GONE) {
+                 OrderPage.btnHam.setVisibility(View.INVISIBLE);
+             }
+            if (((one == 6 && two == 6) && three != 6) || ((two == 6 && three == 6) && one != 6)) {
                 DisplayOrderFunctions.displaySameToppings("dblPine");
-            } else {
+            } else if (one == 6 && two == 6 && three == 6) {
                 DisplayOrderFunctions.displaySameToppings("triPine");
             }
         }
-    }
+    }//end display checkbox and mini buttons for edit order
 }//end display details class
