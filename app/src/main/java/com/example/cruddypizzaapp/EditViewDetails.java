@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DisplayDetailsFunctions extends AppCompatActivity {
+public class EditViewDetails extends AppCompatActivity {
 
     //display order details for details page
     public static void DisplayOrderDetails(Order orderToDisplay) {

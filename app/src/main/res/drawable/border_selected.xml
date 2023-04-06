@@ -8,6 +8,6 @@
             android:dashGap="12px"/>
 
     <!-- background color -->
-    <solid android:color="@android:color/transparent"/>
+    <solid android:color="@color/blush"/>
 
 </shape>

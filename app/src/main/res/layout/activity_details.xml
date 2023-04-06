@@ -20,21 +20,23 @@
             android:id="@+id/row0"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="10dp">
+            android:gravity="end"
+            android:paddingTop="5dp">
 
             <Button
                 android:id="@+id/btnLanguage"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="100"
-                android:backgroundTint="#00FFFFFF"
+                android:layout_gravity="end"
+                android:background="#00FFFFFF"
                 android:fontFamily="@font/montserrat"
-                android:gravity="right"
+                android:maxWidth="120dp"
+                android:singleLine="true"
                 android:text="@string/language"
                 android:textAllCaps="false"
-                android:textColor="@color/dark_purple" />
-
+                android:textColor="#22223B"
+                android:textSize="14sp"
+                app:iconPadding="4dp" />
         </TableRow>
 
         <TableRow
@@ -119,7 +121,7 @@
                         android:fontFamily="@font/montserrat"
                         android:padding="5dp"
                         android:text="@string/exampleDetails"
-                        android:textColor="@color/blush_purple"
+                        android:textColor="@color/cream"
                         android:visibility="visible"
                         tools:ignore="TextContrastCheck" />
 

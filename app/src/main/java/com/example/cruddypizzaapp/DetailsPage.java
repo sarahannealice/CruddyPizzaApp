@@ -46,7 +46,7 @@ DetailsPage extends AppCompatActivity {
         order = editIntent.getIntExtra(KEY, 0);
 
         //calling method to display order information
-        DisplayDetailsFunctions.DisplayOrderDetails(HistoryPage.orderList.get(order));
+        EditViewDetails.DisplayOrderDetails(HistoryPage.orderList.get(order));
 
         //setting onClickListeners
         btnLanguage.setOnClickListener(changeLanguage);
@@ -100,9 +100,7 @@ DetailsPage extends AppCompatActivity {
         AppFunctions.top5 = 0;
         AppFunctions.top6 = 0;
         OrderPage.toppings.clear();
-
-        OrderPage.btnUpdate.setVisibility(View.GONE);
-        OrderPage.btnSubmit.setVisibility(View.VISIBLE);
+        OrderPage.btnSubmit.setText(getResources().getString(R.string.submit));
 
         Intent newOrderIntent = new Intent(DetailsPage.this, OrderPage.class);
         newOrderIntent.putExtra("KEY", true);

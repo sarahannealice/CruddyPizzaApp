@@ -3,6 +3,7 @@
     <string name="app_name">拙劣</string>
     <string name="english">eng</string>
     <string name="chinese">中文</string>
+    <string name="language">eng/中文</string>
     <string name="pi">2𝝅r</string>
     <string name="pizza">比萨</string>
     <string name="sarah">由 sarah</string>
@@ -28,6 +29,7 @@
     <string name="ham">火腿</string>
     <string name="pineapple">菠萝</string>
     <string name="submit">提交订单</string>
+    <string name="update">更新订单</string>
     <string name="history">订单历史</string>
     <string name="orderNum">订单#</string>
     <string name="view">查看订单</string>
@@ -38,5 +40,4 @@
     <string name="exampleOrder">订单#1002\nJane Doe\n555–3784</string>
     <string name="exampleOrderNum">订单#1002</string>
     <string name="exampleDetails">Jane Doe\n555–3784\n选择大小: 小\n配料:\n\t\t青椒 - 标准\n\t\t香肠 - 双倍</string>
-    <string name="update">更新</string>
 </resources>

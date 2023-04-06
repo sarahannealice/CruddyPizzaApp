@@ -781,19 +781,6 @@
                 android:layout_weight="50" />
 
             <Button
-                android:id="@+id/btnUpdate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|top"
-                android:backgroundTint="@color/dark_purple"
-                android:fontFamily="@font/montserrat"
-                android:text="@string/update"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                android:visibility="gone"
-                app:cornerRadius="25dp" />
-
-            <Button
                 android:id="@+id/btnSubmit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -1,7 +1,6 @@
 package com.example.cruddypizzaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,7 +16,7 @@ import java.util.Locale;
 
 public class OrderPage extends AppCompatActivity {
     //views
-    static Button btnLanguage, btnSubmit, btnUpdate;
+    static Button btnLanguage, btnSubmit;
     static EditText textName, textPhone;
     RadioGroup radiogroup;
     static RadioButton radioSmall, radioMedium, radioLarge, radioXlarge;
@@ -45,7 +44,6 @@ public class OrderPage extends AppCompatActivity {
     static ArrayList<Integer> toppings = new ArrayList<>();
 
 
-
     //onCreate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +65,6 @@ public class OrderPage extends AppCompatActivity {
         //initializing buttons
         btnLanguage = findViewById(R.id.btnLanguage);
         btnSubmit = findViewById(R.id.btnSubmit);
-        btnUpdate = findViewById(R.id.btnUpdate);
 
         //initializing edit texts
         textName = findViewById(R.id.textName);
@@ -115,23 +112,18 @@ public class OrderPage extends AppCompatActivity {
         Intent editIntent = getIntent();
         orderNum = editIntent.getIntExtra("KEY", 0);
 
-        System.out.println("test order is: " + orderNum + "\n");
-        //to check if app just started up or not
+        //to check where user is coming from within app
         if (newOrder.getBooleanExtra("KEY", false)) {
-            //act as new order
+            btnSubmit.setText(getResources().getString(R.string.submit));
         } else if (orderNum >= 0) {
-            System.out.println("test order is: " + orderNum + "\n");
             //calling method to display order to edit
-            DisplayDetailsFunctions.DisplayOrderEdit(HistoryPage.orderList.get(orderNum));
-            btnSubmit.setVisibility(View.GONE);
-            btnUpdate.setVisibility(View.VISIBLE);
+            EditViewDetails.DisplayOrderEdit(HistoryPage.orderList.get(orderNum));
+            btnSubmit.setText(getResources().getString(R.string.update));
         }
-
 
         //set button event
         btnLanguage.setOnClickListener(changeLanguage);
         btnSubmit.setOnClickListener(submitClicked);
-        btnUpdate.setOnClickListener(updateOrder);
 
         //set radio button event to same listener
         radioSmall.setOnClickListener(radioButtonClicked);
@@ -171,7 +163,6 @@ public class OrderPage extends AppCompatActivity {
         normalPineapple.setOnClickListener(normalTopping);
         doublePineapple.setOnClickListener(doubleTopping);
         triplePineapple.setOnClickListener(tripleTopping);
-
     }//end onCreate
 
 
@@ -496,7 +487,6 @@ public class OrderPage extends AppCompatActivity {
     };//end double topping onclick
     //--END ADDITIONAL SAME TOPPINGS--//
 
-
     //onClick for submit
     public View.OnClickListener submitClicked = new View.OnClickListener() {
         @Override
@@ -549,7 +539,13 @@ public class OrderPage extends AppCompatActivity {
                 System.out.println("\ntop3: " + top3);
                 int listSize = HistoryPage.orderList.size();
                 Order order = new Order(listSize+1, name, phone, size, top1, top2, top3);
-                HistoryPage.orderList.add(order);
+
+                //to check if new order or edited order
+                if (btnSubmit.getText().equals("submit order")) {
+                    HistoryPage.orderList.add(order);
+                } else if (btnSubmit.getText().equals("update order")) {
+                    HistoryPage.orderList.set(orderNum, order);
+                }
 
                 if (top1 == top2 && top1 == top3) {
                     switch (top1) {
@@ -593,103 +589,6 @@ public class OrderPage extends AppCompatActivity {
             //add to database method
         }
     };//end submit onclick
-
-    //onClick for update
-    public View.OnClickListener updateOrder = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String name = textName.getText().toString();
-            String phone = textPhone.getText().toString();
-            //to print
-            String printSize = null;
-            String printTop1 = null;
-            String printTop2 = null;
-            String printTop3 = null;
-            //initializing toppings as 0 (no topping)
-            int top1 = 0;
-            int top2 = 0;
-            int top3 = 0;
-
-            //validation of all fields
-            if (!AppFunctions.validateName(String.valueOf(textName.getText()))) {
-                Toast.makeText(OrderPage.this, "invalid name", Toast.LENGTH_SHORT).show();
-            } else if (!AppFunctions.validatePhone(String.valueOf(textPhone.getText()))) {
-                Toast.makeText(OrderPage.this, "invalid phone number", Toast.LENGTH_SHORT).show();
-            } else if (!AppFunctions.validateRadios(radiogroup.getChildCount(), radiogroup)) {
-                Toast.makeText(OrderPage.this, "select a size", Toast.LENGTH_SHORT).show();
-            } else if (!AppFunctions.validateCheckBoxes(checkPepper, checkMushroom, checkPepperoni,
-                    checkSausage,checkHam, checkPineapple)) {
-                Toast.makeText(OrderPage.this, "select at least 1 topping", Toast.LENGTH_SHORT).show();
-            } else {
-                //to find out how many toppings were selected
-                switch (toppings.size()) {
-                    case 1:
-                        top1 = toppings.get(0);
-                        break;
-                    case 2:
-                        top1 = toppings.get(0);
-                        top2 = toppings.get(1);
-                        break;
-                    case 3:
-                        top1 = toppings.get(0);
-                        top2 = toppings.get(1);
-                        top3 = toppings.get(2);
-                        break;
-                }
-                //print statements for debuggind
-                System.out.println("\nsize of arraylist: " + toppings.size());
-                System.out.println("\nname: " + textName.getText());
-                System.out.println("\nphone: " + textPhone.getText());
-                System.out.println("\nsize: " + size);
-                System.out.println("\ntop1: " + top1);
-                System.out.println("\ntop2: " + top2);
-                System.out.println("\ntop3: " + top3);
-                int listSize = HistoryPage.orderList.size();
-                Order order = new Order(listSize+1, name, phone, size, top1, top2, top3);
-                HistoryPage.orderList.set(orderNum, order);
-
-                if (top1 == top2 && top1 == top3) {
-                    switch (top1) {
-                        case 1:
-                            printTop1 = getResources().getString(R.string.pepper);
-                            printTop2 = getResources().getString(R.string.pepper);
-                            printTop3 = getResources().getString(R.string.pepper);
-                            break;
-                        case 2:
-                            printTop1 = getResources().getString(R.string.mushroom);
-                            printTop2 = getResources().getString(R.string.mushroom);
-                            printTop3 = getResources().getString(R.string.mushroom);
-                            break;
-                        case 3:
-                            printTop1 = getResources().getString(R.string.pepperoni);
-                            printTop2 = getResources().getString(R.string.pepperoni);
-                            printTop3 = getResources().getString(R.string.pepperoni);
-                            break;
-                        case 4:
-                            printTop1 = getResources().getString(R.string.sausage);
-                            printTop2 = getResources().getString(R.string.sausage);
-                            printTop3 = getResources().getString(R.string.sausage);
-                            break;
-                        case 5:
-                            printTop1 = getResources().getString(R.string.ham);
-                            printTop2 = getResources().getString(R.string.ham);
-                            printTop3 = getResources().getString(R.string.ham);
-                            break;
-                        case 6:
-                            printTop1 = getResources().getString(R.string.pineapple);
-                            printTop2 = getResources().getString(R.string.pineapple);
-                            printTop3 = getResources().getString(R.string.pineapple);
-                            break;
-                    }
-                }
-
-                //goes to history page
-                Intent orderHistoryIntent = new Intent(OrderPage.this, HistoryPage.class);
-                startActivity(orderHistoryIntent);
-            }
-            //add to database method
-        }
-    };//end update onclick
 
 
     //--------------------------methods--------------------------//

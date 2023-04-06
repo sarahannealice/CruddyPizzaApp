@@ -1,6 +1,5 @@
 package com.example.cruddypizzaapp;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,12 +7,8 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,7 +23,6 @@ public class HistoryPage extends AppCompatActivity {
     RecyclerView recycler;
     static ArrayList<Order> orderList = new ArrayList<>();
     OrderAdapter adapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +74,7 @@ public class HistoryPage extends AppCompatActivity {
         AppFunctions.top5 = 0;
         AppFunctions.top6 = 0;
         OrderPage.toppings.clear();
-
-        OrderPage.btnUpdate.setVisibility(View.GONE);
-        OrderPage.btnSubmit.setVisibility(View.VISIBLE);
+        OrderPage.btnSubmit.setText(getResources().getString(R.string.submit));
 
         Intent newOrderIntent = new Intent(HistoryPage.this, OrderPage.class);
         newOrderIntent.putExtra("KEY", true);

@@ -1,34 +1,18 @@
 package com.example.cruddypizzaapp;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
-import android.database.*;
-import java.io.*;
-
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
-
 
 public class TitlePage extends AppCompatActivity {
     //views
     Button btnLanguage, btnStart, btnSearch;
-
-    //variable
-    List<String> eng;
-    List<String> zh;
 
     //onCreate for title page
     @Override
@@ -36,11 +20,6 @@ public class TitlePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         loadLocale();
         setContentView(R.layout.activity_title);
-
-        //initializing string array
-//        Resources res = getResources();
-//        eng = Arrays.asList(getResources().getStringArray(R.array.english));
-//        zh = Arrays.asList(getResources().getStringArray(R.array.chinese));
 
         //initializing buttons
         btnLanguage = findViewById(R.id.btnLanguage);
@@ -51,7 +30,6 @@ public class TitlePage extends AppCompatActivity {
         btnLanguage.setOnClickListener(changeLanguage);
         btnStart.setOnClickListener(startOrder);
         btnSearch.setOnClickListener(searchOrder);
-
     }//end onCreate
 
 
