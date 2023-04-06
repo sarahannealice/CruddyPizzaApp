@@ -5,7 +5,8 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_weight="100"
+    android:layout_span="2"
     android:clickable="true"
     android:contextClickable="true"
     app:cardBackgroundColor="@color/blush"
@@ -18,23 +19,50 @@
     <TextView
         android:id="@+id/orderTV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_deselected"
-        android:clickable="true"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_selected"
         android:fontFamily="@font/montserrat"
-        android:onClick="onClick"
         android:padding="10dp"
         android:text="@string/exampleOrder"
         android:textColor="@color/cream"
         android:visibility="visible" />
 
-    <ImageView
-        android:id="@+id/delete"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom|right"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/edit_text"
+            tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/btnList"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom|end"
+            android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/list"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnDelete"
         android:layout_width="35dp"
-        android:layout_height="40dp"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="10dp"
+        android:layout_height="35dp"
+        android:layout_gravity="right|top"
+        android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/garbagebag_grey" />
+        app:srcCompat="@drawable/delete"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.cardview.widget.CardView>

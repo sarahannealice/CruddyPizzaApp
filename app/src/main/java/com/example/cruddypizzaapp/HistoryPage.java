@@ -1,5 +1,6 @@
 package com.example.cruddypizzaapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,6 +8,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,9 +22,7 @@ import java.util.Locale;
 
 public class HistoryPage extends AppCompatActivity {
     //views
-    Button btnLanguage, btnView, btnEdit, btnNew;
-    TextView orderTV;
-    ImageView garbage;
+    Button btnLanguage, btnNew;
 
     //recycler variables
     RecyclerView recycler;
@@ -36,27 +36,26 @@ public class HistoryPage extends AppCompatActivity {
         loadLocale();
         setContentView(R.layout.activity_history);
 
-
-        //initializing buttons
-        btnLanguage = findViewById(R.id.btnLanguage);
-        btnView = findViewById(R.id.btnView);
-        btnEdit = findViewById(R.id.btnEdit);
-        btnNew = findViewById(R.id.btnNew);
-
-        //set onclick listeners
-        btnLanguage.setOnClickListener(changeLanguage);
-        btnView.setOnClickListener(viewOrderClicked);
-
-
         //recycler setup
         recycler = findViewById(R.id.orderInfo);
 
-        orderList.add(new Order("sam", "1112223333", 1, 1, 2, 3));
+//        orderList.add(new Order("sam", "1112223333", 1, 1, 2, 3));
 
         adapter = new OrderAdapter(orderList);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
         recycler.setLayoutManager(manager);
         recycler.setAdapter(adapter);
+
+        //initializing buttons
+        btnLanguage = findViewById(R.id.btnLanguage);
+        btnNew = findViewById(R.id.btnNew);
+
+        //set onclick listeners
+        btnLanguage.setOnClickListener(changeLanguage);
+//        btnList.setOnClickListener(viewOrder);
+//        btnEdit.setOnClickListener();
+        btnNew.setOnClickListener(newOrder);
+
     }//end onCreate
 
 
@@ -75,51 +74,39 @@ public class HistoryPage extends AppCompatActivity {
         }
     };
 
-    //onclick for order textview
-    View.OnClickListener orderClicked = new View.OnClickListener() {
+    //onclick to delete order
+    View.OnClickListener deleteOrder = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-            //https://stackoverflow.com/a/32301027
-            if (orderTV.getBackground().equals(ContextCompat.getDrawable(HistoryPage.this, R.drawable.border_selected))) {
-                orderTV.setBackground(ContextCompat.getDrawable(HistoryPage.this, R.drawable.border_deselected));
-            } else {
-                orderTV.setBackground(ContextCompat.getDrawable(HistoryPage.this, R.drawable.border_selected));
-            }
-
-//            int count = vertical2_1.getChildCount();
-//
-//            for (int i = 0; i < count; i++) {
-//                TextView x = (TextView) vertical2_1.getChildAt(i);
-//
-//            }
+            //do nothing
         }
     };
 
     //onClick for view order
-    View.OnClickListener viewOrderClicked = new View.OnClickListener() {
+    View.OnClickListener viewOrder = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent detailsIntent = new Intent(HistoryPage.this, DetailsPage.class);
             startActivity(detailsIntent);
 
-//            int count = vertical2_1.getChildCount();
-
-//            for (int i = 0; i < count; i++) {
-//                TextView x = (TextView) vertical2_1.getChildAt(i);
-//
-//                if (x.getBackground().equals("@drawable/border_selected")) {
-//                    //will also contain order markers from database
-//                    Intent detailsIntent = new Intent(HistoryPage.this, DetailsPage.class);
-//                    startActivity(detailsIntent);
-//                    break;
-//                } else {
-//                    continue;
-//                }
-//            }
         }
     };//end onclick for view order
 
+    //onClick for new order
+    View.OnClickListener newOrder = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            AppFunctions.checkboxNum = 0;
+            AppFunctions.top1 = 0;
+            AppFunctions.top2 = 0;
+            AppFunctions.top3 = 0;
+            AppFunctions.top4 = 0;
+            AppFunctions.top5 = 0;
+            AppFunctions.top6 = 0;
+            Intent newOrderIntent = new Intent(HistoryPage.this, OrderPage.class);
+            startActivity(newOrderIntent);
+        }
+    };
 
 
     //--------------------------methods--------------------------//

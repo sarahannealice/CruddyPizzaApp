@@ -528,7 +528,8 @@ public class OrderPage extends AppCompatActivity {
                 System.out.println("\ntop1: " + top1);
                 System.out.println("\ntop2: " + top2);
                 System.out.println("\ntop3: " + top3);
-                Order order = new Order(name, phone, size, top1, top2, top3);
+                int size = HistoryPage.orderList.size();
+                Order order = new Order(size+1, name, phone, size, top1, top2, top3);
                 HistoryPage.orderList.add(order);
 
                 if (top1 == top2 && top1 == top3) {

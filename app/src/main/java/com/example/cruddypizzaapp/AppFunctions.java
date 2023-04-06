@@ -13,7 +13,7 @@ import java.util.regex.*;
 public class AppFunctions {
 
     //regex for name input -- https://stackoverflow.com/a/66910482
-    static String nameRegex = "^[A-Za-z]{2,15}(?:\\h+[A-Za-z]{2,20})?$";
+    static String nameRegex = "^[A-Za-z]{2,15}(?:\\h+[A-Za-z]{1,20})?$";
     //needs work -- https://stackoverflow.com/a/33623344
     static String nameRegexZh = "^([\\P{sc=Han}]*[\\p{sc=Han}]){2,4}.*$";
     static Pattern namePattern = Pattern.compile(nameRegex);
