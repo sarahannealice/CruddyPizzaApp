@@ -45,13 +45,13 @@
             tools:ignore="DuplicateClickableBoundsCheck,SpeakableTextPresentCheck" />
 
         <ImageButton
-            android:id="@+id/btnList"
+            android:id="@+id/btnView"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_gravity="bottom|end"
+            android:layout_gravity="bottom|start"
             android:backgroundTint="#00FFFFFF"
             android:scaleType="fitEnd"
-            app:srcCompat="@drawable/list"
+            app:srcCompat="@drawable/view"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 

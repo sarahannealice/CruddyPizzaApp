@@ -1,9 +1,6 @@
 package com.example.cruddypizzaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -15,16 +12,15 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Locale;
 
 public class OrderPage extends AppCompatActivity {
     //views
-    Button btnLanguage, btnSubmit;
-    EditText textName, textPhone;
+    static Button btnLanguage, btnSubmit, btnUpdate;
+    static EditText textName, textPhone;
     RadioGroup radiogroup;
-    RadioButton radioSmall, radioMedium, radioLarge, radioXlarge;
+    static RadioButton radioSmall, radioMedium, radioLarge, radioXlarge;
     static CheckBox checkPepper, checkMushroom, checkPepperoni, checkSausage, checkHam, checkPineapple;
     static ImageButton normalPepper, doublePepper, triplePepper, normalMushroom, doubleMushroom, tripleMushroom,
             normalPepperoni, doublePepperoni, triplePepperoni, normalSausage, doubleSausage, tripleSausage,
@@ -35,6 +31,7 @@ public class OrderPage extends AppCompatActivity {
     //variables
     static int LIMIT = 3;
     static boolean valid;//states if double/triple the same topping can be selected
+    int orderNum;
 
     //for creating order objects
     static int size;
@@ -70,6 +67,7 @@ public class OrderPage extends AppCompatActivity {
         //initializing buttons
         btnLanguage = findViewById(R.id.btnLanguage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnUpdate = findViewById(R.id.btnUpdate);
 
         //initializing edit texts
         textName = findViewById(R.id.textName);
@@ -110,9 +108,30 @@ public class OrderPage extends AppCompatActivity {
         doublePineapple = findViewById(R.id.doublePineapple);
         triplePineapple = findViewById(R.id.triplePineapple);
 
+        //getting key for new order
+        Intent newOrder = getIntent();
+
+        //getting key for edits
+        Intent editIntent = getIntent();
+        orderNum = editIntent.getIntExtra("KEY", 0);
+
+        System.out.println("test order is: " + orderNum + "\n");
+        //to check if app just started up or not
+        if (newOrder.getBooleanExtra("KEY", false)) {
+            //act as new order
+        } else if (orderNum >= 0) {
+            System.out.println("test order is: " + orderNum + "\n");
+            //calling method to display order to edit
+            DisplayDetailsFunctions.DisplayOrderEdit(HistoryPage.orderList.get(orderNum));
+            btnSubmit.setVisibility(View.GONE);
+            btnUpdate.setVisibility(View.VISIBLE);
+        }
+
+
         //set button event
         btnLanguage.setOnClickListener(changeLanguage);
         btnSubmit.setOnClickListener(submitClicked);
+        btnUpdate.setOnClickListener(updateOrder);
 
         //set radio button event to same listener
         radioSmall.setOnClickListener(radioButtonClicked);
@@ -224,42 +243,42 @@ public class OrderPage extends AppCompatActivity {
                 valid = true;
                 //resets the numbers for mini buttons within validation
                 AppFunctions.validateExtraTopping(0,1);
-                if (!DisplayFunctions.displayCheckboxes("pepper")) {
+                if (!DisplayOrderFunctions.displayCheckboxes("pepper")) {
                     burntToast();
                 }
                 break;
             case R.id.checkMushroom:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,2);
-                if (!DisplayFunctions.displayCheckboxes("mushroom")) {
+                if (!DisplayOrderFunctions.displayCheckboxes("mushroom")) {
                     burntToast();
                 }
                 break;
             case R.id.checkPepperoni:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,3);
-                if (!DisplayFunctions.displayCheckboxes("pepperoni")) {
+                if (!DisplayOrderFunctions.displayCheckboxes("pepperoni")) {
                     burntToast();
                 }
                 break;
             case R.id.checkSausage:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,4);
-                if (!DisplayFunctions.displayCheckboxes("sausage")) {
+                if (!DisplayOrderFunctions.displayCheckboxes("sausage")) {
                     burntToast();
                 }
                 break;
             case R.id.checkHam:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,5);
-                if (!DisplayFunctions.displayCheckboxes("ham")) {
+                if (!DisplayOrderFunctions.displayCheckboxes("ham")) {
                     burntToast();
                 }
                 break;
             case R.id.checkPineapple:
                 valid = true;
                 AppFunctions.validateExtraTopping(0,6);
-                if (!DisplayFunctions.displayCheckboxes("pineapple")) {
+                if (!DisplayOrderFunctions.displayCheckboxes("pineapple")) {
                     burntToast();
                 }
                 break;
@@ -276,7 +295,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.normalPepper:
                     AppFunctions.validateExtraTopping(0, 1);
                     valid = true;
-                    DisplayFunctions.displaySameToppings("normPep");
+                    DisplayOrderFunctions.displaySameToppings("normPep");
                     //for submit button to create order object
                     toppings.removeAll(pepper);
                     toppings.add(1);
@@ -284,35 +303,35 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.normalMushroom:
                     AppFunctions.validateExtraTopping(0, 2);
                     valid = true;
-                    DisplayFunctions.displaySameToppings("normMush");
+                    DisplayOrderFunctions.displaySameToppings("normMush");
                     toppings.removeAll(mush);
                     toppings.add(2);
                     break;
                 case R.id.normalPepperoni:
                     AppFunctions.validateExtraTopping(0, 3);
                     valid = true;
-                    DisplayFunctions.displaySameToppings("normRoni");
+                    DisplayOrderFunctions.displaySameToppings("normRoni");
                     toppings.removeAll(roni);
                     toppings.add(3);
                     break;
                 case R.id.normalSausage:
                     AppFunctions.validateExtraTopping(0, 4);
                     valid = true;
-                    DisplayFunctions.displaySameToppings("normSaus");
+                    DisplayOrderFunctions.displaySameToppings("normSaus");
                     toppings.removeAll(saus);
                     toppings.add(4);
                     break;
                 case R.id.normalHam:
                     AppFunctions.validateExtraTopping(0, 5);
                     valid = true;
-                    DisplayFunctions.displaySameToppings("normHam");
+                    DisplayOrderFunctions.displaySameToppings("normHam");
                     toppings.removeAll(ham);
                     toppings.add(5);
                     break;
                 case R.id.normalPineapple:
                     AppFunctions.validateExtraTopping(0, 6);
                     valid = true;
-                    DisplayFunctions.displaySameToppings("normPine");
+                    DisplayOrderFunctions.displaySameToppings("normPine");
                     toppings.removeAll(pine);
                     toppings.add(6);
                     break;
@@ -328,7 +347,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doublePepper:
                     if (AppFunctions.validateExtraTopping(1, 1)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("dblPep");
+                        DisplayOrderFunctions.displaySameToppings("dblPep");
                         toppings.removeAll(pepper);
                         toppings.add(1);
                         toppings.add(1);
@@ -339,7 +358,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doubleMushroom:
                     if (AppFunctions.validateExtraTopping(1, 2)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("dblMush");
+                        DisplayOrderFunctions.displaySameToppings("dblMush");
                         toppings.removeAll(mush);
                         toppings.add(2);
                         toppings.add(2);
@@ -350,7 +369,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doublePepperoni:
                     if (AppFunctions.validateExtraTopping(1, 3)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("dblRoni");
+                        DisplayOrderFunctions.displaySameToppings("dblRoni");
                         toppings.removeAll(roni);
                         toppings.add(3);
                         toppings.add(3);
@@ -361,7 +380,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doubleSausage:
                     if (AppFunctions.validateExtraTopping(1, 4)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("dblSaus");
+                        DisplayOrderFunctions.displaySameToppings("dblSaus");
                         toppings.removeAll(saus);
                         toppings.add(4);
                         toppings.add(4);
@@ -372,7 +391,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doubleHam:
                     if (AppFunctions.validateExtraTopping(1, 5)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("dblHam");
+                        DisplayOrderFunctions.displaySameToppings("dblHam");
                         toppings.removeAll(ham);
                         toppings.add(5);
                         toppings.add(5);
@@ -383,7 +402,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.doublePineapple:
                     if (AppFunctions.validateExtraTopping(1, 6)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("dblPine");
+                        DisplayOrderFunctions.displaySameToppings("dblPine");
                         toppings.removeAll(pine);
                         toppings.add(6);
                         toppings.add(6);
@@ -403,7 +422,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.triplePepper:
                     if (AppFunctions.validateExtraTopping(2, 1)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("triPep");
+                        DisplayOrderFunctions.displaySameToppings("triPep");
                         toppings.removeAll(pepper);
                         toppings.add(1);
                         toppings.add(1);
@@ -415,7 +434,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.tripleMushroom:
                     if (AppFunctions.validateExtraTopping(2, 2)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("triMush");
+                        DisplayOrderFunctions.displaySameToppings("triMush");
                         toppings.removeAll(mush);
                         toppings.add(2);
                         toppings.add(2);
@@ -427,7 +446,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.triplePepperoni:
                     if (AppFunctions.validateExtraTopping(2, 3)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("triRoni");
+                        DisplayOrderFunctions.displaySameToppings("triRoni");
                         toppings.removeAll(roni);
                         toppings.add(3);
                         toppings.add(3);
@@ -439,7 +458,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.tripleSausage:
                     if (AppFunctions.validateExtraTopping(2, 4)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("triSaus");
+                        DisplayOrderFunctions.displaySameToppings("triSaus");
                         toppings.removeAll(saus);
                         toppings.add(4);
                         toppings.add(4);
@@ -451,7 +470,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.tripleHam:
                     if (AppFunctions.validateExtraTopping(2, 5)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("triHam");
+                        DisplayOrderFunctions.displaySameToppings("triHam");
                         toppings.removeAll(ham);
                         toppings.add(5);
                         toppings.add(5);
@@ -463,7 +482,7 @@ public class OrderPage extends AppCompatActivity {
                 case R.id.triplePineapple:
                     if (AppFunctions.validateExtraTopping(2, 6)) {
                         valid = false;
-                        DisplayFunctions.displaySameToppings("triPine");
+                        DisplayOrderFunctions.displaySameToppings("triPine");
                         toppings.removeAll(pine);
                         toppings.add(6);
                         toppings.add(6);
@@ -528,8 +547,8 @@ public class OrderPage extends AppCompatActivity {
                 System.out.println("\ntop1: " + top1);
                 System.out.println("\ntop2: " + top2);
                 System.out.println("\ntop3: " + top3);
-                int size = HistoryPage.orderList.size();
-                Order order = new Order(size+1, name, phone, size, top1, top2, top3);
+                int listSize = HistoryPage.orderList.size();
+                Order order = new Order(listSize+1, name, phone, size, top1, top2, top3);
                 HistoryPage.orderList.add(order);
 
                 if (top1 == top2 && top1 == top3) {
@@ -573,7 +592,104 @@ public class OrderPage extends AppCompatActivity {
             }
             //add to database method
         }
-    };
+    };//end submit onclick
+
+    //onClick for update
+    public View.OnClickListener updateOrder = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String name = textName.getText().toString();
+            String phone = textPhone.getText().toString();
+            //to print
+            String printSize = null;
+            String printTop1 = null;
+            String printTop2 = null;
+            String printTop3 = null;
+            //initializing toppings as 0 (no topping)
+            int top1 = 0;
+            int top2 = 0;
+            int top3 = 0;
+
+            //validation of all fields
+            if (!AppFunctions.validateName(String.valueOf(textName.getText()))) {
+                Toast.makeText(OrderPage.this, "invalid name", Toast.LENGTH_SHORT).show();
+            } else if (!AppFunctions.validatePhone(String.valueOf(textPhone.getText()))) {
+                Toast.makeText(OrderPage.this, "invalid phone number", Toast.LENGTH_SHORT).show();
+            } else if (!AppFunctions.validateRadios(radiogroup.getChildCount(), radiogroup)) {
+                Toast.makeText(OrderPage.this, "select a size", Toast.LENGTH_SHORT).show();
+            } else if (!AppFunctions.validateCheckBoxes(checkPepper, checkMushroom, checkPepperoni,
+                    checkSausage,checkHam, checkPineapple)) {
+                Toast.makeText(OrderPage.this, "select at least 1 topping", Toast.LENGTH_SHORT).show();
+            } else {
+                //to find out how many toppings were selected
+                switch (toppings.size()) {
+                    case 1:
+                        top1 = toppings.get(0);
+                        break;
+                    case 2:
+                        top1 = toppings.get(0);
+                        top2 = toppings.get(1);
+                        break;
+                    case 3:
+                        top1 = toppings.get(0);
+                        top2 = toppings.get(1);
+                        top3 = toppings.get(2);
+                        break;
+                }
+                //print statements for debuggind
+                System.out.println("\nsize of arraylist: " + toppings.size());
+                System.out.println("\nname: " + textName.getText());
+                System.out.println("\nphone: " + textPhone.getText());
+                System.out.println("\nsize: " + size);
+                System.out.println("\ntop1: " + top1);
+                System.out.println("\ntop2: " + top2);
+                System.out.println("\ntop3: " + top3);
+                int listSize = HistoryPage.orderList.size();
+                Order order = new Order(listSize+1, name, phone, size, top1, top2, top3);
+                HistoryPage.orderList.set(orderNum, order);
+
+                if (top1 == top2 && top1 == top3) {
+                    switch (top1) {
+                        case 1:
+                            printTop1 = getResources().getString(R.string.pepper);
+                            printTop2 = getResources().getString(R.string.pepper);
+                            printTop3 = getResources().getString(R.string.pepper);
+                            break;
+                        case 2:
+                            printTop1 = getResources().getString(R.string.mushroom);
+                            printTop2 = getResources().getString(R.string.mushroom);
+                            printTop3 = getResources().getString(R.string.mushroom);
+                            break;
+                        case 3:
+                            printTop1 = getResources().getString(R.string.pepperoni);
+                            printTop2 = getResources().getString(R.string.pepperoni);
+                            printTop3 = getResources().getString(R.string.pepperoni);
+                            break;
+                        case 4:
+                            printTop1 = getResources().getString(R.string.sausage);
+                            printTop2 = getResources().getString(R.string.sausage);
+                            printTop3 = getResources().getString(R.string.sausage);
+                            break;
+                        case 5:
+                            printTop1 = getResources().getString(R.string.ham);
+                            printTop2 = getResources().getString(R.string.ham);
+                            printTop3 = getResources().getString(R.string.ham);
+                            break;
+                        case 6:
+                            printTop1 = getResources().getString(R.string.pineapple);
+                            printTop2 = getResources().getString(R.string.pineapple);
+                            printTop3 = getResources().getString(R.string.pineapple);
+                            break;
+                    }
+                }
+
+                //goes to history page
+                Intent orderHistoryIntent = new Intent(OrderPage.this, HistoryPage.class);
+                startActivity(orderHistoryIntent);
+            }
+            //add to database method
+        }
+    };//end update onclick
 
 
     //--------------------------methods--------------------------//

@@ -38,9 +38,6 @@ public class HistoryPage extends AppCompatActivity {
 
         //recycler setup
         recycler = findViewById(R.id.orderInfo);
-
-//        orderList.add(new Order("sam", "1112223333", 1, 1, 2, 3));
-
         adapter = new OrderAdapter(orderList);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getApplicationContext());
         recycler.setLayoutManager(manager);
@@ -52,8 +49,6 @@ public class HistoryPage extends AppCompatActivity {
 
         //set onclick listeners
         btnLanguage.setOnClickListener(changeLanguage);
-//        btnList.setOnClickListener(viewOrder);
-//        btnEdit.setOnClickListener();
         btnNew.setOnClickListener(newOrder);
 
     }//end onCreate
@@ -74,39 +69,25 @@ public class HistoryPage extends AppCompatActivity {
         }
     };
 
-    //onclick to delete order
-    View.OnClickListener deleteOrder = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            //do nothing
-        }
-    };
-
-    //onClick for view order
-    View.OnClickListener viewOrder = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent detailsIntent = new Intent(HistoryPage.this, DetailsPage.class);
-            startActivity(detailsIntent);
-
-        }
-    };//end onclick for view order
-
     //onClick for new order
-    View.OnClickListener newOrder = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            AppFunctions.checkboxNum = 0;
-            AppFunctions.top1 = 0;
-            AppFunctions.top2 = 0;
-            AppFunctions.top3 = 0;
-            AppFunctions.top4 = 0;
-            AppFunctions.top5 = 0;
-            AppFunctions.top6 = 0;
-            Intent newOrderIntent = new Intent(HistoryPage.this, OrderPage.class);
-            startActivity(newOrderIntent);
-        }
-    };
+    View.OnClickListener newOrder = v -> {
+        //reset order variables
+        AppFunctions.checkboxNum = 0;
+        AppFunctions.top1 = 0;
+        AppFunctions.top2 = 0;
+        AppFunctions.top3 = 0;
+        AppFunctions.top4 = 0;
+        AppFunctions.top5 = 0;
+        AppFunctions.top6 = 0;
+        OrderPage.toppings.clear();
+
+        OrderPage.btnUpdate.setVisibility(View.GONE);
+        OrderPage.btnSubmit.setVisibility(View.VISIBLE);
+
+        Intent newOrderIntent = new Intent(HistoryPage.this, OrderPage.class);
+        newOrderIntent.putExtra("KEY", true);
+        startActivity(newOrderIntent);
+    };//end new order onclick
 
 
     //--------------------------methods--------------------------//
@@ -128,6 +109,5 @@ public class HistoryPage extends AppCompatActivity {
     String language = prefs.getString("my_lang", "");
 
     setLocale(language);
-
     };//end language onClick
-}
+}//end history page

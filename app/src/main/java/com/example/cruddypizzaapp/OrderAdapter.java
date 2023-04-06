@@ -20,17 +20,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        //views
         TextView orderTV;
-        ImageButton btnEdit, btnList, btnDelete;
+        ImageButton btnEdit, btnView, btnDelete;
 
-        //variables
-        private final Context context;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            context = itemView.getContext();
             orderTV = itemView.findViewById(R.id.orderTV);
-            btnList = itemView.findViewById(R.id.btnList);
+            btnView = itemView.findViewById(R.id.btnView);
             btnEdit = itemView.findViewById(R.id.btnEdit);
             btnDelete = itemView.findViewById(R.id.btnDelete);
         }
@@ -48,9 +46,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         int orderNum = orderList.indexOf(orderList.get(position)) + 1000;
         String quickLookup = "order#" + orderNum + "\n" + orderList.get(position).getName() + "\n" +
                 orderList.get(position).getPhone() + "\nsize: " + orderList.get(position).getSize();
-        String details = orderList.get(position).getName() + "\n" + orderList.get(position).getPhone()
-                + "\nsize: " + orderList.get(position).getSize() + "\ntoppings:\n\t\t" + orderList.get(position).getTop1()
-                + "\n\t\t" + orderList.get(position).getTop2() + "\n\t\t" + orderList.get(position).getTop3();
         //create string for this text view in advance if this works
         holder.orderTV.setText(quickLookup);
 
@@ -66,10 +61,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         });//end delete order onclick
 
         //onclick for view order details
-        holder.btnList.setOnClickListener(new View.OnClickListener() {
+        holder.btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //start detail page activity -- https://stackoverflow.com/a/28767516
                 Intent detailsIntent = new Intent(v.getContext(), DetailsPage.class);
+                detailsIntent.putExtra("KEY", orderList.indexOf(orderList.get(position)));
                 Context context = v.getContext();
                 context.startActivity(detailsIntent);
             }
@@ -79,7 +76,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String KEY = "KEY";
 
+                //sending order to display method
+//                DisplayDetails.orderDetailsDisplayed(orderList.get(position));
+
+                Intent editIntent = new Intent(v.getContext(), OrderPage.class);
+                editIntent.putExtra(KEY, (int)orderList.indexOf(orderList.get(position)));
+                Context context = v.getContext();
+                context.startActivity(editIntent);
             }
         });//end of edit order
     }//end onBindViewHolder
@@ -89,5 +94,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         return orderList.size();
     }
 
-
-}
+    //------------------------method------------------------//
+//    public void
+}//end order adapter class

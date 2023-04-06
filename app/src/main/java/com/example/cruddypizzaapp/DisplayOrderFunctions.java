@@ -3,15 +3,11 @@ package com.example.cruddypizzaapp;
 import static com.example.cruddypizzaapp.AppFunctions.checkboxNum;
 import static com.example.cruddypizzaapp.OrderPage.*;
 
-import android.content.res.ColorStateList;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
-public class DisplayFunctions extends AppCompatActivity {
+public class DisplayOrderFunctions extends AppCompatActivity {
 
     //*****EXTREMELY LARGE METHOD*****//
     //checkbox display method

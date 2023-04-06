@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
@@ -16,12 +17,18 @@ import android.database.*;
 import java.io.*;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 
 public class TitlePage extends AppCompatActivity {
     //views
     Button btnLanguage, btnStart, btnSearch;
+
+    //variable
+    List<String> eng;
+    List<String> zh;
 
     //onCreate for title page
     @Override
@@ -30,7 +37,10 @@ public class TitlePage extends AppCompatActivity {
         loadLocale();
         setContentView(R.layout.activity_title);
 
-
+        //initializing string array
+//        Resources res = getResources();
+//        eng = Arrays.asList(getResources().getStringArray(R.array.english));
+//        zh = Arrays.asList(getResources().getStringArray(R.array.chinese));
 
         //initializing buttons
         btnLanguage = findViewById(R.id.btnLanguage);
@@ -48,11 +58,11 @@ public class TitlePage extends AppCompatActivity {
     //--------------------------onClickListeners--------------------------//
     //change language onClick
     View.OnClickListener changeLanguage = v -> { //anonymous new view.onclick listener can be replaced with lambda
-        if (Locale.getDefault().getLanguage().equals("eng")) {
+        if (Locale.getDefault().getLanguage().equals("en")) {
             setLocale("zh");
             recreate();
         } else {
-            setLocale("eng");
+            setLocale("en");
             recreate();
         }
     };
@@ -60,6 +70,7 @@ public class TitlePage extends AppCompatActivity {
     //start order
     View.OnClickListener startOrder = view -> {
         Intent newOrderIntent = new Intent(TitlePage.this, OrderPage.class);
+        newOrderIntent.putExtra("KEY", true);
         startActivity(newOrderIntent);
     };
 
@@ -72,6 +83,7 @@ public class TitlePage extends AppCompatActivity {
 
     //--------------------------methods--------------------------//
     //sets locale language
+    //https://www.youtube.com/watch?v=zILw5eV9QBQ&ab_channel=AtifPervaiz
     void setLocale(String lang) {
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);

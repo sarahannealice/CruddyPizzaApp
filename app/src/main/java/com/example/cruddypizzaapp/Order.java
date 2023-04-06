@@ -119,6 +119,9 @@ public class Order {
             case 6:
                 print = "pineapple";
                 break;
+            default:
+                print = "";
+                break;
         }
         return print;
     }
@@ -146,6 +149,9 @@ public class Order {
                 break;
             case 6:
                 print = "pineapple";
+                break;
+            default:
+                print = "";
                 break;
         }
         return print;
