@@ -53,11 +53,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //delete order from database
                 DBAdapter dbAdapter = new DBAdapter(v.getContext());
                 dbAdapter.open();
 
-                if (dbAdapter.deleteOrder(orderList.indexOf(orderList.get(position))+1)) {
+                if (dbAdapter.deleteOrder(orderList.get(position).getOrderNum())) {
+//                if (dbAdapter.deleteOrder(orderList.indexOf(orderList.get(position))+1)) {
                     Toast.makeText(v.getContext(),"delete successful", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(v.getContext(),"failed to delete order", Toast.LENGTH_SHORT).show();

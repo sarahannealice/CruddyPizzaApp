@@ -111,7 +111,7 @@ public class DBAdapter {
 
     //retrieve all orders
     public Cursor getAllOrders() {
-        return db.query(DATABASE_TABLE, new String[]{KEY_ROWID + " DESC", KEY_NAME, KEY_PHONE, KEY_SIZE, KEY_TOP1, KEY_TOP2, KEY_TOP3},
+        return db.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_NAME, KEY_PHONE, KEY_SIZE, KEY_TOP1, KEY_TOP2, KEY_TOP3},
                 null, null, null, null, null);
     }
 }//end DBAdapter class
