@@ -18,6 +18,7 @@ import java.util.Locale;
 import android.database.*;
 
 public class OrderPage extends AppCompatActivity {
+    Order order;
     //views
     static Button btnLanguage, btnSubmit;
     static EditText textName, textPhone;
@@ -530,8 +531,8 @@ public class OrderPage extends AppCompatActivity {
                 System.out.println("\ntop1: " + top1);
                 System.out.println("\ntop2: " + top2);
                 System.out.println("\ntop3: " + top3);
-                int listSize = HistoryPage.orderList.size();
-                Order order = new Order(listSize+1, name, phone, size, top1, top2, top3);
+//                int listSize = HistoryPage.orderList.size();
+//                Order order = new Order(name, phone, size, top1, top2, top3);
 
                 //database code
                 DBAdapter dbAdapter = new DBAdapter(OrderPage.this);
@@ -545,12 +546,18 @@ public class OrderPage extends AppCompatActivity {
 
                 //to check if new order or edited order
                 if (btnSubmit.getText().equals("submit order") || btnSubmit.getText().equals("提交订单")) {
-                    HistoryPage.orderList.add(order);
                     long insertOrder = dbAdapter.submitOrder(name, phone, size, top1, top2, top3);
+                    Toast.makeText(OrderPage.this, "order submitted successfully", Toast.LENGTH_SHORT).show();
                 } else if (btnSubmit.getText().equals("update order") || btnSubmit.getText().equals("更新订单")) {
-                    HistoryPage.orderList.set(orderNum, order);
-                    long updateOrder = dbAdapter.submitOrder(name, phone, size, top1, top2, top3);
+                    boolean updateOrder = dbAdapter.updateOrder(HistoryPage.orderList.get(orderNum).getOrderNum(), name, phone, size, top1, top2, top3);
+                    if (updateOrder) {
+                        Toast.makeText(OrderPage.this, "order updated successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(OrderPage.this, "failed to update order", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
+                dbAdapter.close();
 
                 //goes to history page
                 Intent orderHistoryIntent = new Intent(OrderPage.this, HistoryPage.class);

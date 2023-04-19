@@ -94,7 +94,7 @@ public class DBAdapter {
     //delete single order
     public boolean deleteOrder(long orderNum) {
         return db.delete(DATABASE_TABLE, KEY_ROWID + " = " + orderNum, null) > 0;
-    }//emd delete
+    }//end delete
 
     //update single order
     public boolean updateOrder(long orderNum, String name, String phone, int size, int top1, int top2, int top3) {
@@ -106,6 +106,12 @@ public class DBAdapter {
         cval.put(KEY_TOP2, top2);
         cval.put(KEY_TOP3, top3);
 
-        return db.update(DATABASE_TABLE, cval, KEY_ROWID + " = " +orderNum, null) > 0;
+        return db.update(DATABASE_TABLE, cval, KEY_ROWID + " = " + orderNum, null) > 0;
     }//end update
-}
+
+    //retrieve all orders
+    public Cursor getAllOrders() {
+        return db.query(DATABASE_TABLE, new String[]{KEY_ROWID + " DESC", KEY_NAME, KEY_PHONE, KEY_SIZE, KEY_TOP1, KEY_TOP2, KEY_TOP3},
+                null, null, null, null, null);
+    }
+}//end DBAdapter class

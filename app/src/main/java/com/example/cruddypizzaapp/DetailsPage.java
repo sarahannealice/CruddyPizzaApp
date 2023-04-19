@@ -23,7 +23,7 @@ DetailsPage extends AppCompatActivity {
 
     //variable
     String KEY = "KEY";
-    int order;
+    int orderNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +43,10 @@ DetailsPage extends AppCompatActivity {
 
         //getting key from recycler
         Intent editIntent = getIntent();
-        order = editIntent.getIntExtra(KEY, 0);
+        orderNum = editIntent.getIntExtra(KEY, 0);
 
         //calling method to display order information
-        EditViewDetails.DisplayOrderDetails(HistoryPage.orderList.get(order));
+        EditViewDetails.DisplayOrderDetails(HistoryPage.orderList.get(orderNum));
 
         //setting onClickListeners
         btnLanguage.setOnClickListener(changeLanguage);
@@ -84,7 +84,7 @@ DetailsPage extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent editIntent = new Intent(DetailsPage.this, OrderPage.class);
-            editIntent.putExtra(KEY, order);
+            editIntent.putExtra(KEY, orderNum);
             startActivity(editIntent);
         }
     };

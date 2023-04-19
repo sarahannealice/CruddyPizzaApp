@@ -53,6 +53,18 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //delete order from database
+                DBAdapter dbAdapter = new DBAdapter(v.getContext());
+                dbAdapter.open();
+
+                if (dbAdapter.deleteOrder(orderList.indexOf(orderList.get(position))+1)) {
+                    Toast.makeText(v.getContext(),"delete successful", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(v.getContext(),"failed to delete order", Toast.LENGTH_SHORT).show();
+                }
+
+                dbAdapter.close();
+
                 //https://stackoverflow.com/a/45413953
                 orderList.remove(position);
                 notifyItemRemoved(position);
@@ -82,7 +94,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 //                DisplayDetails.orderDetailsDisplayed(orderList.get(position));
 
                 Intent editIntent = new Intent(v.getContext(), OrderPage.class);
-                editIntent.putExtra(KEY, (int)orderList.indexOf(orderList.get(position)));
+                editIntent.putExtra(KEY, orderList.indexOf(orderList.get(position)));
                 Context context = v.getContext();
                 context.startActivity(editIntent);
             }

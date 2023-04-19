@@ -9,9 +9,18 @@ public class Order {
     int top2;
     int top3;
 
+    //default constructor
+    Order() {
+        name = "";
+        phone = "";
+        size = 0;
+        top1 = 0;
+        top2 = 0;
+        top3 = 0;
+    }
 
     //constructor
-    Order (int orderNum, String name, String phone, int size, int top1, int top2, int top3) {
+    Order(int orderNum, String name, String phone, int size, int top1, int top2, int top3) {
         this.orderNum = orderNum;
         this.name = name;
         this.phone = phone;
