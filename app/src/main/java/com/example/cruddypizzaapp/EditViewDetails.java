@@ -69,8 +69,9 @@ public class EditViewDetails extends AppCompatActivity {
 
     //display edit checkboxes
     public static void DisplayEditCheckboxes(int one, int two, int three) {
-        //reset toppings arraylist
+        //reset toppings arraylist and checkbox counter
         OrderPage.toppings.clear();
+        AppFunctions.checkboxNum = 0;
 
         //PEPPER//
         if (one == 1 || two == 1 || three == 1) {
@@ -79,6 +80,7 @@ public class EditViewDetails extends AppCompatActivity {
             OrderPage.btnPepper.setVisibility(View.VISIBLE);
             //setup toppings arraylist
             OrderPage.toppings.add(1);
+            AppFunctions.checkboxNum++;
             //checks if adjacent topping is visible or not
             if (OrderPage.btnMushroom.getVisibility() == View.GONE) {
                 OrderPage.btnMushroom.setVisibility(View.INVISIBLE);
@@ -101,6 +103,7 @@ public class EditViewDetails extends AppCompatActivity {
             OrderPage.vertical10_1.setVisibility(View.VISIBLE);
             OrderPage.btnMushroom.setVisibility(View.VISIBLE);
             OrderPage.toppings.add(2);
+            AppFunctions.checkboxNum++;
             if (OrderPage.btnPepper.getVisibility() == View.GONE) {
                 OrderPage.btnPepper.setVisibility(View.INVISIBLE);
             }
@@ -120,6 +123,7 @@ public class EditViewDetails extends AppCompatActivity {
             OrderPage.vertical12_1.setVisibility(View.VISIBLE);
             OrderPage.btnPepperoni.setVisibility(View.VISIBLE);
             OrderPage.toppings.add(3);
+            AppFunctions.checkboxNum++;
             if (OrderPage.btnSausage.getVisibility() == View.GONE) {
                 OrderPage.btnSausage.setVisibility(View.INVISIBLE);
             }
@@ -139,6 +143,7 @@ public class EditViewDetails extends AppCompatActivity {
             OrderPage.vertical12_1.setVisibility(View.VISIBLE);
             OrderPage.btnSausage.setVisibility(View.VISIBLE);
             OrderPage.toppings.add(4);
+            AppFunctions.checkboxNum++;
             if (OrderPage.btnPepperoni.getVisibility() == View.GONE) {
                 OrderPage.btnPepperoni.setVisibility(View.INVISIBLE);
             }
@@ -158,6 +163,7 @@ public class EditViewDetails extends AppCompatActivity {
             OrderPage.vertical14_1.setVisibility(View.VISIBLE);
             OrderPage.btnHam.setVisibility(View.VISIBLE);
             OrderPage.toppings.add(5);
+            AppFunctions.checkboxNum++;
             if (OrderPage.btnPineapple.getVisibility() == View.GONE) {
                 OrderPage.btnPineapple.setVisibility(View.INVISIBLE);
             }
@@ -176,6 +182,7 @@ public class EditViewDetails extends AppCompatActivity {
             OrderPage.vertical14_1.setVisibility(View.VISIBLE);
             OrderPage.btnPineapple.setVisibility(View.VISIBLE);
              OrderPage.toppings.add(6);
+             AppFunctions.checkboxNum++;
              if (OrderPage.btnHam.getVisibility() == View.GONE) {
                  OrderPage.btnHam.setVisibility(View.INVISIBLE);
              }

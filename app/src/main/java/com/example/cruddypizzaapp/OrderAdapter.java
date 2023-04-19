@@ -59,7 +59,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 dbAdapter.open();
 
                 if (dbAdapter.deleteOrder(orderList.get(position).getOrderNum())) {
-//                if (dbAdapter.deleteOrder(orderList.indexOf(orderList.get(position))+1)) {
                     Toast.makeText(v.getContext(),"delete successful", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(v.getContext(),"failed to delete order", Toast.LENGTH_SHORT).show();
