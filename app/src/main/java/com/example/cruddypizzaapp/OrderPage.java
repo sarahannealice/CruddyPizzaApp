@@ -14,6 +14,9 @@ import android.widget.*;
 import java.util.ArrayList;
 import java.util.Locale;
 
+//database imports
+import android.database.*;
+
 public class OrderPage extends AppCompatActivity {
     //views
     static Button btnLanguage, btnSubmit;
@@ -530,11 +533,23 @@ public class OrderPage extends AppCompatActivity {
                 int listSize = HistoryPage.orderList.size();
                 Order order = new Order(listSize+1, name, phone, size, top1, top2, top3);
 
+                //database code
+                DBAdapter dbAdapter = new DBAdapter(OrderPage.this);
+
+                try {
+                    dbAdapter.open();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    Toast.makeText(OrderPage.this, "failed to submit order", Toast.LENGTH_SHORT).show();
+                }
+
                 //to check if new order or edited order
                 if (btnSubmit.getText().equals("submit order") || btnSubmit.getText().equals("提交订单")) {
                     HistoryPage.orderList.add(order);
+                    long insertOrder = dbAdapter.submitOrder(name, phone, size, top1, top2, top3);
                 } else if (btnSubmit.getText().equals("update order") || btnSubmit.getText().equals("更新订单")) {
                     HistoryPage.orderList.set(orderNum, order);
+                    long updateOrder = dbAdapter.submitOrder(name, phone, size, top1, top2, top3);
                 }
 
                 //goes to history page
